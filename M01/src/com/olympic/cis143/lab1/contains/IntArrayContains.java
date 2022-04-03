@@ -19,6 +19,6 @@ public class IntArrayContains {
      */
     public boolean contains(int value) {
         
-    	
+    	return true;
     }
 }

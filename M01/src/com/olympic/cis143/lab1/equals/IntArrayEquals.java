@@ -24,6 +24,6 @@ public class IntArrayEquals {
     public boolean equals(int[] compareMe) {
        
     	
-    	
+    	return true;
     }
 }
