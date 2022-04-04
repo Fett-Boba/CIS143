@@ -77,8 +77,21 @@ public class ArrayIntListDriver {
 		ArrayIntList list7 = new ArrayIntList();
 		System.out.println(list7.runningTotal().toString());
 	
+		// addAll from lecture notes (add contents of list9 to end of list8)
+		// it doesnt work based on what is in the lecture notes.
+		System.out.println("-------------- addAll() ----------------");
+		ArrayIntList list8 = new ArrayIntList();
+		list8.add(1);
+		list8.add(2);
+		list8.add(3);
 		
+		ArrayIntList list9 = new ArrayIntList();
+		list9.add(4);
+		list9.add(5);
 		
+		list8.addAll(list9);
+		
+		System.out.println(list8);
 		
 		
 	}

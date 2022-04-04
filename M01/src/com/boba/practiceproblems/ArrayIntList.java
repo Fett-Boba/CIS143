@@ -27,7 +27,8 @@ public class ArrayIntList {
 
 	}
 	public int get(int index) {
-		return 1;
+		return elementData[index];
+		//return 1;
 	}
 	public int indexOf(int value) {
 		return 1;
@@ -78,11 +79,11 @@ public class ArrayIntList {
 		} 
 		return total;
 	}
-	public int max(int data[]) {
-		
-		
-		
-		return 1;
+
+	public void addAll(ArrayIntList other) {
+		// This doesnt work.  The array is too small ?
+			for (int i = 0; i < other.size(); i++) {
+			this.add(other.elementData[i]); 
+		}
 	}
-	
 }
