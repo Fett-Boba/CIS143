@@ -6,8 +6,6 @@ public class FizzBuzzConverterTest {
         FizzBuzzConverterTest fizzBuzzConverterTest = new FizzBuzzConverterTest();
         fizzBuzzConverterTest.testOne();
         fizzBuzzConverterTest.testTwo();
-        fizzBuzzConverterTest.testThree();
-        fizzBuzzConverterTest.testFour();
     }
 
     public void testOne() {
@@ -23,31 +21,11 @@ public class FizzBuzzConverterTest {
         FizzBuzzConverter fizzBuzzConverter = new FizzBuzzConverter(new int[] {0 ,13, 9, 25, 30});
         Object[] result = fizzBuzzConverter.convertToFizzBuzz();
         if (!this.equals(result, new Object[] {0, 13, "Fizz", "Buzz", "FizzBuzz"})) {
-            throw new RuntimeException("testTwo failed");
+            throw new RuntimeException("testOne failed");
         }
         System.out.println(">> testTwo passed");
     }
-    
-    public void testThree() {
-        FizzBuzzConverter fizzBuzzConverter = new FizzBuzzConverter(new int[] {0});
-        Object[] result = fizzBuzzConverter.convertToFizzBuzz();
-        if (!this.equals(result, new Object[] {0})) {
-            throw new RuntimeException("testThree failed");
-        }
-        System.out.println(">> testThree passed");
-    }
-    
-    // Q: How would I send in nulls?  This is just an empty array...I want nulls
-    public void testFour() {
-        FizzBuzzConverter fizzBuzzConverter = new FizzBuzzConverter(new int[] {});
-        Object[] result = fizzBuzzConverter.convertToFizzBuzz();
-        if (!this.equals(result, new Object[] {})) {
-            throw new RuntimeException("testFour failed");
-        }
-        System.out.println(">> testFour passed");
-    }
-    
-    
+
     public boolean equals(Object[] result, Object[] expected) {
         if (result == null) {
             return false;
