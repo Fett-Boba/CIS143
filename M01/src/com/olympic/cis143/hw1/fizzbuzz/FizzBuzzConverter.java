@@ -17,8 +17,8 @@ public class FizzBuzzConverter {
 
      The rules are as follows:
 
-	 If the int is a multiples of three print â€œFizzâ€�
-     If the int is a multiples of five print â€œBuzzâ€�
+	 If the int is a multiples of three print "Fizz"
+     If the int is a multiples of five print "Buzz"
      If the int is a multiple of three and five print "FizzBuzz"
 
      For example, if the array sent into the method contains the following ints [ 0, 1, 2, 3, 5, 10, 15, 7, 16], the 
