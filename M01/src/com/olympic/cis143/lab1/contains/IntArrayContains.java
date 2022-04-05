@@ -19,6 +19,11 @@ public class IntArrayContains {
      */
     public boolean contains(int value) {
         
-    	return true;
+    	for (int element : data) {
+			if (element == value) {
+				return true;
+			}
+		}
+		return false;
     }
 }

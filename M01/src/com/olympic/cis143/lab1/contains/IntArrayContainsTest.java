@@ -21,6 +21,6 @@ public class IntArrayContainsTest {
         if (intArrayContains.contains(4)) {
             throw new RuntimeException("Should NOT have the element 4 in the array.");
         }
-        System.out.println(">> testDoesContain passed");
+        System.out.println(">> testDoesNotContain passed");
     }
 }

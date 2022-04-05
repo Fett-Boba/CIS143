@@ -23,13 +23,13 @@ public class IntArrayEquals {
      */
     public boolean equals(int[] compareMe) {
        
-    	if (compareMe == null || data == null) {
+    	if (compareMe == null) {
     		return false;
     	} 
     	if (compareMe.length != data.length) {
     		return false;
     	} 
-    	// now that we know the arrays are equal lengths, check for equality
+    	// now that we know the arrays are equal lengths, we can check for equality
     	for (int i = 0; i < compareMe.length; i++) {
     		if (compareMe[i] != data[i]) {
     			return false;
