@@ -10,6 +10,7 @@ public class IntArrayAddTest {
         IntArrayAddTest intArrayAddTest = new IntArrayAddTest();
         intArrayAddTest.testAddOneValue();
         intArrayAddTest.testAddMultiple();
+        
     }
 
     public void testAddOneValue() {
@@ -33,5 +34,4 @@ public class IntArrayAddTest {
         }
         System.out.println(">> testAddMultiple passed");
     }
-
 }
