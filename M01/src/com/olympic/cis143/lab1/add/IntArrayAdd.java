@@ -12,7 +12,7 @@ public class IntArrayAdd {
     	list.clear();
     }
 
-    // Use an array list which allows us to grow our list of data dynamically (and efficiently)
+    // Use an array list which allows us to grow our data dynamically (and efficiently)
 	public void add(int value) {
     	list.add(value);		
     }
@@ -22,7 +22,7 @@ public class IntArrayAdd {
     	return populateArray();
     }
     
-    // Populate the array we will return back to the user from our array list
+    // Populate the "standard" array from our dynamic arraylist 
     private int[] populateArray() {
     	int [] data = new int[list.size()];
     	for (int i = 0; i < list.size(); i++) {
