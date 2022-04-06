@@ -1,5 +1,7 @@
 package com.olympic.cis143.lab1.add;
 
+import java.util.ArrayList;
+
 import com.olympic.cis143.lab1.equals.IntArrayEquals;
 
 public class IntArrayAddTest {
@@ -19,6 +21,7 @@ public class IntArrayAddTest {
         }
         System.out.println(">> testAddOneValue passed");
     }
+
     public void testAddMultiple() {
         IntArrayAdd iadd = new IntArrayAdd();
         iadd.add(1);
@@ -30,4 +33,5 @@ public class IntArrayAddTest {
         }
         System.out.println(">> testAddMultiple passed");
     }
+
 }

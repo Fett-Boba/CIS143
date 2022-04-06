@@ -10,10 +10,12 @@ public class FizzBuzzConverter {
 		}
 		this.data = values;
 	}
-
+	
 	/**
-     For this method, you will need to iterate through a list of ints and populate a return array with the correct 
-     values according to the rules of FizzBuzz. FizzBuzz is a common practice algorithm used when screening candidates. 
+     For this method, you will need to iterate through a list of ints and 
+     populate a return array with the correct values according to the rules 
+     of FizzBuzz. FizzBuzz is a common practice algorithm used when 
+     screening candidates. 
 
      The rules are as follows:
 
@@ -21,10 +23,12 @@ public class FizzBuzzConverter {
      If the int is a multiples of five print "Buzz"
      If the int is a multiple of three and five print "FizzBuzz"
 
-     For example, if the array sent into the method contains the following ints [ 0, 1, 2, 3, 5, 10, 15, 7, 16], the 
-     returned Object array will be [0, 1, 2, "Fizz", "Buzz", "Buzz", "FizzBuzz", 7, 16]
+     For example, if the array sent into the method contains the following 
+     ints [ 0, 1, 2, 3, 5, 10, 15, 7, 16], the returned Object array will 
+     be [0, 1, 2, "Fizz", "Buzz", "Buzz", "FizzBuzz", 7, 16]
 
-     Note that the method should accept an int array int[] data, and return an object array Object[].
+     Note that the method should accept an int array int[] data, and return 
+     an object array Object[].
 	 */
 
 	public Object[] convertToFizzBuzz() {
