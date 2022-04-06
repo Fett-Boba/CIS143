@@ -12,7 +12,7 @@ public class IntArrayAdd {
     	list.clear();
     }
 
-    // Use an array list which allows us to grow our list of data dynamically
+    // Use an array list which allows us to grow our list of data dynamically (and efficiently)
 	public void add(int value) {
     	list.add(value);		
     }
