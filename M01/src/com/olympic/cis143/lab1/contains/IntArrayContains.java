@@ -11,14 +11,8 @@ public class IntArrayContains {
         this.data = values;
     }
 
-    /**
-     * Check to see if the data array contains the value that is passed.
-     *
-     * @param value The value to see if its contained in the array.
-     * @return True if the value is found, else, false.
-     */
+    // Check if array contains passed value
     public boolean contains(int value) {
-        
     	for (int element : data) {
 			if (element == value) {
 				return true;

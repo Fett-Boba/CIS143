@@ -17,12 +17,12 @@ public class IntArrayAdd {
     	list.add(value);		
     }
     
-	// Return an "standard" array of integers to the user
+	// Return an the array of integers to the user
     public int[] getData() {
     	return populateArray();
     }
     
-    // Populate the "standard" array from our dynamic arraylist 
+    // Populate an array from our ArrayList 
     private int[] populateArray() {
     	int [] data = new int[list.size()];
     	for (int i = 0; i < list.size(); i++) {
