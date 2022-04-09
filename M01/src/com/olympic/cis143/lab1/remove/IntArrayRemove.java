@@ -8,7 +8,6 @@ public class IntArrayRemove {
     private List<Integer> list = new ArrayList<>();
     private int[] data;
     
-    // Initialize our array, and clear our ArrayList
     public IntArrayRemove(int[] values) {
         if (values == null) {
             throw new RuntimeException("Values passed cannot be null");
@@ -17,11 +16,12 @@ public class IntArrayRemove {
         this.data = values;
     }      
 
+    // Return array with value removed
     public int [] getData() {
     	return populateArray();
     }
 
-    // Create new array list which contains list with value removed
+    // Create array list which contains contents of array with value removed
     public void remove(int value) {
     	for (Integer element : data) {
     		if (element != value) {
