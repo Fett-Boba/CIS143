@@ -21,7 +21,7 @@ public class IntArrayRemove {
     	return populateArray();
     }
 
-    // Check array to see if it contains the value passed
+    // Create new array list which contains list with value removed
     public void remove(int value) {
     	for (Integer element : data) {
     		if (element != value) {
