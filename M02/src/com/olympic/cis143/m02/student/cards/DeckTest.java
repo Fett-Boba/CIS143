@@ -1,7 +1,6 @@
 package com.olympic.cis143.m02.student.cards;
 
-
-// ??? Is this a problem to comment out ???  
+// ???  
 //import com.olympic.cis143.m02.teacher.cards.Card;
 
 import java.util.Stack;
@@ -19,7 +18,6 @@ public class DeckTest  {
     }
 
     public void testCreateJokersFalse() {
-        //DeckImpl deck = new DeckImpl(false);
     	Deck deck = new DeckImpl(false);
         if (deck.getDeck().size() != 52) {
             throw new RuntimeException(":) testCreateJokersFalseDeck Fail: Decks without Jokers should be 52 cards in total");
@@ -28,7 +26,6 @@ public class DeckTest  {
     }
 
     public void testCreateJokersTrue() {
-        //DeckImpl deck = new DeckImpl(true);
     	Deck deck = new DeckImpl(true);
     	if (deck.getDeck().size() != 54) {
             throw new RuntimeException(":) testCreateJokersFalseDeck Fail: Decks without Jokers should be 54 cards in total");
@@ -37,13 +34,13 @@ public class DeckTest  {
     }
 
     public void testShuffle() {
-        //DeckImpl deck = new DeckImpl(true);
         Deck deck = new DeckImpl(true);
         
-        // IS this a problem ?  changed from teacher to student ?
+        // ??? 
         //Stack<com.olympic.cis143.m02.teacher.cards.Card> deckcp = (Stack<Card>) deck.getDeck().clone();
-        Stack<com.olympic.cis143.m02.student.cards.Card> deckcp = (Stack<Card>) deck.getDeck().clone();
+        //Stack<com.olympic.cis143.m02.student.cards.Card> deckcp = (Stack<Card>) deck.getDeck().clone();
         
+        Stack<Card> deckcp = (Stack<Card>) deck.getDeck().clone();
         deck.shuffle();
         if (deckcp.equals(deck)) {
             throw new RuntimeException("): testShuffle Fail: deck after shuffle must be different.");
@@ -52,7 +49,6 @@ public class DeckTest  {
     }
 
     public void testGetCardDecrementsTheDeck() {
-    	//DeckImpl deck = new DeckImpl(true);
         Deck deck = new DeckImpl(true);
         deck.dealCard();
         if (deck.getDeck().size() != 53) {
@@ -62,7 +58,6 @@ public class DeckTest  {
     }
 
     public void testHasNext() {
-        //DeckImpl deck = new DeckImpl(true);
     	Deck deck = new DeckImpl(true);
         while(deck.hasNext()) {
             deck.dealCard();
@@ -72,7 +67,6 @@ public class DeckTest  {
     }
 
     public void testHasNextThrowsExceptionOnEmptyNext() throws Exception{
-        //DeckImpl deck = new DeckImpl(true);
     	Deck deck = new DeckImpl(true);
         while(deck.hasNext()) {
             deck.dealCard();
