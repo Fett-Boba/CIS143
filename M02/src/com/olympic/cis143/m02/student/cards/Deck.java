@@ -4,12 +4,12 @@ import java.util.Stack;
 
 public interface Deck {
 
-	public Stack<Card> getDeck();
+	Stack<Card> getDeck();
 	
-	public void shuffle(); 
+	void shuffle(); 
 	
-	public boolean hasNext();
+	boolean hasNext();
 	
-	public Card dealCard();
+	Card dealCard();
 
 }
