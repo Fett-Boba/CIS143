@@ -1,5 +1,6 @@
 package com.olympic.cis143.m02.student.tacotruck;
 
+import com.olympic.cis143.m02.student.tacotruck.queue.Orders;
 import com.olympic.cis143.m02.student.tacotruck.queue.OrdersQueueImpl;
 
 public class OrdersTest {
@@ -13,7 +14,7 @@ public class OrdersTest {
     public void testHasNextFalse() {
         TacoImpl firstTaco = new TacoImpl(TacoImpl.Protien.BEAN, true);
 
-        OrdersQueueImpl orders = new OrdersQueueImpl();
+        Orders orders = new OrdersQueueImpl();
         orders.addOrder(firstTaco);
         if (!orders.hasNext()) {
             throw new RuntimeException(":( testHasNextFalse fail: Orders should have one order in them.");
@@ -35,7 +36,7 @@ public class OrdersTest {
         TacoImpl firstTaco = new TacoImpl(TacoImpl.Protien.BEAN, true);
         TacoImpl secondTaco = new TacoImpl(TacoImpl.Protien.BEEF, true);
 
-        OrdersQueueImpl orders = new OrdersQueueImpl();
+        Orders orders = new OrdersQueueImpl();
         orders.addOrder(firstTaco);
         orders.addOrder(secondTaco);
         TacoImpl shouldBeFirstTaco = orders.closeNextOrder();
