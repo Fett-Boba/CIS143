@@ -9,7 +9,7 @@ public class OrdersTest {
         ordersTest.testHasNextFalse();
         ordersTest.testCloseNextOrder();
     }
-
+    
     public void testHasNextFalse() {
         TacoImpl firstTaco = new TacoImpl(TacoImpl.Protien.BEAN, true);
 
