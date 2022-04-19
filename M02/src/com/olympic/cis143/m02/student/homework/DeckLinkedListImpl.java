@@ -1,17 +1,14 @@
 package com.olympic.cis143.m02.student.homework;
 
+import java.util.Collections;
 import java.util.Deque;
 import java.util.LinkedList;
 
-/**
- * Note that you can think of the deck implementation as being an iterator in that its creates and used once. Meaning, when a card is
- * delt is  MUST be removed from the deck.
- */
+import com.olympic.cis143.m02.student.homework.Card.Suit;
+import com.olympic.cis143.m02.student.homework.Card.Value;
+
 public class DeckLinkedListImpl {
 
-    /**
-     * This will be the stack object for you to work with.
-     */
     private Deque<Card> deck = new LinkedList<>();
 
     /**
@@ -39,7 +36,20 @@ public class DeckLinkedListImpl {
      * @param jokers True if you want jokers added to the deck.
      */
     private void createDeck(final boolean jokers) {
-
+    	// Create standard 52 card deck   
+    	for (Suit suit : Suit.values()) {
+    		for (Value value : Value.values()) {
+    			if (suit != Suit.NONE && value != Value.JOKER) {
+    				deck.push(new Card(suit, value));
+    			}
+    		}
+    	}
+    	// Add jokers if requested
+    	if (jokers) {
+    		for (int i = 0; i < 2; i++) {
+    			deck.push(new Card(Suit.NONE, Value.JOKER));
+    		}
+    	}
     }
 
     /**
@@ -53,6 +63,7 @@ public class DeckLinkedListImpl {
      * Randomize and shuffle the deck of cards.
      */
     public void shuffle() {
+    	Collections.shuffle((LinkedList<Card>) deck);       
     }
 
     /**
@@ -60,7 +71,7 @@ public class DeckLinkedListImpl {
      * @return
      */
     public boolean hasNext() {
-        return false;
+        return deck.isEmpty() ? false : true;
     }
 
     /**
@@ -75,6 +86,10 @@ public class DeckLinkedListImpl {
      * @return
      */
     public Card dealCard() {
-        return null;
+        try {
+			return deck.pop();
+		} catch (Exception e) {
+			throw new RuntimeException("Deck is empty");
+		}
     }
 }
