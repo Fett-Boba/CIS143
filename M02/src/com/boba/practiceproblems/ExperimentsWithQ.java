@@ -1,4 +1,4 @@
-package com.olympic.cis143.m02.student.tacotruck.queue;
+package com.boba.practiceproblems;
 
 import java.util.ArrayDeque;
 import java.util.Deque;
