@@ -7,9 +7,6 @@ package com.olympic.cis143.m02.student.homework;
  */
 public class Card {
 
-    /**
-     * Obvious.
-     */
     enum Suit {
         HEARTS,
         CLUBS,
@@ -18,9 +15,6 @@ public class Card {
         NONE
     }
 
-    /**
-     * Obvious.
-     */
     enum Value {
         JOKER,
         ACE,
@@ -38,14 +32,8 @@ public class Card {
         _2
     }
 
-    /**
-     * Obvious.
-     */
     private Suit suit;
 
-    /**
-     * Obvious.
-     */
     private Value value;
 
     /**
@@ -58,24 +46,15 @@ public class Card {
         this.suit = suit;
         this.value = value;
     }
-    /**
-     * Obvious.
-     */
+
     public Suit getSuit() {
         return this.suit;
     }
 
-    /**
-     * Obvious.
-     */
     public Value getValue() {
         return value;
     }
 
-
-    /**
-     * Obvious.
-     */
     public boolean equals(final Card card) {
         if (card.value == this.value && card.suit == this.suit) {
             return true;

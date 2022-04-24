@@ -40,14 +40,14 @@ public class DeckLinkedListImpl {
     	for (Suit suit : Suit.values()) {
     		for (Value value : Value.values()) {
     			if (suit != Suit.NONE && value != Value.JOKER) {
-    				deck.push(new Card(suit, value));
+    				deck.addFirst(new Card(suit,value));
     			}
     		}
     	}
     	// Add jokers if requested
     	if (jokers) {
     		for (int i = 0; i < 2; i++) {
-    			deck.push(new Card(Suit.NONE, Value.JOKER));
+    			deck.addFirst(new Card(Suit.NONE, Value.JOKER));
     		}
     	}
     }
@@ -87,7 +87,7 @@ public class DeckLinkedListImpl {
      */
     public Card dealCard() {
         try {
-			return deck.pop();
+			return deck.removeFirst();
 		} catch (Exception e) {
 			throw new RuntimeException("Deck is empty");
 		}
