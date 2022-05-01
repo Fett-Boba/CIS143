@@ -5,7 +5,7 @@ import java.util.List;
 
 public class DeckIteratorTest {
 
-    /*
+    
     public static void main(String[] args) throws Exception {
         DeckIteratorTest deckTest = new DeckIteratorTest();
         deckTest.testCreateJokersFalse();
@@ -66,5 +66,5 @@ public class DeckIteratorTest {
         // If it is implemented it will pass through. If not an exception will be thrown.
 
     }
-     */
+     
 }

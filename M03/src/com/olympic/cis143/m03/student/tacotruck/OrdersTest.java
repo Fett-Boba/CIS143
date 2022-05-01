@@ -20,10 +20,6 @@ public class OrdersTest {
 
     public void testHasNextFalse(Orders orders) {
         TacoImpl firstTaco = new TacoImpl(TacoImpl.Protien.BEAN, true);
-
-//        Orders orders = new OrdersQueueImpl();
-//        Orders orders = new OrdersListImpl();
-        
         orders.addOrder(firstTaco);
         if (!orders.hasNext()) {
             throw new RuntimeException(":( testHasNextFalse fail: Orders should have one order in them.");
@@ -44,10 +40,6 @@ public class OrdersTest {
     public void testCloseNextOrder(Orders orders) {
         TacoImpl firstTaco = new TacoImpl(TacoImpl.Protien.BEAN, true);
         TacoImpl secondTaco = new TacoImpl(TacoImpl.Protien.BEEF, true);
-
-        // Orders orders = new OrdersQueueImpl();
-        // Orders orders = new OrdersListImpl();
-        
         orders.addOrder(firstTaco);
         orders.addOrder(secondTaco);
         TacoImpl shouldBeFirstTaco = orders.closeNextOrder();
