@@ -53,6 +53,4 @@ public class OrdersMapImpl implements Orders {
     		throw new OrderDoesNotExistException(orderid);
     	}
     }
-    
-    
 }
