@@ -6,41 +6,17 @@ Return that number, or -1 if it is impossible.
  */
 
 class ATM {
-	
-	public static void main (String [] args) {
-		
-		int n = 200;
-		int numNotes = 0;
-		
-		int dividend = n / 500; 
+	public int solve (int n) {
+		int quotient = n / 500;	
 		int remainder = n % 500;
-		numNotes = numNotes + dividend;
-		
-		dividend = remainder/200;
-		remainder %= 200; 
-		numNotes = numNotes + dividend;
-		
-		dividend = remainder/100;
-		remainder %= 100; 
-		numNotes = numNotes + dividend;
-		
-		dividend = remainder/50;
-		remainder %= 50; 
-		numNotes = numNotes + dividend;
-		
-		dividend = remainder/20;
-		remainder %= 20; 
-		numNotes = numNotes + dividend;
-
-		dividend = remainder/10;
-		remainder %= 10; 
-		numNotes = numNotes + dividend;
-	
-		if (remainder != 0) {
-			return -1;
-		} else {
-			return numNotes;
+		int numNotes = 0;
+		numNotes = numNotes + quotient ;
+		int [] divisor = {200, 100, 50, 20, 10};
+		for (int i = 0; i < divisor.length; i++) {
+			quotient = remainder/divisor[i];
+		    remainder %= divisor[i]; 
+		    numNotes = numNotes + quotient;
 		}
+		return remainder == 0 ? numNotes : -1; 
 	}
-	
 }
