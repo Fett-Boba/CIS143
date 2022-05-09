@@ -16,7 +16,7 @@ public class OrdersTest {
         tests.testExceptionsAreThrownForAddOrder();
         tests.testExceptionsAreThrownForCloseOrder();
     }
-
+        
     public void testGetListOfOrders() throws OrderDoesNotExistException {
         Orders orders = new OrdersMapImpl();
         orders.createOrder("Order1");
@@ -100,4 +100,15 @@ public class OrdersTest {
             System.out.println(">> testExceptionsAreThrownForCloseOrder getListOfOrders passed  ");
         }
     }
+    
+    public void myTest() throws OrderDoesNotExistException {
+        Orders orders = new OrdersMapImpl();
+        orders.createOrder("Order1");
+        orders.addTacoToOrder("Order1", new TacoImpl(TacoImpl.Protien.BEAN, true));
+        List<TacoImpl> tacos = orders.getListOfOrders("Order1");
+        System.out.println(">> My test: " + tacos.size());
+        orders.closeOrder("Order1");
+        System.out.println(">> Any orders left? " + orders.hasNext());
+    };
+
 }
