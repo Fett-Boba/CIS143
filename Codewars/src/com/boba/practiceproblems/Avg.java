@@ -16,7 +16,7 @@ calculating the average point you may add your point to the given array!
 */
 
 
-public class CwAvg {
+public class Avg {
 
 	public static boolean betterThanAverage(int[] classPoints, int yourPoints) {
 		int sum = 0;

@@ -1,6 +1,6 @@
 package com.boba.practiceproblems;
 
-public class CwReverseString {
+public class ReverseString {
 
 	  public static String solution(String str) {
 		    String newStr = "";

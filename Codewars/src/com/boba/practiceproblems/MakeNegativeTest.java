@@ -4,21 +4,21 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-public class CwMakeNegativeTest {
+public class MakeNegativeTest {
 	  
 	  @Test
 	  public void test1() {
-	    assertEquals(-5, CwMakeNegative.makeNegative(-5));
+	    assertEquals(-5, MakeNegative.makeNegative(-5));
 	  }
 	  
 	  @Test
 	  public void test2() {
-		  assertEquals(-1, CwMakeNegative.makeNegative(1));  
+		  assertEquals(-1, MakeNegative.makeNegative(1));  
 	  }
   
 	  @Test
 	  public void test3() {
-		  assertEquals(0, CwMakeNegative.makeNegative(0));  
+		  assertEquals(0, MakeNegative.makeNegative(0));  
 	  }
 	  
 }
