@@ -1,38 +1,36 @@
 package com.olympic.cis143.student.touche.gui;
 
+import java.awt.CardLayout;
+import java.awt.Color;
 import java.awt.EventQueue;
+import java.awt.Font;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.ItemEvent;
+import java.awt.event.ItemListener;
 
+import javax.swing.ButtonGroup;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
-import javax.swing.ImageIcon;
-import java.awt.Color;
-import javax.swing.SwingConstants;
-import java.awt.SystemColor;
+import javax.swing.JRadioButton;
 import javax.swing.JTextField;
-import javax.swing.JComboBox;
-import java.awt.Font;
-import javax.swing.DefaultComboBoxModel;
-import javax.swing.JButton;
-import java.awt.CardLayout;
-import javax.swing.JLayeredPane;
-import java.awt.BorderLayout;
-import javax.swing.JSplitPane;
-import javax.swing.JTable;
-import java.awt.FlowLayout;
-import java.awt.event.ActionListener;
-import java.awt.event.ActionEvent;
-import javax.swing.JCheckBox;
-import java.awt.event.ItemListener;
-import java.awt.event.ItemEvent;
+import javax.swing.JTextPane;
+import com.jgoodies.forms.layout.FormLayout;
+import com.jgoodies.forms.layout.ColumnSpec;
+import com.jgoodies.forms.layout.RowSpec;
+import com.jgoodies.forms.layout.FormSpecs;
+import javax.swing.SwingConstants;
 
 public class Touche {
 
 	private JFrame frame;
-	private JTextField txtName;
 	private JTextField txtTournamentName;
 	private JTextField txtTournamentDate;
-	private JTextField txtNumFencers;
 	private JTextField txtFencer1;
 	private JTextField txtFencer2;
 	private JTextField txtFencer3;
@@ -41,6 +39,7 @@ public class Touche {
 	private JTextField txtFencer6;
 	private JTextField txtFencer7;
 	private JTextField txtFencer8;
+	private final ButtonGroup buttonGroup = new ButtonGroup();
 
 	/**
 	 * Launch the application.
@@ -108,17 +107,12 @@ public class Touche {
 		pnlTournamentInfo.setLayout(null);
 		
 		JButton btnTournamentOK = new JButton("OK");
-		btnTournamentOK.setBounds(72, 476, 89, 23);
+		btnTournamentOK.setBounds(79, 512, 89, 23);
 		pnlTournamentInfo.add(btnTournamentOK);
 		
 		JButton btnTournamentClear = new JButton("CLEAR");
-		btnTournamentClear.setBounds(191, 476, 89, 23);
+		btnTournamentClear.setBounds(198, 512, 89, 23);
 		pnlTournamentInfo.add(btnTournamentClear);
-		
-		JLabel lblName = new JLabel("NAME");
-		lblName.setFont(new Font("Tahoma", Font.BOLD, 11));
-		lblName.setBounds(42, 86, 171, 14);
-		pnlTournamentInfo.add(lblName);
 		
 		JLabel lblTournamentName = new JLabel("TOURNAMENT NAME");
 		lblTournamentName.setFont(new Font("Tahoma", Font.BOLD, 11));
@@ -135,11 +129,6 @@ public class Touche {
 		lblNumFencers.setBounds(42, 351, 171, 14);
 		pnlTournamentInfo.add(lblNumFencers);
 		
-		txtName = new JTextField();
-		txtName.setBounds(42, 111, 278, 30);
-		pnlTournamentInfo.add(txtName);
-		txtName.setColumns(10);
-		
 		txtTournamentName = new JTextField();
 		txtTournamentName.setBounds(42, 199, 278, 30);
 		pnlTournamentInfo.add(txtTournamentName);
@@ -150,10 +139,36 @@ public class Touche {
 		pnlTournamentInfo.add(txtTournamentDate);
 		txtTournamentDate.setColumns(10);
 		
-		txtNumFencers = new JTextField();
-		txtNumFencers.setBounds(42, 376, 278, 30);
-		pnlTournamentInfo.add(txtNumFencers);
-		txtNumFencers.setColumns(10);
+		JRadioButton rb4Fencers = new JRadioButton("4");
+		rb4Fencers.setBackground(Color.WHITE);
+		buttonGroup.add(rb4Fencers);
+		rb4Fencers.setSelected(true);
+		rb4Fencers.setBounds(42, 372, 39, 23);
+		pnlTournamentInfo.add(rb4Fencers);
+		
+		JRadioButton rb5Fencers = new JRadioButton("5");
+		rb5Fencers.setBackground(Color.WHITE);
+		buttonGroup.add(rb5Fencers);
+		rb5Fencers.setBounds(83, 372, 39, 23);
+		pnlTournamentInfo.add(rb5Fencers);
+		
+		JRadioButton rb6Fencers = new JRadioButton("6");
+		rb6Fencers.setBackground(Color.WHITE);
+		buttonGroup.add(rb6Fencers);
+		rb6Fencers.setBounds(124, 372, 39, 23);
+		pnlTournamentInfo.add(rb6Fencers);
+		
+		JRadioButton rb7Fencers = new JRadioButton("7");
+		rb7Fencers.setBackground(Color.WHITE);
+		buttonGroup.add(rb7Fencers);
+		rb7Fencers.setBounds(165, 372, 39, 23);
+		pnlTournamentInfo.add(rb7Fencers);
+		
+		JRadioButton rb8Fencers = new JRadioButton("8");
+		rb8Fencers.setBackground(Color.WHITE);
+		buttonGroup.add(rb8Fencers);
+		rb8Fencers.setBounds(206, 372, 39, 23);
+		pnlTournamentInfo.add(rb8Fencers);
 		
 		JPanel pnlFencers = new JPanel();
 		pnlFencers.setBackground(new Color(255, 255, 255));
@@ -201,74 +216,74 @@ public class Touche {
 		pnlFencers.add(lblFencer8);
 		
 		txtFencer1 = new JTextField();
-		txtFencer1.setBounds(237, 58, 258, 29);
+		txtFencer1.setBounds(237, 58, 288, 29);
 		pnlFencers.add(txtFencer1);
-		txtFencer1.setColumns(10);
 		
 		txtFencer2 = new JTextField();
-		txtFencer2.setColumns(10);
-		txtFencer2.setBounds(237, 114, 258, 29);
+		txtFencer2.setBounds(237, 114, 288, 29);
 		pnlFencers.add(txtFencer2);
 		
 		txtFencer3 = new JTextField();
-		txtFencer3.setColumns(10);
-		txtFencer3.setBounds(237, 164, 258, 29);
+		txtFencer3.setBounds(237, 164, 288, 29);
 		pnlFencers.add(txtFencer3);
 		
 		txtFencer4 = new JTextField();
-		txtFencer4.setColumns(10);
-		txtFencer4.setBounds(237, 214, 258, 29);
+		txtFencer4.setBounds(237, 214, 288, 29);
 		pnlFencers.add(txtFencer4);
 		
 		txtFencer5 = new JTextField();
-		txtFencer5.setColumns(10);
-		txtFencer5.setBounds(237, 264, 258, 29);
+		txtFencer5.setBounds(237, 264, 288, 29);
 		pnlFencers.add(txtFencer5);
 		
 		txtFencer6 = new JTextField();
-		txtFencer6.setColumns(10);
-		txtFencer6.setBounds(237, 314, 258, 29);
+		txtFencer6.setBounds(237, 314, 288, 29);
 		pnlFencers.add(txtFencer6);
 		
 		txtFencer7 = new JTextField();
-		txtFencer7.setColumns(10);
-		txtFencer7.setBounds(237, 364, 258, 29);
+		txtFencer7.setBounds(237, 364, 288, 29);
 		pnlFencers.add(txtFencer7);
 		
 		txtFencer8 = new JTextField();
-		txtFencer8.setColumns(10);
-		txtFencer8.setBounds(237, 414, 258, 29);
+		txtFencer8.setBounds(237, 414, 288, 29);
 		pnlFencers.add(txtFencer8);
 		
 		JCheckBox chckbxFencer1 = new JCheckBox("Is this you?");
+		chckbxFencer1.setBackground(Color.WHITE);
 		chckbxFencer1.setBounds(538, 61, 99, 23);
 		pnlFencers.add(chckbxFencer1);
 		
 		JCheckBox chckbxFencer2 = new JCheckBox("Is this you?");
+		chckbxFencer2.setBackground(Color.WHITE);
 		chckbxFencer2.setBounds(538, 117, 99, 23);
 		pnlFencers.add(chckbxFencer2);
 		
 		JCheckBox chckbxFencer3 = new JCheckBox("Is this you?");
+		chckbxFencer3.setBackground(Color.WHITE);
 		chckbxFencer3.setBounds(538, 167, 99, 23);
 		pnlFencers.add(chckbxFencer3);
 		
 		JCheckBox chckbxFencer4 = new JCheckBox("Is this you?");
+		chckbxFencer4.setBackground(Color.WHITE);
 		chckbxFencer4.setBounds(538, 217, 99, 23);
 		pnlFencers.add(chckbxFencer4);
 		
 		JCheckBox chckbxFencer5 = new JCheckBox("Is this you?");
+		chckbxFencer5.setBackground(Color.WHITE);
 		chckbxFencer5.setBounds(538, 267, 99, 23);
 		pnlFencers.add(chckbxFencer5);
 		
 		JCheckBox chckbxFencer6 = new JCheckBox("Is this you?");
+		chckbxFencer6.setBackground(Color.WHITE);
 		chckbxFencer6.setBounds(538, 317, 99, 23);
 		pnlFencers.add(chckbxFencer6);
 		
 		JCheckBox chckbxFencer7 = new JCheckBox("Is this you?");
+		chckbxFencer7.setBackground(Color.WHITE);
 		chckbxFencer7.setBounds(538, 367, 99, 23);
 		pnlFencers.add(chckbxFencer7);
 		
 		JCheckBox chckbxFencer8 = new JCheckBox("Is this you?");
+		chckbxFencer8.setBackground(Color.WHITE);
 		chckbxFencer8.setBounds(538, 417, 99, 23);
 		pnlFencers.add(chckbxFencer8);
 		
@@ -278,12 +293,59 @@ public class Touche {
 		pnlScores.setLayout(null);
 		
 		JButton btnScoresNewPool = new JButton("NEW POOL");
-		btnScoresNewPool.setBounds(149, 341, 89, 23);
+		btnScoresNewPool.setBounds(282, 511, 89, 23);
 		pnlScores.add(btnScoresNewPool);
 		
 		JButton btnScoresExit = new JButton("EXIT");
-		btnScoresExit.setBounds(265, 341, 89, 23);
+		btnScoresExit.setBounds(398, 511, 89, 23);
 		pnlScores.add(btnScoresExit);
+		
+		JLabel lblScoresName = new JLabel("NAME");
+		lblScoresName.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblScoresName.setBounds(49, 113, 125, 14);
+		pnlScores.add(lblScoresName);
+		
+		JLabel lblScoresFencer1 = new JLabel("New label");
+		lblScoresFencer1.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblScoresFencer1.setBounds(49, 148, 125, 14);
+		pnlScores.add(lblScoresFencer1);
+		
+		JLabel lblScoresFencer2 = new JLabel("New label");
+		lblScoresFencer2.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblScoresFencer2.setBounds(49, 183, 125, 14);
+		pnlScores.add(lblScoresFencer2);
+		
+		JLabel lblScoresFencer3 = new JLabel("New label");
+		lblScoresFencer3.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblScoresFencer3.setBounds(49, 218, 125, 14);
+		pnlScores.add(lblScoresFencer3);
+		
+		JLabel lblScoresFencer4 = new JLabel("New label");
+		lblScoresFencer4.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblScoresFencer4.setBounds(49, 253, 125, 14);
+		pnlScores.add(lblScoresFencer4);
+		
+		JLabel lblScoresFencer5 = new JLabel("New label");
+		lblScoresFencer5.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblScoresFencer5.setBounds(49, 288, 125, 14);
+		pnlScores.add(lblScoresFencer5);
+		
+		JLabel lblScoresFencer6 = new JLabel("New label");
+		lblScoresFencer6.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblScoresFencer6.setBounds(49, 323, 125, 14);
+		pnlScores.add(lblScoresFencer6);
+		
+		JLabel lblScoresFencer7 = new JLabel("New label");
+		lblScoresFencer7.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblScoresFencer7.setBounds(49, 358, 125, 14);
+		pnlScores.add(lblScoresFencer7);
+		
+		JLabel lblScoresFencer8 = new JLabel("New label");
+		lblScoresFencer8.setHorizontalAlignment(SwingConstants.RIGHT);
+		lblScoresFencer8.setBounds(49, 393, 125, 14);
+		pnlScores.add(lblScoresFencer8);
+		
+		
 
 		
 		// ACTIONS
@@ -291,28 +353,72 @@ public class Touche {
 		// Tournament screen: OK clicked
 		btnTournamentOK.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				
+				if (rb4Fencers.isSelected()) {
+
+					lblFencer5.setVisible(false);
+					txtFencer5.setVisible(false);
+					chckbxFencer5.setVisible(false);
+					
+					lblFencer6.setVisible(false);
+					txtFencer6.setVisible(false);
+					chckbxFencer6.setVisible(false);
+					
+					lblFencer7.setVisible(false);
+					txtFencer7.setVisible(false);
+					chckbxFencer7.setVisible(false);
+
+					lblFencer8.setVisible(false);
+					txtFencer8.setVisible(false);
+					chckbxFencer8.setVisible(false);
+					
+				} else if (rb5Fencers.isSelected()) {
+					
+					lblFencer6.setVisible(false);
+					txtFencer6.setVisible(false);
+					chckbxFencer6.setVisible(false);
+					
+					lblFencer7.setVisible(false);
+					txtFencer7.setVisible(false);
+					chckbxFencer7.setVisible(false);
+
+					lblFencer8.setVisible(false);
+					txtFencer8.setVisible(false);
+					chckbxFencer8.setVisible(false);
+					
+				} else if (rb6Fencers.isSelected()) {
+					
+					lblFencer7.setVisible(false);
+					txtFencer7.setVisible(false);
+					chckbxFencer7.setVisible(false);
+
+					lblFencer8.setVisible(false);
+					txtFencer8.setVisible(false);
+					chckbxFencer8.setVisible(false);
+					
+				} else if (rb7Fencers.isSelected()) {
+					
+					lblFencer8.setVisible(false);
+					txtFencer8.setVisible(false);
+					chckbxFencer8.setVisible(false);
+				} 
+				
 				pnlTournament.setVisible(false);
 				pnlFencers.setVisible(true);
 				pnlScores.setVisible(false);
-				System.out.println(txtName.getText());
-				System.out.println(txtTournamentName. getText());
-				System.out.println(txtTournamentDate.getText());
-				System.out.println(txtNumFencers.getText());
 			}
 		});
 
 		// Tournament screen: CLEAR clicked
 		btnTournamentClear.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				txtName.setText("");
 				txtTournamentName.setText("");
 				txtTournamentDate.setText("");
-				txtNumFencers.setText("");
 			}
 		});
 	
 		
-		// Fencers screen: OK clicked.  Make sure they have clicked the check box indicating who they are so they can be highlighted in the scoresheet
+		// Fencers screen: OK clicked.  Make sure they have clicked the check box indicating who they are so they can be highlighted in the score sheet
 		btnFencersOK.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -324,19 +430,30 @@ public class Touche {
 					!chckbxFencer6.isSelected() &&
 					!chckbxFencer7.isSelected() &&
 					!chckbxFencer8.isSelected() ) {
-					System.out.println("YOU MUST PICK YOURSELF !!!!");
+					JOptionPane.showMessageDialog(frame, "Please select which fencer is you.", "Error", JOptionPane.ERROR_MESSAGE);
 				} else {
+					// If user did not enter any names default them
+					if (txtFencer1.getText().isEmpty()) txtFencer1.setText("Fencer1");
+					if (txtFencer2.getText().isEmpty()) txtFencer2.setText("Fencer2");
+					if (txtFencer3.getText().isEmpty()) txtFencer3.setText("Fencer3");
+					if (txtFencer4.getText().isEmpty()) txtFencer4.setText("Fencer4");
+					if (txtFencer5.getText().isEmpty()) txtFencer5.setText("Fencer5");
+					if (txtFencer6.getText().isEmpty()) txtFencer6.setText("Fencer6");
+					if (txtFencer7.getText().isEmpty()) txtFencer7.setText("Fencer7");
+					if (txtFencer8.getText().isEmpty()) txtFencer8.setText("Fencer8");
+					
+					lblScoresFencer1.setText(txtFencer1.getText());
+					lblScoresFencer2.setText(txtFencer2.getText());
+					lblScoresFencer3.setText(txtFencer3.getText());
+					lblScoresFencer4.setText(txtFencer4.getText());
+					lblScoresFencer5.setText(txtFencer5.getText());
+					lblScoresFencer6.setText(txtFencer6.getText());
+					lblScoresFencer7.setText(txtFencer7.getText());
+					lblScoresFencer8.setText(txtFencer8.getText());
+					
 					pnlTournament.setVisible(false);
 					pnlFencers.setVisible(false);
 					pnlScores.setVisible(true);
-					//System.out.println(txtFencer1.getText());
-					//System.out.println(txtFencer2.getText());
-					//System.out.println(txtFencer3.getText());
-					//System.out.println(txtFencer4.getText());
-					//System.out.println(txtFencer5.getText());
-					//System.out.println(txtFencer6.getText());
-					//System.out.println(txtFencer7.getText());
-					//System.out.println(txtFencer8.getText());
 				}
 			}
 		});
