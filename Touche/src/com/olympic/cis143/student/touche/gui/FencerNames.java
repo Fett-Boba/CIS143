@@ -14,7 +14,7 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.JLabel;
 
-public class Experiments {
+public class FencerNames {
 
 	private JFrame frame;
 	private JTextField txt1;
@@ -35,7 +35,7 @@ public class Experiments {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Experiments window = new Experiments();
+					FencerNames window = new FencerNames();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -47,7 +47,7 @@ public class Experiments {
 	/**
 	 * Create the application.
 	 */
-	public Experiments() {
+	public FencerNames() {
 		initialize();
 	}
 
@@ -113,8 +113,6 @@ public class Experiments {
 		lbl5 = new JLabel("New label");
 		lbl5.setBounds(57, 305, 48, 14);
 		panel.add(lbl5);
-		
-		
 
 		btnOK.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -130,34 +128,8 @@ public class Experiments {
 		            	i++;
 		        	}
 		        }
-
-		        
-//		        for (Component component : panel.getComponents()) {
-//		        	if (component instanceof JLabel) {
-//		        		((JLabel) component).setText(fencers.get(i));
-//		            	i++;
-//		        	}
-//		        }
-		        
-		        
-		        		        
-//		        for (Component component : panel.getComponents()) {
-//		        	int i = 0;
-//		            if (component instanceof JLabel) {
-//		            	((JLabel) component).setText(fencers.get(i));
-//		            	i++;
-//		            }
-//		        }
-		        
-		        
-				
-				
 			}
 		});
 		
 	}
-
-	
-	
-	
 }
