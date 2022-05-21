@@ -8,6 +8,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.ItemListener;
+import java.util.ArrayList;
+import java.util.List;
 
 import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
@@ -22,7 +24,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingConstants;
 
 public class Touche {
-
+	
 	private JFrame frame;
 	private JTextField txtTournamentName;
 	private JTextField txtTournamentDate;
@@ -35,71 +37,76 @@ public class Touche {
 	private JTextField txtFencer7;
 	private JTextField txtFencer8;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
-	private JTextField textField;
-	private JTextField textField_1;
-	private JTextField textField_2;
-	private JTextField textField_3;
-	private JTextField textField_4;
-	private JTextField textField_5;
-	private JTextField textField_6;
-	private JTextField textField_7;
-	private JTextField textField_8;
-	private JTextField textField_9;
-	private JTextField textField_10;
-	private JTextField textField_11;
-	private JTextField textField_12;
-	private JTextField textField_13;
-	private JTextField textField_14;
-	private JTextField textField_15;
-	private JTextField textField_16;
-	private JTextField textField_17;
-	private JTextField textField_18;
-	private JTextField textField_19;
-	private JTextField textField_20;
-	private JTextField textField_21;
-	private JTextField textField_22;
-	private JTextField textField_23;
-	private JTextField textField_24;
-	private JTextField textField_25;
-	private JTextField textField_26;
-	private JTextField textField_27;
-	private JTextField textField_28;
-	private JTextField textField_29;
-	private JTextField textField_30;
-	private JTextField textField_31;
-	private JTextField textField_32;
-	private JTextField textField_33;
-	private JTextField textField_34;
-	private JTextField textField_35;
-	private JTextField textField_36;
-	private JTextField textField_37;
-	private JTextField textField_38;
-	private JTextField textField_39;
-	private JTextField textField_40;
-	private JTextField textField_41;
-	private JTextField textField_42;
-	private JTextField textField_43;
-	private JTextField textField_44;
-	private JTextField textField_45;
-	private JTextField textField_46;
-	private JTextField textField_47;
-	private JTextField textField_48;
-	private JTextField textField_49;
-	private JTextField textField_50;
-	private JTextField textField_51;
-	private JTextField textField_52;
-	private JTextField textField_53;
-	private JTextField textField_54;
-	private JTextField textField_55;
-	private JTextField textField_56;
-	private JTextField textField_57;
-	private JTextField textField_58;
-	private JTextField textField_59;
-	private JTextField textField_60;
-	private JTextField textField_61;
-	private JTextField textField_62;
-	private JTextField textField_63;
+	private JTextField txt1_1;
+	private JTextField txt1_2;
+	private JTextField txt1_3;
+	private JTextField txt1_4;
+	private JTextField txt1_5;
+	private JTextField txt1_6;
+	private JTextField txt1_7;
+	private JTextField txt1_8;
+	private JTextField txt2_1;
+	private JTextField txt2_2;
+	private JTextField txt2_3;
+	private JTextField txt2_4;
+	private JTextField txt2_5;
+	private JTextField txt2_6;
+	private JTextField txt2_7;
+	private JTextField txt2_8;
+	private JTextField txt3_1;
+	private JTextField txt3_2;
+	private JTextField txt3_3;
+	private JTextField txt3_4;
+	private JTextField txt3_5;
+	private JTextField txt3_6;
+	private JTextField txt3_7;
+	private JTextField txt3_8;
+	private JTextField txt4_1;
+	private JTextField txt4_2;
+	private JTextField txt4_3;
+	private JTextField txt4_4;
+	private JTextField txt4_5;
+	private JTextField txt4_6;
+	private JTextField txt4_7;
+	private JTextField txt4_8;
+	private JTextField txt5_1;
+	private JTextField txt5_2;
+	private JTextField txt5_3;
+	private JTextField txt5_4;
+	private JTextField txt5_5;
+	private JTextField txt5_6;
+	private JTextField txt5_7;
+	private JTextField txt5_8;
+	private JTextField txt6_1;
+	private JTextField txt6_2;
+	private JTextField txt6_3;
+	private JTextField txt6_4;
+	private JTextField txt6_5;
+	private JTextField txt6_6;
+	private JTextField txt6_7;
+	private JTextField txt6_8;
+	private JTextField txt7_1;
+	private JTextField txt7_2;
+	private JTextField txt7_3;
+	private JTextField txt7_4;
+	private JTextField txt7_5;
+	private JTextField txt7_6;
+	private JTextField txt7_7;
+	private JTextField txt7_8;
+	private JTextField txt8_1;
+	private JTextField txt8_2;
+	private JTextField txt8_3;
+	private JTextField txt8_4;
+	private JTextField txt8_5;
+	private JTextField txt8_6;
+	private JTextField txt8_7;
+	private JTextField txt8_8;
 
+	
+	private List<JTextField> arrTxtFencers = new ArrayList<>();
+	private List<JLabel> arrLblFencers = new ArrayList<>();
+
+	
 	/**
 	 * Launch the application.
 	 */
@@ -241,38 +248,42 @@ public class Touche {
 		JButton btnFencersClear = new JButton("CLEAR");
 		btnFencersClear.setBounds(391, 488, 89, 23);
 		pnlFencers.add(btnFencersClear);
+
 		
-		JLabel lblFencer1 = new JLabel("Fencer 1");
+		JLabel lblFencer1 = new JLabel("Fencer1");
 		lblFencer1.setBounds(164, 65, 63, 14);
 		pnlFencers.add(lblFencer1);
 		
-		JLabel lblFencer2 = new JLabel("Fencer 2");
+		JLabel lblFencer2 = new JLabel("Fencer2");
 		lblFencer2.setBounds(164, 121, 63, 14);
 		pnlFencers.add(lblFencer2);
 		
-		JLabel lblFencer3 = new JLabel("Fencer 3");
+		JLabel lblFencer3 = new JLabel("Fencer3");
 		lblFencer3.setBounds(164, 171, 63, 14);
 		pnlFencers.add(lblFencer3);
 		
-		JLabel lblFencer4 = new JLabel("Fencer 4");
+		JLabel lblFencer4 = new JLabel("Fencer4");
 		lblFencer4.setBounds(164, 221, 63, 14);
 		pnlFencers.add(lblFencer4);
 		
-		JLabel lblFencer5 = new JLabel("Fencer 5");
+		JLabel lblFencer5 = new JLabel("Fencer5");
 		lblFencer5.setBounds(164, 271, 63, 14);
 		pnlFencers.add(lblFencer5);
 		
-		JLabel lblFencer6 = new JLabel("Fencer 6");
+		JLabel lblFencer6 = new JLabel("Fencer6");
 		lblFencer6.setBounds(164, 321, 63, 14);
 		pnlFencers.add(lblFencer6);
 		
-		JLabel lblFencer7 = new JLabel("Fencer 7");
+		JLabel lblFencer7 = new JLabel("Fencer7");
 		lblFencer7.setBounds(164, 371, 63, 14);
 		pnlFencers.add(lblFencer7);
 		
-		JLabel lblFencer8 = new JLabel("Fencer 8");
+		JLabel lblFencer8 = new JLabel("Fencer8");
 		lblFencer8.setBounds(164, 421, 63, 14);
 		pnlFencers.add(lblFencer8);
+		
+		
+		// User entered list of fencers.
 		
 		txtFencer1 = new JTextField();
 		txtFencer1.setBounds(237, 58, 288, 29);
@@ -305,49 +316,52 @@ public class Touche {
 		txtFencer8 = new JTextField();
 		txtFencer8.setBounds(237, 414, 288, 29);
 		pnlFencers.add(txtFencer8);
+
 		
-		JCheckBox chckbxFencer1 = new JCheckBox("Is this you?");
-		chckbxFencer1.setBackground(Color.WHITE);
-		chckbxFencer1.setBounds(538, 61, 99, 23);
-		pnlFencers.add(chckbxFencer1);
 		
-		JCheckBox chckbxFencer2 = new JCheckBox("Is this you?");
-		chckbxFencer2.setBackground(Color.WHITE);
-		chckbxFencer2.setBounds(538, 117, 99, 23);
-		pnlFencers.add(chckbxFencer2);
 		
-		JCheckBox chckbxFencer3 = new JCheckBox("Is this you?");
-		chckbxFencer3.setBackground(Color.WHITE);
-		chckbxFencer3.setBounds(538, 167, 99, 23);
-		pnlFencers.add(chckbxFencer3);
+		JCheckBox chkFencer1 = new JCheckBox("Is this you?");
+		chkFencer1.setBackground(Color.WHITE);
+		chkFencer1.setBounds(538, 61, 99, 23);
+		pnlFencers.add(chkFencer1);
 		
-		JCheckBox chckbxFencer4 = new JCheckBox("Is this you?");
-		chckbxFencer4.setBackground(Color.WHITE);
-		chckbxFencer4.setBounds(538, 217, 99, 23);
-		pnlFencers.add(chckbxFencer4);
+		JCheckBox chkFencer2 = new JCheckBox("Is this you?");
+		chkFencer2.setBackground(Color.WHITE);
+		chkFencer2.setBounds(538, 117, 99, 23);
+		pnlFencers.add(chkFencer2);
 		
-		JCheckBox chckbxFencer5 = new JCheckBox("Is this you?");
-		chckbxFencer5.setBackground(Color.WHITE);
-		chckbxFencer5.setBounds(538, 267, 99, 23);
-		pnlFencers.add(chckbxFencer5);
+		JCheckBox chkFencer3 = new JCheckBox("Is this you?");
+		chkFencer3.setBackground(Color.WHITE);
+		chkFencer3.setBounds(538, 167, 99, 23);
+		pnlFencers.add(chkFencer3);
 		
-		JCheckBox chckbxFencer6 = new JCheckBox("Is this you?");
-		chckbxFencer6.setBackground(Color.WHITE);
-		chckbxFencer6.setBounds(538, 317, 99, 23);
-		pnlFencers.add(chckbxFencer6);
+		JCheckBox chkFencer4 = new JCheckBox("Is this you?");
+		chkFencer4.setBackground(Color.WHITE);
+		chkFencer4.setBounds(538, 217, 99, 23);
+		pnlFencers.add(chkFencer4);
 		
-		JCheckBox chckbxFencer7 = new JCheckBox("Is this you?");
-		chckbxFencer7.setBackground(Color.WHITE);
-		chckbxFencer7.setBounds(538, 367, 99, 23);
-		pnlFencers.add(chckbxFencer7);
+		JCheckBox chkFencer5 = new JCheckBox("Is this you?");
+		chkFencer5.setBackground(Color.WHITE);
+		chkFencer5.setBounds(538, 267, 99, 23);
+		pnlFencers.add(chkFencer5);
 		
-		JCheckBox chckbxFencer8 = new JCheckBox("Is this you?");
-		chckbxFencer8.setBackground(Color.WHITE);
-		chckbxFencer8.setBounds(538, 417, 99, 23);
-		pnlFencers.add(chckbxFencer8);
+		JCheckBox chkFencer6 = new JCheckBox("Is this you?");
+		chkFencer6.setBackground(Color.WHITE);
+		chkFencer6.setBounds(538, 317, 99, 23);
+		pnlFencers.add(chkFencer6);
+		
+		JCheckBox chkFencer7 = new JCheckBox("Is this you?");
+		chkFencer7.setBackground(Color.WHITE);
+		chkFencer7.setBounds(538, 367, 99, 23);
+		pnlFencers.add(chkFencer7);
+		
+		JCheckBox chkFencer8 = new JCheckBox("Is this you?");
+		chkFencer8.setBackground(Color.WHITE);
+		chkFencer8.setBounds(538, 417, 99, 23);
+		pnlFencers.add(chkFencer8);
 		
 		JPanel pnlScores = new JPanel();
-		pnlScores.setBackground(new Color(204, 255, 255));
+		pnlScores.setBackground(Color.WHITE);
 		pnlMain.add(pnlScores, "name_320158152710800");
 		pnlScores.setLayout(null);
 		
@@ -479,330 +493,347 @@ public class Touche {
 		lblNewLabel_1_15.setBounds(505, 126, 26, 14);
 		pnlScores.add(lblNewLabel_1_15);
 		
-		textField = new JTextField();
-		textField.setBounds(220, 145, 36, 30);
-		pnlScores.add(textField);
-		textField.setColumns(10);
+		txt1_1 = new JTextField();
+		txt1_1.setEditable(false);
+		txt1_1.setBackground(Color.BLACK);
+		txt1_1.setBounds(220, 145, 36, 30);
+		pnlScores.add(txt1_1);
+		txt1_1.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.setColumns(10);
-		textField_1.setBounds(260, 145, 36, 30);
-		pnlScores.add(textField_1);
+		txt1_2 = new JTextField();
+		txt1_2.setColumns(10);
+		txt1_2.setBounds(260, 145, 36, 30);
+		pnlScores.add(txt1_2);
 		
-		textField_2 = new JTextField();
-		textField_2.setColumns(10);
-		textField_2.setBounds(300, 145, 36, 30);
-		pnlScores.add(textField_2);
+		txt1_3 = new JTextField();
+		txt1_3.setColumns(10);
+		txt1_3.setBounds(300, 145, 36, 30);
+		pnlScores.add(txt1_3);
 		
-		textField_3 = new JTextField();
-		textField_3.setColumns(10);
-		textField_3.setBounds(340, 145, 36, 30);
-		pnlScores.add(textField_3);
+		txt1_4 = new JTextField();
+		txt1_4.setColumns(10);
+		txt1_4.setBounds(340, 145, 36, 30);
+		pnlScores.add(txt1_4);
 		
-		textField_4 = new JTextField();
-		textField_4.setColumns(10);
-		textField_4.setBounds(380, 145, 36, 30);
-		pnlScores.add(textField_4);
+		txt1_5 = new JTextField();
+		txt1_5.setColumns(10);
+		txt1_5.setBounds(380, 145, 36, 30);
+		pnlScores.add(txt1_5);
 		
-		textField_5 = new JTextField();
-		textField_5.setColumns(10);
-		textField_5.setBounds(420, 145, 36, 30);
-		pnlScores.add(textField_5);
+		txt1_6 = new JTextField();
+		txt1_6.setColumns(10);
+		txt1_6.setBounds(420, 145, 36, 30);
+		pnlScores.add(txt1_6);
 		
-		textField_6 = new JTextField();
-		textField_6.setColumns(10);
-		textField_6.setBounds(460, 145, 36, 30);
-		pnlScores.add(textField_6);
+		txt1_7 = new JTextField();
+		txt1_7.setColumns(10);
+		txt1_7.setBounds(460, 145, 36, 30);
+		pnlScores.add(txt1_7);
 		
-		textField_7 = new JTextField();
-		textField_7.setColumns(10);
-		textField_7.setBounds(500, 145, 36, 30);
-		pnlScores.add(textField_7);
+		txt1_8 = new JTextField();
+		txt1_8.setColumns(10);
+		txt1_8.setBounds(500, 145, 36, 30);
+		pnlScores.add(txt1_8);
 		
-		textField_8 = new JTextField();
-		textField_8.setColumns(10);
-		textField_8.setBounds(220, 179, 36, 30);
-		pnlScores.add(textField_8);
+		txt2_1 = new JTextField();
+		txt2_1.setColumns(10);
+		txt2_1.setBounds(220, 179, 36, 30);
+		pnlScores.add(txt2_1);
 		
-		textField_9 = new JTextField();
-		textField_9.setColumns(10);
-		textField_9.setBounds(260, 179, 36, 30);
-		pnlScores.add(textField_9);
+		txt2_2 = new JTextField();
+		txt2_2.setEditable(false);
+		txt2_2.setBackground(Color.BLACK);
+		txt2_2.setColumns(10);
+		txt2_2.setBounds(260, 179, 36, 30);
+		pnlScores.add(txt2_2);
 		
-		textField_10 = new JTextField();
-		textField_10.setColumns(10);
-		textField_10.setBounds(300, 179, 36, 30);
-		pnlScores.add(textField_10);
+		txt2_3 = new JTextField();
+		txt2_3.setColumns(10);
+		txt2_3.setBounds(300, 179, 36, 30);
+		pnlScores.add(txt2_3);
 		
-		textField_11 = new JTextField();
-		textField_11.setColumns(10);
-		textField_11.setBounds(340, 179, 36, 30);
-		pnlScores.add(textField_11);
+		txt2_4 = new JTextField();
+		txt2_4.setColumns(10);
+		txt2_4.setBounds(340, 179, 36, 30);
+		pnlScores.add(txt2_4);
 		
-		textField_12 = new JTextField();
-		textField_12.setColumns(10);
-		textField_12.setBounds(380, 179, 36, 30);
-		pnlScores.add(textField_12);
+		txt2_5 = new JTextField();
+		txt2_5.setColumns(10);
+		txt2_5.setBounds(380, 179, 36, 30);
+		pnlScores.add(txt2_5);
 		
-		textField_13 = new JTextField();
-		textField_13.setColumns(10);
-		textField_13.setBounds(420, 179, 36, 30);
-		pnlScores.add(textField_13);
+		txt2_6 = new JTextField();
+		txt2_6.setColumns(10);
+		txt2_6.setBounds(420, 179, 36, 30);
+		pnlScores.add(txt2_6);
 		
-		textField_14 = new JTextField();
-		textField_14.setColumns(10);
-		textField_14.setBounds(460, 179, 36, 30);
-		pnlScores.add(textField_14);
+		txt2_7 = new JTextField();
+		txt2_7.setColumns(10);
+		txt2_7.setBounds(460, 179, 36, 30);
+		pnlScores.add(txt2_7);
 		
-		textField_15 = new JTextField();
-		textField_15.setColumns(10);
-		textField_15.setBounds(500, 179, 36, 30);
-		pnlScores.add(textField_15);
+		txt2_8 = new JTextField();
+		txt2_8.setColumns(10);
+		txt2_8.setBounds(500, 179, 36, 30);
+		pnlScores.add(txt2_8);
 		
-		textField_16 = new JTextField();
-		textField_16.setColumns(10);
-		textField_16.setBounds(220, 213, 36, 30);
-		pnlScores.add(textField_16);
+		txt3_1 = new JTextField();
+		txt3_1.setColumns(10);
+		txt3_1.setBounds(220, 213, 36, 30);
+		pnlScores.add(txt3_1);
 		
-		textField_17 = new JTextField();
-		textField_17.setColumns(10);
-		textField_17.setBounds(260, 213, 36, 30);
-		pnlScores.add(textField_17);
+		txt3_2 = new JTextField();
+		txt3_2.setColumns(10);
+		txt3_2.setBounds(260, 213, 36, 30);
+		pnlScores.add(txt3_2);
 		
-		textField_18 = new JTextField();
-		textField_18.setColumns(10);
-		textField_18.setBounds(300, 213, 36, 30);
-		pnlScores.add(textField_18);
+		txt3_3 = new JTextField();
+		txt3_3.setEditable(false);
+		txt3_3.setBackground(Color.BLACK);
+		txt3_3.setColumns(10);
+		txt3_3.setBounds(300, 213, 36, 30);
+		pnlScores.add(txt3_3);
 		
-		textField_19 = new JTextField();
-		textField_19.setColumns(10);
-		textField_19.setBounds(340, 213, 36, 30);
-		pnlScores.add(textField_19);
+		txt3_4 = new JTextField();
+		txt3_4.setColumns(10);
+		txt3_4.setBounds(340, 213, 36, 30);
+		pnlScores.add(txt3_4);
 		
-		textField_20 = new JTextField();
-		textField_20.setColumns(10);
-		textField_20.setBounds(380, 213, 36, 30);
-		pnlScores.add(textField_20);
+		txt3_5 = new JTextField();
+		txt3_5.setColumns(10);
+		txt3_5.setBounds(380, 213, 36, 30);
+		pnlScores.add(txt3_5);
 		
-		textField_21 = new JTextField();
-		textField_21.setColumns(10);
-		textField_21.setBounds(420, 213, 36, 30);
-		pnlScores.add(textField_21);
+		txt3_6 = new JTextField();
+		txt3_6.setColumns(10);
+		txt3_6.setBounds(420, 213, 36, 30);
+		pnlScores.add(txt3_6);
 		
-		textField_22 = new JTextField();
-		textField_22.setColumns(10);
-		textField_22.setBounds(460, 213, 36, 30);
-		pnlScores.add(textField_22);
+		txt3_7 = new JTextField();
+		txt3_7.setColumns(10);
+		txt3_7.setBounds(460, 213, 36, 30);
+		pnlScores.add(txt3_7);
 		
-		textField_23 = new JTextField();
-		textField_23.setColumns(10);
-		textField_23.setBounds(500, 213, 36, 30);
-		pnlScores.add(textField_23);
+		txt3_8 = new JTextField();
+		txt3_8.setColumns(10);
+		txt3_8.setBounds(500, 213, 36, 30);
+		pnlScores.add(txt3_8);
 		
-		textField_24 = new JTextField();
-		textField_24.setColumns(10);
-		textField_24.setBounds(220, 247, 36, 30);
-		pnlScores.add(textField_24);
+		txt4_1 = new JTextField();
+		txt4_1.setColumns(10);
+		txt4_1.setBounds(220, 247, 36, 30);
+		pnlScores.add(txt4_1);
 		
-		textField_25 = new JTextField();
-		textField_25.setColumns(10);
-		textField_25.setBounds(260, 247, 36, 30);
-		pnlScores.add(textField_25);
+		txt4_2 = new JTextField();
+		txt4_2.setColumns(10);
+		txt4_2.setBounds(260, 247, 36, 30);
+		pnlScores.add(txt4_2);
 		
-		textField_26 = new JTextField();
-		textField_26.setColumns(10);
-		textField_26.setBounds(300, 247, 36, 30);
-		pnlScores.add(textField_26);
+		txt4_3 = new JTextField();
+		txt4_3.setColumns(10);
+		txt4_3.setBounds(300, 247, 36, 30);
+		pnlScores.add(txt4_3);
 		
-		textField_27 = new JTextField();
-		textField_27.setColumns(10);
-		textField_27.setBounds(340, 247, 36, 30);
-		pnlScores.add(textField_27);
+		txt4_4 = new JTextField();
+		txt4_4.setBackground(Color.BLACK);
+		txt4_4.setEditable(false);
+		txt4_4.setColumns(10);
+		txt4_4.setBounds(340, 247, 36, 30);
+		pnlScores.add(txt4_4);
 		
-		textField_28 = new JTextField();
-		textField_28.setColumns(10);
-		textField_28.setBounds(380, 247, 36, 30);
-		pnlScores.add(textField_28);
+		txt4_5 = new JTextField();
+		txt4_5.setColumns(10);
+		txt4_5.setBounds(380, 247, 36, 30);
+		pnlScores.add(txt4_5);
 		
-		textField_29 = new JTextField();
-		textField_29.setColumns(10);
-		textField_29.setBounds(420, 247, 36, 30);
-		pnlScores.add(textField_29);
+		txt4_6 = new JTextField();
+		txt4_6.setColumns(10);
+		txt4_6.setBounds(420, 247, 36, 30);
+		pnlScores.add(txt4_6);
 		
-		textField_30 = new JTextField();
-		textField_30.setColumns(10);
-		textField_30.setBounds(460, 247, 36, 30);
-		pnlScores.add(textField_30);
+		txt4_7 = new JTextField();
+		txt4_7.setColumns(10);
+		txt4_7.setBounds(460, 247, 36, 30);
+		pnlScores.add(txt4_7);
 		
-		textField_31 = new JTextField();
-		textField_31.setColumns(10);
-		textField_31.setBounds(500, 247, 36, 30);
-		pnlScores.add(textField_31);
+		txt4_8 = new JTextField();
+		txt4_8.setColumns(10);
+		txt4_8.setBounds(500, 247, 36, 30);
+		pnlScores.add(txt4_8);
 		
-		textField_32 = new JTextField();
-		textField_32.setColumns(10);
-		textField_32.setBounds(220, 281, 36, 30);
-		pnlScores.add(textField_32);
+		txt5_1 = new JTextField();
+		txt5_1.setColumns(10);
+		txt5_1.setBounds(220, 281, 36, 30);
+		pnlScores.add(txt5_1);
 		
-		textField_33 = new JTextField();
-		textField_33.setColumns(10);
-		textField_33.setBounds(260, 281, 36, 30);
-		pnlScores.add(textField_33);
+		txt5_2 = new JTextField();
+		txt5_2.setColumns(10);
+		txt5_2.setBounds(260, 281, 36, 30);
+		pnlScores.add(txt5_2);
 		
-		textField_34 = new JTextField();
-		textField_34.setColumns(10);
-		textField_34.setBounds(300, 281, 36, 30);
-		pnlScores.add(textField_34);
+		txt5_3 = new JTextField();
+		txt5_3.setColumns(10);
+		txt5_3.setBounds(300, 281, 36, 30);
+		pnlScores.add(txt5_3);
 		
-		textField_35 = new JTextField();
-		textField_35.setColumns(10);
-		textField_35.setBounds(340, 281, 36, 30);
-		pnlScores.add(textField_35);
+		txt5_4 = new JTextField();
+		txt5_4.setColumns(10);
+		txt5_4.setBounds(340, 281, 36, 30);
+		pnlScores.add(txt5_4);
 		
-		textField_36 = new JTextField();
-		textField_36.setColumns(10);
-		textField_36.setBounds(380, 281, 36, 30);
-		pnlScores.add(textField_36);
+		txt5_5 = new JTextField();
+		txt5_5.setBackground(Color.BLACK);
+		txt5_5.setEditable(false);
+		txt5_5.setColumns(10);
+		txt5_5.setBounds(380, 281, 36, 30);
+		pnlScores.add(txt5_5);
 		
-		textField_37 = new JTextField();
-		textField_37.setColumns(10);
-		textField_37.setBounds(420, 281, 36, 30);
-		pnlScores.add(textField_37);
+		txt5_6 = new JTextField();
+		txt5_6.setColumns(10);
+		txt5_6.setBounds(420, 281, 36, 30);
+		pnlScores.add(txt5_6);
 		
-		textField_38 = new JTextField();
-		textField_38.setColumns(10);
-		textField_38.setBounds(460, 281, 36, 30);
-		pnlScores.add(textField_38);
+		txt5_7 = new JTextField();
+		txt5_7.setColumns(10);
+		txt5_7.setBounds(460, 281, 36, 30);
+		pnlScores.add(txt5_7);
 		
-		textField_39 = new JTextField();
-		textField_39.setColumns(10);
-		textField_39.setBounds(500, 281, 36, 30);
-		pnlScores.add(textField_39);
+		txt5_8 = new JTextField();
+		txt5_8.setColumns(10);
+		txt5_8.setBounds(500, 281, 36, 30);
+		pnlScores.add(txt5_8);
 		
-		textField_40 = new JTextField();
-		textField_40.setColumns(10);
-		textField_40.setBounds(220, 315, 36, 30);
-		pnlScores.add(textField_40);
+		txt6_1 = new JTextField();
+		txt6_1.setColumns(10);
+		txt6_1.setBounds(220, 315, 36, 30);
+		pnlScores.add(txt6_1);
 		
-		textField_41 = new JTextField();
-		textField_41.setColumns(10);
-		textField_41.setBounds(260, 315, 36, 30);
-		pnlScores.add(textField_41);
+		txt6_2 = new JTextField();
+		txt6_2.setColumns(10);
+		txt6_2.setBounds(260, 315, 36, 30);
+		pnlScores.add(txt6_2);
 		
-		textField_42 = new JTextField();
-		textField_42.setColumns(10);
-		textField_42.setBounds(300, 315, 36, 30);
-		pnlScores.add(textField_42);
+		txt6_3 = new JTextField();
+		txt6_3.setColumns(10);
+		txt6_3.setBounds(300, 315, 36, 30);
+		pnlScores.add(txt6_3);
 		
-		textField_43 = new JTextField();
-		textField_43.setColumns(10);
-		textField_43.setBounds(340, 315, 36, 30);
-		pnlScores.add(textField_43);
+		txt6_4 = new JTextField();
+		txt6_4.setColumns(10);
+		txt6_4.setBounds(340, 315, 36, 30);
+		pnlScores.add(txt6_4);
 		
-		textField_44 = new JTextField();
-		textField_44.setColumns(10);
-		textField_44.setBounds(380, 315, 36, 30);
-		pnlScores.add(textField_44);
+		txt6_5 = new JTextField();
+		txt6_5.setColumns(10);
+		txt6_5.setBounds(380, 315, 36, 30);
+		pnlScores.add(txt6_5);
 		
-		textField_45 = new JTextField();
-		textField_45.setColumns(10);
-		textField_45.setBounds(420, 315, 36, 30);
-		pnlScores.add(textField_45);
+		txt6_6 = new JTextField();
+		txt6_6.setBackground(Color.BLACK);
+		txt6_6.setEditable(false);
+		txt6_6.setColumns(10);
+		txt6_6.setBounds(420, 315, 36, 30);
+		pnlScores.add(txt6_6);
 		
-		textField_46 = new JTextField();
-		textField_46.setColumns(10);
-		textField_46.setBounds(460, 315, 36, 30);
-		pnlScores.add(textField_46);
+		txt6_7 = new JTextField();
+		txt6_7.setColumns(10);
+		txt6_7.setBounds(460, 315, 36, 30);
+		pnlScores.add(txt6_7);
 		
-		textField_47 = new JTextField();
-		textField_47.setColumns(10);
-		textField_47.setBounds(500, 315, 36, 30);
-		pnlScores.add(textField_47);
+		txt6_8 = new JTextField();
+		txt6_8.setColumns(10);
+		txt6_8.setBounds(500, 315, 36, 30);
+		pnlScores.add(txt6_8);
 		
-		textField_48 = new JTextField();
-		textField_48.setColumns(10);
-		textField_48.setBounds(220, 349, 36, 30);
-		pnlScores.add(textField_48);
+		txt7_1 = new JTextField();
+		txt7_1.setColumns(10);
+		txt7_1.setBounds(220, 349, 36, 30);
+		pnlScores.add(txt7_1);
 		
-		textField_49 = new JTextField();
-		textField_49.setColumns(10);
-		textField_49.setBounds(260, 349, 36, 30);
-		pnlScores.add(textField_49);
+		txt7_2 = new JTextField();
+		txt7_2.setColumns(10);
+		txt7_2.setBounds(260, 349, 36, 30);
+		pnlScores.add(txt7_2);
 		
-		textField_50 = new JTextField();
-		textField_50.setColumns(10);
-		textField_50.setBounds(300, 349, 36, 30);
-		pnlScores.add(textField_50);
+		txt7_3 = new JTextField();
+		txt7_3.setColumns(10);
+		txt7_3.setBounds(300, 349, 36, 30);
+		pnlScores.add(txt7_3);
 		
-		textField_51 = new JTextField();
-		textField_51.setColumns(10);
-		textField_51.setBounds(340, 349, 36, 30);
-		pnlScores.add(textField_51);
+		txt7_4 = new JTextField();
+		txt7_4.setColumns(10);
+		txt7_4.setBounds(340, 349, 36, 30);
+		pnlScores.add(txt7_4);
 		
-		textField_52 = new JTextField();
-		textField_52.setColumns(10);
-		textField_52.setBounds(380, 349, 36, 30);
-		pnlScores.add(textField_52);
+		txt7_5 = new JTextField();
+		txt7_5.setColumns(10);
+		txt7_5.setBounds(380, 349, 36, 30);
+		pnlScores.add(txt7_5);
 		
-		textField_53 = new JTextField();
-		textField_53.setColumns(10);
-		textField_53.setBounds(420, 349, 36, 30);
-		pnlScores.add(textField_53);
+		txt7_6 = new JTextField();
+		txt7_6.setColumns(10);
+		txt7_6.setBounds(420, 349, 36, 30);
+		pnlScores.add(txt7_6);
 		
-		textField_54 = new JTextField();
-		textField_54.setColumns(10);
-		textField_54.setBounds(460, 349, 36, 30);
-		pnlScores.add(textField_54);
+		txt7_7 = new JTextField();
+		txt7_7.setBackground(Color.BLACK);
+		txt7_7.setEditable(false);
+		txt7_7.setColumns(10);
+		txt7_7.setBounds(460, 349, 36, 30);
+		pnlScores.add(txt7_7);
 		
-		textField_55 = new JTextField();
-		textField_55.setColumns(10);
-		textField_55.setBounds(500, 349, 36, 30);
-		pnlScores.add(textField_55);
+		txt7_8 = new JTextField();
+		txt7_8.setColumns(10);
+		txt7_8.setBounds(500, 349, 36, 30);
+		pnlScores.add(txt7_8);
 		
-		textField_56 = new JTextField();
-		textField_56.setColumns(10);
-		textField_56.setBounds(220, 383, 36, 30);
-		pnlScores.add(textField_56);
+		txt8_1 = new JTextField();
+		txt8_1.setColumns(10);
+		txt8_1.setBounds(220, 383, 36, 30);
+		pnlScores.add(txt8_1);
 		
-		textField_57 = new JTextField();
-		textField_57.setColumns(10);
-		textField_57.setBounds(260, 383, 36, 30);
-		pnlScores.add(textField_57);
+		txt8_2 = new JTextField();
+		txt8_2.setColumns(10);
+		txt8_2.setBounds(260, 383, 36, 30);
+		pnlScores.add(txt8_2);
 		
-		textField_58 = new JTextField();
-		textField_58.setColumns(10);
-		textField_58.setBounds(300, 383, 36, 30);
-		pnlScores.add(textField_58);
+		txt8_3 = new JTextField();
+		txt8_3.setColumns(10);
+		txt8_3.setBounds(300, 383, 36, 30);
+		pnlScores.add(txt8_3);
 		
-		textField_59 = new JTextField();
-		textField_59.setColumns(10);
-		textField_59.setBounds(340, 383, 36, 30);
-		pnlScores.add(textField_59);
+		txt8_4 = new JTextField();
+		txt8_4.setColumns(10);
+		txt8_4.setBounds(340, 383, 36, 30);
+		pnlScores.add(txt8_4);
 		
-		textField_60 = new JTextField();
-		textField_60.setColumns(10);
-		textField_60.setBounds(380, 383, 36, 30);
-		pnlScores.add(textField_60);
+		txt8_5 = new JTextField();
+		txt8_5.setColumns(10);
+		txt8_5.setBounds(380, 383, 36, 30);
+		pnlScores.add(txt8_5);
 		
-		textField_61 = new JTextField();
-		textField_61.setColumns(10);
-		textField_61.setBounds(420, 383, 36, 30);
-		pnlScores.add(textField_61);
+		txt8_6 = new JTextField();
+		txt8_6.setColumns(10);
+		txt8_6.setBounds(420, 383, 36, 30);
+		pnlScores.add(txt8_6);
 		
-		textField_62 = new JTextField();
-		textField_62.setColumns(10);
-		textField_62.setBounds(460, 383, 36, 30);
-		pnlScores.add(textField_62);
+		txt8_7 = new JTextField();
+		txt8_7.setColumns(10);
+		txt8_7.setBounds(460, 383, 36, 30);
+		pnlScores.add(txt8_7);
 		
-		textField_63 = new JTextField();
-		textField_63.setColumns(10);
-		textField_63.setBounds(500, 383, 36, 30);
-		pnlScores.add(textField_63);
+		txt8_8 = new JTextField();
+		txt8_8.setBackground(Color.BLACK);
+		txt8_8.setEditable(false);
+		txt8_8.setColumns(10);
+		txt8_8.setBounds(500, 383, 36, 30);
+		pnlScores.add(txt8_8);
 		
 		
 
 		
 		// ACTIONS
+		
 		
 		// Tournament screen: OK clicked
 		btnTournamentOK.addActionListener(new ActionListener() {
@@ -812,49 +843,49 @@ public class Touche {
 
 					lblFencer5.setVisible(false);
 					txtFencer5.setVisible(false);
-					chckbxFencer5.setVisible(false);
+					chkFencer5.setVisible(false);
 					
 					lblFencer6.setVisible(false);
 					txtFencer6.setVisible(false);
-					chckbxFencer6.setVisible(false);
+					chkFencer6.setVisible(false);
 					
 					lblFencer7.setVisible(false);
 					txtFencer7.setVisible(false);
-					chckbxFencer7.setVisible(false);
+					chkFencer7.setVisible(false);
 
 					lblFencer8.setVisible(false);
 					txtFencer8.setVisible(false);
-					chckbxFencer8.setVisible(false);
+					chkFencer8.setVisible(false);
 					
 				} else if (rb5Fencers.isSelected()) {
 					
 					lblFencer6.setVisible(false);
 					txtFencer6.setVisible(false);
-					chckbxFencer6.setVisible(false);
+					chkFencer6.setVisible(false);
 					
 					lblFencer7.setVisible(false);
 					txtFencer7.setVisible(false);
-					chckbxFencer7.setVisible(false);
+					chkFencer7.setVisible(false);
 
 					lblFencer8.setVisible(false);
 					txtFencer8.setVisible(false);
-					chckbxFencer8.setVisible(false);
+					chkFencer8.setVisible(false);
 					
 				} else if (rb6Fencers.isSelected()) {
 					
 					lblFencer7.setVisible(false);
 					txtFencer7.setVisible(false);
-					chckbxFencer7.setVisible(false);
+					chkFencer7.setVisible(false);
 
 					lblFencer8.setVisible(false);
 					txtFencer8.setVisible(false);
-					chckbxFencer8.setVisible(false);
+					chkFencer8.setVisible(false);
 					
 				} else if (rb7Fencers.isSelected()) {
 					
 					lblFencer8.setVisible(false);
 					txtFencer8.setVisible(false);
-					chckbxFencer8.setVisible(false);
+					chkFencer8.setVisible(false);
 				} 
 				
 				pnlTournament.setVisible(false);
@@ -876,14 +907,14 @@ public class Touche {
 		btnFencersOK.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				if (!chckbxFencer1.isSelected() &&
-					!chckbxFencer2.isSelected() &&
-					!chckbxFencer3.isSelected() &&
-					!chckbxFencer4.isSelected() &&
-					!chckbxFencer5.isSelected() &&
-					!chckbxFencer6.isSelected() &&
-					!chckbxFencer7.isSelected() &&
-					!chckbxFencer8.isSelected() ) {
+				if (!chkFencer1.isSelected() &&
+					!chkFencer2.isSelected() &&
+					!chkFencer3.isSelected() &&
+					!chkFencer4.isSelected() &&
+					!chkFencer5.isSelected() &&
+					!chkFencer6.isSelected() &&
+					!chkFencer7.isSelected() &&
+					!chkFencer8.isSelected() ) {
 					JOptionPane.showMessageDialog(frame, "Please select which fencer is you.", "Error", JOptionPane.ERROR_MESSAGE);
 				} else {
 					// If user did not enter names default them
@@ -895,7 +926,7 @@ public class Touche {
 					if (txtFencer6.getText().isEmpty()) txtFencer6.setText("Fencer6");
 					if (txtFencer7.getText().isEmpty()) txtFencer7.setText("Fencer7");
 					if (txtFencer8.getText().isEmpty()) txtFencer8.setText("Fencer8");
-					
+
 					lblScoresFencer1.setText(txtFencer1.getText());
 					lblScoresFencer2.setText(txtFencer2.getText());
 					lblScoresFencer3.setText(txtFencer3.getText());
@@ -928,178 +959,178 @@ public class Touche {
 		
 
 		// Checkbox listeners: Check if selected/deselected, and detect what number our fencer is 
-		chckbxFencer1.addItemListener(new ItemListener() {
+		chkFencer1.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
-				if (chckbxFencer1.isSelected()) {
-					chckbxFencer2.setEnabled(false);
-					chckbxFencer3.setEnabled(false);
-					chckbxFencer4.setEnabled(false);
-					chckbxFencer5.setEnabled(false);
-					chckbxFencer6.setEnabled(false);
-					chckbxFencer7.setEnabled(false);
-					chckbxFencer8.setEnabled(false);
+				if (chkFencer1.isSelected()) {
+					chkFencer2.setEnabled(false);
+					chkFencer3.setEnabled(false);
+					chkFencer4.setEnabled(false);
+					chkFencer5.setEnabled(false);
+					chkFencer6.setEnabled(false);
+					chkFencer7.setEnabled(false);
+					chkFencer8.setEnabled(false);
 				} else {
-					chckbxFencer2.setEnabled(true);
-					chckbxFencer3.setEnabled(true);
-					chckbxFencer4.setEnabled(true);
-					chckbxFencer5.setEnabled(true);
-					chckbxFencer6.setEnabled(true);
-					chckbxFencer7.setEnabled(true);
-					chckbxFencer8.setEnabled(true);
+					chkFencer2.setEnabled(true);
+					chkFencer3.setEnabled(true);
+					chkFencer4.setEnabled(true);
+					chkFencer5.setEnabled(true);
+					chkFencer6.setEnabled(true);
+					chkFencer7.setEnabled(true);
+					chkFencer8.setEnabled(true);
 				}
 			}
 		});
 
-		chckbxFencer2.addItemListener(new ItemListener() {
+		chkFencer2.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
-				if (chckbxFencer2.isSelected()) {
-					chckbxFencer1.setEnabled(false);
-					chckbxFencer3.setEnabled(false);
-					chckbxFencer4.setEnabled(false);
-					chckbxFencer5.setEnabled(false);
-					chckbxFencer6.setEnabled(false);
-					chckbxFencer7.setEnabled(false);
-					chckbxFencer8.setEnabled(false);
+				if (chkFencer2.isSelected()) {
+					chkFencer1.setEnabled(false);
+					chkFencer3.setEnabled(false);
+					chkFencer4.setEnabled(false);
+					chkFencer5.setEnabled(false);
+					chkFencer6.setEnabled(false);
+					chkFencer7.setEnabled(false);
+					chkFencer8.setEnabled(false);
 				} else {
-					chckbxFencer1.setEnabled(true);
-					chckbxFencer3.setEnabled(true);
-					chckbxFencer4.setEnabled(true);
-					chckbxFencer5.setEnabled(true);
-					chckbxFencer6.setEnabled(true);
-					chckbxFencer7.setEnabled(true);
-					chckbxFencer8.setEnabled(true);
+					chkFencer1.setEnabled(true);
+					chkFencer3.setEnabled(true);
+					chkFencer4.setEnabled(true);
+					chkFencer5.setEnabled(true);
+					chkFencer6.setEnabled(true);
+					chkFencer7.setEnabled(true);
+					chkFencer8.setEnabled(true);
 				}
 			}
 		});
 
-		chckbxFencer3.addItemListener(new ItemListener() {
+		chkFencer3.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
-				if (chckbxFencer3.isSelected()) {
-					chckbxFencer1.setEnabled(false);
-					chckbxFencer2.setEnabled(false);
-					chckbxFencer4.setEnabled(false);
-					chckbxFencer5.setEnabled(false);
-					chckbxFencer6.setEnabled(false);
-					chckbxFencer7.setEnabled(false);
-					chckbxFencer8.setEnabled(false);
+				if (chkFencer3.isSelected()) {
+					chkFencer1.setEnabled(false);
+					chkFencer2.setEnabled(false);
+					chkFencer4.setEnabled(false);
+					chkFencer5.setEnabled(false);
+					chkFencer6.setEnabled(false);
+					chkFencer7.setEnabled(false);
+					chkFencer8.setEnabled(false);
 				} else {
-					chckbxFencer1.setEnabled(true);
-					chckbxFencer2.setEnabled(true);
-					chckbxFencer4.setEnabled(true);
-					chckbxFencer5.setEnabled(true);
-					chckbxFencer6.setEnabled(true);
-					chckbxFencer7.setEnabled(true);
-					chckbxFencer8.setEnabled(true);
+					chkFencer1.setEnabled(true);
+					chkFencer2.setEnabled(true);
+					chkFencer4.setEnabled(true);
+					chkFencer5.setEnabled(true);
+					chkFencer6.setEnabled(true);
+					chkFencer7.setEnabled(true);
+					chkFencer8.setEnabled(true);
 				}
 			}
 		});
 
-		chckbxFencer4.addItemListener(new ItemListener() {
+		chkFencer4.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
-				if (chckbxFencer4.isSelected()) {
-					chckbxFencer1.setEnabled(false);
-					chckbxFencer2.setEnabled(false);
-					chckbxFencer3.setEnabled(false);
-					chckbxFencer5.setEnabled(false);
-					chckbxFencer6.setEnabled(false);
-					chckbxFencer7.setEnabled(false);
-					chckbxFencer8.setEnabled(false);
+				if (chkFencer4.isSelected()) {
+					chkFencer1.setEnabled(false);
+					chkFencer2.setEnabled(false);
+					chkFencer3.setEnabled(false);
+					chkFencer5.setEnabled(false);
+					chkFencer6.setEnabled(false);
+					chkFencer7.setEnabled(false);
+					chkFencer8.setEnabled(false);
 				} else {
-					chckbxFencer1.setEnabled(true);
-					chckbxFencer2.setEnabled(true);
-					chckbxFencer3.setEnabled(true);
-					chckbxFencer5.setEnabled(true);
-					chckbxFencer6.setEnabled(true);
-					chckbxFencer7.setEnabled(true);
-					chckbxFencer8.setEnabled(true);
+					chkFencer1.setEnabled(true);
+					chkFencer2.setEnabled(true);
+					chkFencer3.setEnabled(true);
+					chkFencer5.setEnabled(true);
+					chkFencer6.setEnabled(true);
+					chkFencer7.setEnabled(true);
+					chkFencer8.setEnabled(true);
 				}
 			}
 		});
 
-		chckbxFencer5.addItemListener(new ItemListener() {
+		chkFencer5.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
-				if (chckbxFencer5.isSelected()) {
-					chckbxFencer1.setEnabled(false);
-					chckbxFencer2.setEnabled(false);
-					chckbxFencer3.setEnabled(false);
-					chckbxFencer4.setEnabled(false);
-					chckbxFencer6.setEnabled(false);
-					chckbxFencer7.setEnabled(false);
-					chckbxFencer8.setEnabled(false);
+				if (chkFencer5.isSelected()) {
+					chkFencer1.setEnabled(false);
+					chkFencer2.setEnabled(false);
+					chkFencer3.setEnabled(false);
+					chkFencer4.setEnabled(false);
+					chkFencer6.setEnabled(false);
+					chkFencer7.setEnabled(false);
+					chkFencer8.setEnabled(false);
 				} else {
-					chckbxFencer1.setEnabled(true);
-					chckbxFencer2.setEnabled(true);
-					chckbxFencer3.setEnabled(true);
-					chckbxFencer4.setEnabled(true);
-					chckbxFencer6.setEnabled(true);
-					chckbxFencer7.setEnabled(true);
-					chckbxFencer8.setEnabled(true);
+					chkFencer1.setEnabled(true);
+					chkFencer2.setEnabled(true);
+					chkFencer3.setEnabled(true);
+					chkFencer4.setEnabled(true);
+					chkFencer6.setEnabled(true);
+					chkFencer7.setEnabled(true);
+					chkFencer8.setEnabled(true);
 				}
 			}
 		});
 
-		chckbxFencer6.addItemListener(new ItemListener() {
+		chkFencer6.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
-				if (chckbxFencer6.isSelected()) {
-					chckbxFencer1.setEnabled(false);
-					chckbxFencer2.setEnabled(false);
-					chckbxFencer3.setEnabled(false);
-					chckbxFencer4.setEnabled(false);
-					chckbxFencer5.setEnabled(false);
-					chckbxFencer7.setEnabled(false);
-					chckbxFencer8.setEnabled(false);
+				if (chkFencer6.isSelected()) {
+					chkFencer1.setEnabled(false);
+					chkFencer2.setEnabled(false);
+					chkFencer3.setEnabled(false);
+					chkFencer4.setEnabled(false);
+					chkFencer5.setEnabled(false);
+					chkFencer7.setEnabled(false);
+					chkFencer8.setEnabled(false);
 				} else {
-					chckbxFencer1.setEnabled(true);
-					chckbxFencer2.setEnabled(true);
-					chckbxFencer3.setEnabled(true);
-					chckbxFencer4.setEnabled(true);
-					chckbxFencer5.setEnabled(true);
-					chckbxFencer7.setEnabled(true);
-					chckbxFencer8.setEnabled(true);
+					chkFencer1.setEnabled(true);
+					chkFencer2.setEnabled(true);
+					chkFencer3.setEnabled(true);
+					chkFencer4.setEnabled(true);
+					chkFencer5.setEnabled(true);
+					chkFencer7.setEnabled(true);
+					chkFencer8.setEnabled(true);
 				}
 			}
 		});
 
-		chckbxFencer7.addItemListener(new ItemListener() {
+		chkFencer7.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
-				if (chckbxFencer7.isSelected()) {
-					chckbxFencer1.setEnabled(false);
-					chckbxFencer2.setEnabled(false);
-					chckbxFencer3.setEnabled(false);
-					chckbxFencer4.setEnabled(false);
-					chckbxFencer5.setEnabled(false);
-					chckbxFencer6.setEnabled(false);
-					chckbxFencer8.setEnabled(false);
+				if (chkFencer7.isSelected()) {
+					chkFencer1.setEnabled(false);
+					chkFencer2.setEnabled(false);
+					chkFencer3.setEnabled(false);
+					chkFencer4.setEnabled(false);
+					chkFencer5.setEnabled(false);
+					chkFencer6.setEnabled(false);
+					chkFencer8.setEnabled(false);
 				} else {
-					chckbxFencer1.setEnabled(true);
-					chckbxFencer2.setEnabled(true);
-					chckbxFencer3.setEnabled(true);
-					chckbxFencer4.setEnabled(true);
-					chckbxFencer5.setEnabled(true);
-					chckbxFencer6.setEnabled(true);
-					chckbxFencer8.setEnabled(true);
+					chkFencer1.setEnabled(true);
+					chkFencer2.setEnabled(true);
+					chkFencer3.setEnabled(true);
+					chkFencer4.setEnabled(true);
+					chkFencer5.setEnabled(true);
+					chkFencer6.setEnabled(true);
+					chkFencer8.setEnabled(true);
 				}
 			}
 		});
 
-		chckbxFencer8.addItemListener(new ItemListener() {
+		chkFencer8.addItemListener(new ItemListener() {
 			public void itemStateChanged(ItemEvent e) {
-				if (chckbxFencer8.isSelected()) {
-					chckbxFencer1.setEnabled(false);
-					chckbxFencer2.setEnabled(false);
-					chckbxFencer3.setEnabled(false);
-					chckbxFencer4.setEnabled(false);
-					chckbxFencer5.setEnabled(false);
-					chckbxFencer6.setEnabled(false);
-					chckbxFencer7.setEnabled(false);
+				if (chkFencer8.isSelected()) {
+					chkFencer1.setEnabled(false);
+					chkFencer2.setEnabled(false);
+					chkFencer3.setEnabled(false);
+					chkFencer4.setEnabled(false);
+					chkFencer5.setEnabled(false);
+					chkFencer6.setEnabled(false);
+					chkFencer7.setEnabled(false);
 				} else {
-					chckbxFencer1.setEnabled(true);
-					chckbxFencer2.setEnabled(true);
-					chckbxFencer3.setEnabled(true);
-					chckbxFencer4.setEnabled(true);
-					chckbxFencer5.setEnabled(true);
-					chckbxFencer6.setEnabled(true);
-					chckbxFencer7.setEnabled(true);
+					chkFencer1.setEnabled(true);
+					chkFencer2.setEnabled(true);
+					chkFencer3.setEnabled(true);
+					chkFencer4.setEnabled(true);
+					chkFencer5.setEnabled(true);
+					chkFencer6.setEnabled(true);
+					chkFencer7.setEnabled(true);
 				}
 			}
 		});
