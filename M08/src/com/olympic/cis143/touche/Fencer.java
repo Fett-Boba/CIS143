@@ -141,6 +141,14 @@ public class Fencer {
 	}
 	
 	public String toString() {
-		return "Hello from Fencer class";
+		return "#"+ getFencerNum() + 
+				" NAME: " + getName() + 
+				" BOUT TS: " + getBoutsTouchesScored() + 
+				" BOUT TR: " + getBoutsTouchesReceived() + 
+				" V: " + getVictories() + 
+				" TR: " + getTotalTouchesScored() + 
+				" TS: " + getTotalTouchesReceived() + 
+				" INDICATOR: " + getIndicator() + 
+				" PLACE: " + getPlace();
 	}
 }
