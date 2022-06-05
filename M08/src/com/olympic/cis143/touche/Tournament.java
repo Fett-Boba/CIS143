@@ -30,4 +30,8 @@ public class Tournament {
 		NumFencers = numFencers;
 	}
 	
+	public String toString() {
+		return "NAME: " + getTournamentName() + " NUM FENCERS: " + getNumFencers();
+	}
+	
 }

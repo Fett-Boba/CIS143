@@ -24,26 +24,45 @@ public class Fencer {
 		this.boutsTouchesScored = boutsTouchesScored;
 		this.boutsTouchesReceived = boutsTouchesReceived;
 	}
-
-	
 	
 	public int calculateVictories() {
-		return 0;
+		int v = 0;
+		for (int i = 0; i < boutsTouchesScored.size(); i++) {
+			if (i != fencerNum - 1) {
+				if (Integer.parseInt(boutsTouchesScored.get(i)) > Integer.parseInt(boutsTouchesReceived.get(i))) {
+					v = v + 1;
+				}
+			} 
+		}
+		return v;
 	}
 	
 	public int calculateTotalTouchesScored() {
-		return 0;
+		int ts = 0;
+		for (int i = 0; i < boutsTouchesScored.size(); i++) {
+			if (i != fencerNum - 1 ) {
+				ts = ts + Integer.parseInt(boutsTouchesScored.get(i));
+			}
+		}
+		return ts;
 	}
 	
 	public int calculateTotalTouchesReceived() {
-		return 0;
+		int tr = 0;
+		for (int i = 0; i < boutsTouchesReceived.size(); i++) {
+			if (i != fencerNum - 1 ) {
+				tr = tr + Integer.parseInt(boutsTouchesReceived.get(i));
+			}
+		}
+		return tr;
 	}
 	
 	public int calculateIndicator() {
-		return 0;
+		return calculateTotalTouchesScored() - calculateTotalTouchesReceived();
 	}
 	
-	public int calculatePlate() {
+	public int calculatePlace() {
+		// HMMM.  Need to think about this.
 		return 0;
 	}
 	
