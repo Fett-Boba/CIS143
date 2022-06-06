@@ -6,8 +6,25 @@ public class Fencer {
 
 	private int fencerNum;
 	private String name;
-	private List <String> boutsTouchesScored;
-	private List <String> boutsTouchesReceived;
+	
+	private int ts1;
+	private int ts2;
+	private int ts3;
+	private int ts4;
+	private int ts5;
+	private int ts6;
+	private int ts7;
+	private int ts8;
+
+	private int tr1;
+	private int tr2;
+	private int tr3;
+	private int tr4;
+	private int tr5;
+	private int tr6;
+	private int tr7;
+	private int tr8;
+	
 	private int victories;
 	private int totalTouchesScored;
 	private int totalTouchesReceived;
@@ -15,58 +32,61 @@ public class Fencer {
 	private int place;
 	
 	public Fencer() {
-		
+	
 	}
 
-	public Fencer(int fencerNum, String name, List<String> boutsTouchesScored, List<String> boutsTouchesReceived) {
+	public Fencer(int fencerNum, String name, int ts1, int ts2, int ts3, int ts4, int ts5, int ts6, int ts7, int ts8,
+			int tr1, int tr2, int tr3, int tr4, int tr5, int tr6, int tr7, int tr8, int victories,
+			int totalTouchesScored, int totalTouchesReceived, int indicator, int place) {
 		this.fencerNum = fencerNum;
 		this.name = name;
-		this.boutsTouchesScored = boutsTouchesScored;
-		this.boutsTouchesReceived = boutsTouchesReceived;
+		this.ts1 = ts1;
+		this.ts2 = ts2;
+		this.ts3 = ts3;
+		this.ts4 = ts4;
+		this.ts5 = ts5;
+		this.ts6 = ts6;
+		this.ts7 = ts7;
+		this.ts8 = ts8;
+		this.tr1 = tr1;
+		this.tr2 = tr2;
+		this.tr3 = tr3;
+		this.tr4 = tr4;
+		this.tr5 = tr5;
+		this.tr6 = tr6;
+		this.tr7 = tr7;
+		this.tr8 = tr8;
+		this.victories = victories;
+		this.totalTouchesScored = totalTouchesScored;
+		this.totalTouchesReceived = totalTouchesReceived;
+		this.indicator = indicator;
+		this.place = place;
 	}
 	
 	public int calculateVictories() {
 		int v = 0;
-		for (int i = 0; i < boutsTouchesScored.size(); i++) {
-			if (i != fencerNum - 1) {
-				if (Integer.parseInt(boutsTouchesScored.get(i)) > Integer.parseInt(boutsTouchesReceived.get(i))) {
-					v = v + 1;
-				}
-			} 
-		}
+		if (ts1 > tr1) v++;
+		if (ts2 > tr2) v++;
+		if (ts3 > tr3) v++;
+		if (ts4 > tr4) v++;
+		if (ts5 > tr5) v++;
+		if (ts6 > tr6) v++;
+		if (ts7 > tr7) v++;
+		if (ts8 > tr8) v++;
 		return v;
 	}
 	
-	public int calculateTotalTouchesScored() {
-		int ts = 0;
-		for (int i = 0; i < boutsTouchesScored.size(); i++) {
-			if (i != fencerNum - 1 ) {
-				ts = ts + Integer.parseInt(boutsTouchesScored.get(i));
-			}
-		}
-		return ts;
+	public int calculateTouchesScored() {
+		return ts1 + ts2 + ts3 + ts4 + ts5 + ts6 + ts7 + ts8;
 	}
 	
-	public int calculateTotalTouchesReceived() {
-		int tr = 0;
-		for (int i = 0; i < boutsTouchesReceived.size(); i++) {
-			if (i != fencerNum - 1 ) {
-				tr = tr + Integer.parseInt(boutsTouchesReceived.get(i));
-			}
-		}
-		return tr;
+	public int calculateTouchesReceived() {
+		return tr1 + tr2 + tr3 + tr4 + tr5 + tr6 + tr7 + tr8;
 	}
 	
 	public int calculateIndicator() {
-		return calculateTotalTouchesScored() - calculateTotalTouchesReceived();
+		return calculateTouchesScored() - calculateTouchesReceived();
 	}
-	
-	public int calculatePlace() {
-		// HMMM.  Need to think about this.
-		return 0;
-	}
-	
-	
 	
 	public int getFencerNum() {
 		return fencerNum;
@@ -84,24 +104,137 @@ public class Fencer {
 		this.name = name;
 	}
 
-	public List<String> getBoutsTouchesScored() {
-		return boutsTouchesScored;
+	public int getTs1() {
+		return ts1;
 	}
 
-	public void setBoutsTouchesScored(List<String> boutsTouchesScored) {
-		this.boutsTouchesScored = boutsTouchesScored;
+	public void setTs1(int ts1) {
+		this.ts1 = ts1;
 	}
 
-	public List<String> getBoutsTouchesReceived() {
-		return boutsTouchesReceived;
+	public int getTs2() {
+		return ts2;
 	}
 
-	public void setBoutsTouchesReceived(List<String> boutsTouchesReceived) {
-		this.boutsTouchesReceived = boutsTouchesReceived;
+	public void setTs2(int ts2) {
+		this.ts2 = ts2;
+	}
+
+	public int getTs3() {
+		return ts3;
+	}
+
+	public void setTs3(int ts3) {
+		this.ts3 = ts3;
+	}
+
+	public int getTs4() {
+		return ts4;
+	}
+
+	public void setTs4(int ts4) {
+		this.ts4 = ts4;
+	}
+
+	public int getTs5() {
+		return ts5;
+	}
+
+	public void setTs5(int ts5) {
+		this.ts5 = ts5;
+	}
+
+	public int getTs6() {
+		return ts6;
+	}
+
+	public void setTs6(int ts6) {
+		this.ts6 = ts6;
+	}
+
+	public int getTs7() {
+		return ts7;
+	}
+
+	public void setTs7(int ts7) {
+		this.ts7 = ts7;
+	}
+
+	public int getTs8() {
+		return ts8;
+	}
+
+	public void setTs8(int ts8) {
+		this.ts8 = ts8;
+	}
+
+	public int getTr1() {
+		return tr1;
+	}
+
+	public void setTr1(int tr1) {
+		this.tr1 = tr1;
+	}
+
+	public int getTr2() {
+		return tr2;
+	}
+
+	public void setTr2(int tr2) {
+		this.tr2 = tr2;
+	}
+
+	public int getTr3() {
+		return tr3;
+	}
+
+	public void setTr3(int tr3) {
+		this.tr3 = tr3;
+	}
+
+	public int getTr4() {
+		return tr4;
+	}
+
+	public void setTr4(int tr4) {
+		this.tr4 = tr4;
+	}
+
+	public int getTr5() {
+		return tr5;
+	}
+
+	public void setTr5(int tr5) {
+		this.tr5 = tr5;
+	}
+
+	public int getTr6() {
+		return tr6;
+	}
+
+	public void setTr6(int tr6) {
+		this.tr6 = tr6;
+	}
+
+	public int getTr7() {
+		return tr7;
+	}
+
+	public void setTr7(int tr7) {
+		this.tr7 = tr7;
+	}
+
+	public int getTr8() {
+		return tr8;
+	}
+
+	public void setTr8(int tr8) {
+		this.tr8 = tr8;
 	}
 
 	public int getVictories() {
-		return victories;
+		//return victories;
+		return calculateVictories();
 	}
 
 	public void setVictories(int victories) {
@@ -109,7 +242,8 @@ public class Fencer {
 	}
 
 	public int getTotalTouchesScored() {
-		return totalTouchesScored;
+		//return totalTouchesScored;
+		return calculateTouchesScored();
 	}
 
 	public void setTotalTouchesScored(int totalTouchesScored) {
@@ -117,7 +251,8 @@ public class Fencer {
 	}
 
 	public int getTotalTouchesReceived() {
-		return totalTouchesReceived;
+		//return totalTouchesReceived;
+		return calculateTouchesReceived();
 	}
 
 	public void setTotalTouchesReceived(int totalTouchesReceived) {
@@ -125,7 +260,8 @@ public class Fencer {
 	}
 
 	public int getIndicator() {
-		return indicator;
+		//return indicator;
+		return calculateTouchesScored() - calculateTouchesReceived();
 	}
 
 	public void setIndicator(int indicator) {
@@ -139,15 +275,15 @@ public class Fencer {
 	public void setPlace(int place) {
 		this.place = place;
 	}
-	
+
 	public String toString() {
-		return "#"+ getFencerNum() + 
-				" NAME: " + getName() + 
-				" BOUT TS: " + getBoutsTouchesScored() + 
-				" BOUT TR: " + getBoutsTouchesReceived() + 
+		return "\n#"+ getFencerNum() + 
+				" NAME: " + getName() + "\n" +
+				" Row (TS): " + ts1 + ", " + ts2 + ", "+ ts3 + ", "+ ts4 + ", "+ ts5 + ", "+ ts6 + ", "+ ts7 + ", "+ ts8 + "\n" +
+				" Col (TR): " + tr1 + ", " + tr2 + ", "+ tr3 + ", "+ tr4 + ", "+ tr5 + ", "+ tr6 + ", "+ tr7 + ", "+ tr8 + "\n" +
 				" V: " + getVictories() + 
-				" TR: " + getTotalTouchesScored() + 
-				" TS: " + getTotalTouchesReceived() + 
+				" TS: " + getTotalTouchesScored() + 
+				" TR: " + getTotalTouchesReceived() + 
 				" INDICATOR: " + getIndicator() + 
 				" PLACE: " + getPlace();
 	}
