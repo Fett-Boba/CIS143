@@ -141,6 +141,7 @@ public class Touche {
 	private JButton btnCalcF6;
 	private JButton btnCalcF7;
 	private JButton btnCalcF8;
+	private JButton btnCompletePool;
 	
 	
 	// START APP
@@ -793,6 +794,10 @@ public class Touche {
 		btnCalcF8.setBounds(691, 291, 150, 23);
 		pnlScores.add(btnCalcF8);
 		
+		btnCompletePool = new JButton("Complete Pool");
+		btnCompletePool.setBounds(354, 364, 159, 23);
+		pnlScores.add(btnCompletePool);
+		
 		
 		// CONTENT FOR TOURNAMENT PANEL
 		
@@ -881,11 +886,17 @@ public class Touche {
 				f1.setTr7(Integer.parseInt(txt71.getText()));
 				f1.setTr8(Integer.parseInt(txt81.getText()));
 				
+				f1.setVictories(f1.calculateVictories());
+				f1.setTotalTouchesScored(f1.calculateTouchesScored());
+				f1.setTotalTouchesReceived(f1.calculateTouchesReceived());
+				f1.setIndicator(f1.calculateIndicator());
+				
+				
 				txtV1.setText(Integer.toString(f1.getVictories()));
 				txtTs1.setText(Integer.toString(f1.getTotalTouchesScored()));
 				txtTr1.setText(Integer.toString(f1.getTotalTouchesReceived()));
 				txtInd1.setText(Integer.toString(f1.getIndicator()));
-				txtPl1.setText(Integer.toString(f1.getPlace()));
+				//txtPl1.setText(Integer.toString(f1.getPlace()));
 
 				System.out.println(f1);
 			}
@@ -917,11 +928,16 @@ public class Touche {
 				f2.setTr7(Integer.parseInt(txt72.getText()));
 				f2.setTr8(Integer.parseInt(txt82.getText()));
 				
+				f2.setVictories(f2.calculateVictories());
+				f2.setTotalTouchesScored(f2.calculateTouchesScored());
+				f2.setTotalTouchesReceived(f2.calculateTouchesReceived());
+				f2.setIndicator(f2.calculateIndicator());
+				
 				txtV2.setText(Integer.toString(f2.getVictories()));
 				txtTs2.setText(Integer.toString(f2.getTotalTouchesScored()));
 				txtTr2.setText(Integer.toString(f2.getTotalTouchesReceived()));
 				txtInd2.setText(Integer.toString(f2.getIndicator()));
-				txtPl2.setText(Integer.toString(f2.getPlace()));
+				//txtPl2.setText(Integer.toString(f2.getPlace()));
 
 				System.out.println(f2);
 			}
@@ -952,11 +968,16 @@ public class Touche {
 				f3.setTr7(Integer.parseInt(txt73.getText()));
 				f3.setTr8(Integer.parseInt(txt83.getText()));
 				
+				f3.setVictories(f3.calculateVictories());
+				f3.setTotalTouchesScored(f3.calculateTouchesScored());
+				f3.setTotalTouchesReceived(f3.calculateTouchesReceived());
+				f3.setIndicator(f3.calculateIndicator());
+				
 				txtV3.setText(Integer.toString(f3.getVictories()));
 				txtTs3.setText(Integer.toString(f3.getTotalTouchesScored()));
 				txtTr3.setText(Integer.toString(f3.getTotalTouchesReceived()));
 				txtInd3.setText(Integer.toString(f3.getIndicator()));
-				txtPl3.setText(Integer.toString(f3.getPlace()));
+				//txtPl3.setText(Integer.toString(f3.getPlace()));
 
 				System.out.println(f3);
 			}
@@ -987,11 +1008,16 @@ public class Touche {
 				f4.setTr7(Integer.parseInt(txt74.getText()));
 				f4.setTr8(Integer.parseInt(txt84.getText()));
 				
+				f4.setVictories(f4.calculateVictories());
+				f4.setTotalTouchesScored(f4.calculateTouchesScored());
+				f4.setTotalTouchesReceived(f4.calculateTouchesReceived());
+				f4.setIndicator(f4.calculateIndicator());
+				
 				txtV4.setText(Integer.toString(f4.getVictories()));
 				txtTs4.setText(Integer.toString(f4.getTotalTouchesScored()));
 				txtTr4.setText(Integer.toString(f4.getTotalTouchesReceived()));
 				txtInd4.setText(Integer.toString(f4.getIndicator()));
-				txtPl4.setText(Integer.toString(f4.getPlace()));
+				//txtPl4.setText(Integer.toString(f4.getPlace()));
 
 				System.out.println(f4);
 			}
@@ -1022,11 +1048,16 @@ public class Touche {
 				f5.setTr7(Integer.parseInt(txt75.getText()));
 				f5.setTr8(Integer.parseInt(txt85.getText()));
 				
+				f5.setVictories(f5.calculateVictories());
+				f5.setTotalTouchesScored(f5.calculateTouchesScored());
+				f5.setTotalTouchesReceived(f5.calculateTouchesReceived());
+				f5.setIndicator(f5.calculateIndicator());
+				
 				txtV5.setText(Integer.toString(f5.getVictories()));
 				txtTs5.setText(Integer.toString(f5.getTotalTouchesScored()));
 				txtTr5.setText(Integer.toString(f5.getTotalTouchesReceived()));
 				txtInd5.setText(Integer.toString(f5.getIndicator()));
-				txtPl5.setText(Integer.toString(f5.getPlace()));
+				//txtPl5.setText(Integer.toString(f5.getPlace()));
 
 				System.out.println(f5);
 			}
@@ -1058,11 +1089,16 @@ public class Touche {
 				f6.setTr7(Integer.parseInt(txt76.getText()));
 				f6.setTr8(Integer.parseInt(txt86.getText()));
 				
+				f6.setVictories(f6.calculateVictories());
+				f6.setTotalTouchesScored(f6.calculateTouchesScored());
+				f6.setTotalTouchesReceived(f6.calculateTouchesReceived());
+				f6.setIndicator(f6.calculateIndicator());
+				
 				txtV6.setText(Integer.toString(f6.getVictories()));
 				txtTs6.setText(Integer.toString(f6.getTotalTouchesScored()));
 				txtTr6.setText(Integer.toString(f6.getTotalTouchesReceived()));
 				txtInd6.setText(Integer.toString(f6.getIndicator()));
-				txtPl6.setText(Integer.toString(f6.getPlace()));
+				//txtPl6.setText(Integer.toString(f6.getPlace()));
 
 				System.out.println(f6);
 			}
@@ -1094,11 +1130,16 @@ public class Touche {
 				f7.setTr6(Integer.parseInt(txt67.getText()));
 				f7.setTr8(Integer.parseInt(txt87.getText()));
 				
+				f7.setVictories(f7.calculateVictories());
+				f7.setTotalTouchesScored(f7.calculateTouchesScored());
+				f7.setTotalTouchesReceived(f7.calculateTouchesReceived());
+				f7.setIndicator(f7.calculateIndicator());
+				
 				txtV7.setText(Integer.toString(f7.getVictories()));
 				txtTs7.setText(Integer.toString(f7.getTotalTouchesScored()));
 				txtTr7.setText(Integer.toString(f7.getTotalTouchesReceived()));
 				txtInd7.setText(Integer.toString(f7.getIndicator()));
-				txtPl7.setText(Integer.toString(f7.getPlace()));
+				//txtPl7.setText(Integer.toString(f7.getPlace()));
 
 				System.out.println(f7);
 			}
@@ -1130,16 +1171,302 @@ public class Touche {
 				f8.setTr6(Integer.parseInt(txt68.getText()));
 				f8.setTr7(Integer.parseInt(txt78.getText()));
 				
+				f8.setVictories(f8.calculateVictories());
+				f8.setTotalTouchesScored(f8.calculateTouchesScored());
+				f8.setTotalTouchesReceived(f8.calculateTouchesReceived());
+				f8.setIndicator(f8.calculateIndicator());
+				
 				txtV8.setText(Integer.toString(f8.getVictories()));
 				txtTs8.setText(Integer.toString(f8.getTotalTouchesScored()));
 				txtTr8.setText(Integer.toString(f8.getTotalTouchesReceived()));
 				txtInd8.setText(Integer.toString(f8.getIndicator()));
-				txtPl8.setText(Integer.toString(f8.getPlace()));
+				//txtPl8.setText(Integer.toString(f8.getPlace()));
 
 				System.out.println(f8);
 			}
 		});
 
+
+		
+		// LISTENER: Complete pool - egads this is horrible. 
+		
+		btnCompletePool.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				Fencer f1 = new Fencer();
+				f1.setFencerNum(1);
+				f1.setName(txtF1.getText());
+				f1.setTs2(Integer.parseInt(txt12.getText()));
+				f1.setTs3(Integer.parseInt(txt13.getText()));
+				f1.setTs4(Integer.parseInt(txt14.getText()));
+				f1.setTs5(Integer.parseInt(txt15.getText()));
+				f1.setTs6(Integer.parseInt(txt16.getText()));
+				f1.setTs7(Integer.parseInt(txt17.getText()));
+				f1.setTs8(Integer.parseInt(txt18.getText()));
+				f1.setTr2(Integer.parseInt(txt21.getText()));
+				f1.setTr3(Integer.parseInt(txt31.getText()));
+				f1.setTr4(Integer.parseInt(txt41.getText()));
+				f1.setTr5(Integer.parseInt(txt51.getText()));
+				f1.setTr6(Integer.parseInt(txt61.getText()));
+				f1.setTr7(Integer.parseInt(txt71.getText()));
+				f1.setTr8(Integer.parseInt(txt81.getText()));
+				f1.setVictories(f1.calculateVictories());
+				f1.setTotalTouchesScored(f1.calculateTouchesScored());
+				f1.setTotalTouchesReceived(f1.calculateTouchesReceived());
+				f1.setIndicator(f1.calculateIndicator());
+				txtV1.setText(Integer.toString(f1.getVictories()));
+				txtTs1.setText(Integer.toString(f1.getTotalTouchesScored()));
+				txtTr1.setText(Integer.toString(f1.getTotalTouchesReceived()));
+				txtInd1.setText(Integer.toString(f1.getIndicator()));
+				System.out.println(f1);
+				
+				Fencer f2 = new Fencer();
+				f2.setFencerNum(2);
+				f2.setName(txtF2.getText());
+				f2.setTs1(Integer.parseInt(txt21.getText()));
+				f2.setTs3(Integer.parseInt(txt23.getText()));
+				f2.setTs4(Integer.parseInt(txt24.getText()));
+				f2.setTs5(Integer.parseInt(txt25.getText()));
+				f2.setTs6(Integer.parseInt(txt26.getText()));
+				f2.setTs7(Integer.parseInt(txt27.getText()));
+				f2.setTs8(Integer.parseInt(txt28.getText()));
+				f2.setTr1(Integer.parseInt(txt12.getText()));
+				f2.setTr3(Integer.parseInt(txt32.getText()));
+				f2.setTr4(Integer.parseInt(txt42.getText()));
+				f2.setTr5(Integer.parseInt(txt52.getText()));
+				f2.setTr6(Integer.parseInt(txt62.getText()));
+				f2.setTr7(Integer.parseInt(txt72.getText()));
+				f2.setTr8(Integer.parseInt(txt82.getText()));
+				f2.setVictories(f2.calculateVictories());
+				f2.setTotalTouchesScored(f2.calculateTouchesScored());
+				f2.setTotalTouchesReceived(f2.calculateTouchesReceived());
+				f2.setIndicator(f2.calculateIndicator());
+				txtV2.setText(Integer.toString(f2.getVictories()));
+				txtTs2.setText(Integer.toString(f2.getTotalTouchesScored()));
+				txtTr2.setText(Integer.toString(f2.getTotalTouchesReceived()));
+				txtInd2.setText(Integer.toString(f2.getIndicator()));
+				System.out.println(f2);
+				
+				
+				Fencer f3 = new Fencer();
+				f3.setFencerNum(3);
+				f3.setName(txtF3.getText());
+				f3.setTs1(Integer.parseInt(txt31.getText()));
+				f3.setTs2(Integer.parseInt(txt32.getText()));
+				f3.setTs4(Integer.parseInt(txt34.getText()));
+				f3.setTs5(Integer.parseInt(txt35.getText()));
+				f3.setTs6(Integer.parseInt(txt36.getText()));
+				f3.setTs7(Integer.parseInt(txt37.getText()));
+				f3.setTs8(Integer.parseInt(txt38.getText()));
+				f3.setTr1(Integer.parseInt(txt13.getText()));
+				f3.setTr2(Integer.parseInt(txt23.getText()));
+				f3.setTr4(Integer.parseInt(txt43.getText()));
+				f3.setTr5(Integer.parseInt(txt53.getText()));
+				f3.setTr6(Integer.parseInt(txt63.getText()));
+				f3.setTr7(Integer.parseInt(txt73.getText()));
+				f3.setTr8(Integer.parseInt(txt83.getText()));
+				f3.setVictories(f3.calculateVictories());
+				f3.setTotalTouchesScored(f3.calculateTouchesScored());
+				f3.setTotalTouchesReceived(f3.calculateTouchesReceived());
+				f3.setIndicator(f3.calculateIndicator());
+				txtV3.setText(Integer.toString(f3.getVictories()));
+				txtTs3.setText(Integer.toString(f3.getTotalTouchesScored()));
+				txtTr3.setText(Integer.toString(f3.getTotalTouchesReceived()));
+				txtInd3.setText(Integer.toString(f3.getIndicator()));
+				System.out.println(f3);
+				
+				
+				Fencer f4 = new Fencer();
+				f4.setFencerNum(4);
+				f4.setName(txtF4.getText());
+				f4.setTs1(Integer.parseInt(txt41.getText()));
+				f4.setTs2(Integer.parseInt(txt42.getText()));
+				f4.setTs3(Integer.parseInt(txt43.getText()));
+				f4.setTs5(Integer.parseInt(txt45.getText()));
+				f4.setTs6(Integer.parseInt(txt46.getText()));
+				f4.setTs7(Integer.parseInt(txt47.getText()));
+				f4.setTs8(Integer.parseInt(txt48.getText()));
+				f4.setTr1(Integer.parseInt(txt14.getText()));
+				f4.setTr2(Integer.parseInt(txt24.getText()));
+				f4.setTr3(Integer.parseInt(txt34.getText()));
+				f4.setTr5(Integer.parseInt(txt54.getText()));
+				f4.setTr6(Integer.parseInt(txt64.getText()));
+				f4.setTr7(Integer.parseInt(txt74.getText()));
+				f4.setTr8(Integer.parseInt(txt84.getText()));
+				f4.setVictories(f4.calculateVictories());
+				f4.setTotalTouchesScored(f4.calculateTouchesScored());
+				f4.setTotalTouchesReceived(f4.calculateTouchesReceived());
+				f4.setIndicator(f4.calculateIndicator());
+				txtV4.setText(Integer.toString(f4.getVictories()));
+				txtTs4.setText(Integer.toString(f4.getTotalTouchesScored()));
+				txtTr4.setText(Integer.toString(f4.getTotalTouchesReceived()));
+				txtInd4.setText(Integer.toString(f4.getIndicator()));
+				System.out.println(f4);
+				
+				
+				Fencer f5 = new Fencer();
+				f5.setFencerNum(5);
+				f5.setName(txtF5.getText());
+				f5.setTs1(Integer.parseInt(txt51.getText()));
+				f5.setTs2(Integer.parseInt(txt52.getText()));
+				f5.setTs3(Integer.parseInt(txt53.getText()));
+				f5.setTs4(Integer.parseInt(txt54.getText()));
+				f5.setTs6(Integer.parseInt(txt56.getText()));
+				f5.setTs7(Integer.parseInt(txt57.getText()));
+				f5.setTs8(Integer.parseInt(txt58.getText()));
+				f5.setTr1(Integer.parseInt(txt15.getText()));
+				f5.setTr2(Integer.parseInt(txt25.getText()));
+				f5.setTr3(Integer.parseInt(txt35.getText()));
+				f5.setTr4(Integer.parseInt(txt45.getText()));
+				f5.setTr6(Integer.parseInt(txt65.getText()));
+				f5.setTr7(Integer.parseInt(txt75.getText()));
+				f5.setTr8(Integer.parseInt(txt85.getText()));
+				f5.setVictories(f5.calculateVictories());
+				f5.setTotalTouchesScored(f5.calculateTouchesScored());
+				f5.setTotalTouchesReceived(f5.calculateTouchesReceived());
+				f5.setIndicator(f5.calculateIndicator());
+				txtV5.setText(Integer.toString(f5.getVictories()));
+				txtTs5.setText(Integer.toString(f5.getTotalTouchesScored()));
+				txtTr5.setText(Integer.toString(f5.getTotalTouchesReceived()));
+				txtInd5.setText(Integer.toString(f5.getIndicator()));
+				System.out.println(f5);
+				
+				Fencer f6 = new Fencer();
+				f6.setFencerNum(6);
+				f6.setName(txtF6.getText());
+				f6.setTs1(Integer.parseInt(txt61.getText()));
+				f6.setTs2(Integer.parseInt(txt62.getText()));
+				f6.setTs3(Integer.parseInt(txt63.getText()));
+				f6.setTs4(Integer.parseInt(txt64.getText()));
+				f6.setTs5(Integer.parseInt(txt65.getText()));
+				f6.setTs7(Integer.parseInt(txt67.getText()));
+				f6.setTs8(Integer.parseInt(txt68.getText()));
+				f6.setTr1(Integer.parseInt(txt16.getText()));
+				f6.setTr2(Integer.parseInt(txt26.getText()));
+				f6.setTr3(Integer.parseInt(txt36.getText()));
+				f6.setTr4(Integer.parseInt(txt46.getText()));
+				f6.setTr5(Integer.parseInt(txt56.getText()));
+				f6.setTr7(Integer.parseInt(txt76.getText()));
+				f6.setTr8(Integer.parseInt(txt86.getText()));
+				f6.setVictories(f6.calculateVictories());
+				f6.setTotalTouchesScored(f6.calculateTouchesScored());
+				f6.setTotalTouchesReceived(f6.calculateTouchesReceived());
+				f6.setIndicator(f6.calculateIndicator());
+				txtV6.setText(Integer.toString(f6.getVictories()));
+				txtTs6.setText(Integer.toString(f6.getTotalTouchesScored()));
+				txtTr6.setText(Integer.toString(f6.getTotalTouchesReceived()));
+				txtInd6.setText(Integer.toString(f6.getIndicator()));
+				System.out.println(f6);
+				
+				
+				Fencer f7 = new Fencer();
+				f7.setFencerNum(7);
+				f7.setName(txtF7.getText());
+				f7.setTs1(Integer.parseInt(txt71.getText()));
+				f7.setTs2(Integer.parseInt(txt72.getText()));
+				f7.setTs3(Integer.parseInt(txt73.getText()));
+				f7.setTs4(Integer.parseInt(txt74.getText()));
+				f7.setTs5(Integer.parseInt(txt75.getText()));
+				f7.setTs6(Integer.parseInt(txt76.getText()));
+				f7.setTs8(Integer.parseInt(txt78.getText()));
+				f7.setTr1(Integer.parseInt(txt17.getText()));
+				f7.setTr2(Integer.parseInt(txt27.getText()));
+				f7.setTr3(Integer.parseInt(txt37.getText()));
+				f7.setTr4(Integer.parseInt(txt47.getText()));
+				f7.setTr5(Integer.parseInt(txt57.getText()));
+				f7.setTr6(Integer.parseInt(txt67.getText()));
+				f7.setTr8(Integer.parseInt(txt87.getText()));
+				f7.setVictories(f7.calculateVictories());
+				f7.setTotalTouchesScored(f7.calculateTouchesScored());
+				f7.setTotalTouchesReceived(f7.calculateTouchesReceived());
+				f7.setIndicator(f7.calculateIndicator());
+				txtV7.setText(Integer.toString(f7.getVictories()));
+				txtTs7.setText(Integer.toString(f7.getTotalTouchesScored()));
+				txtTr7.setText(Integer.toString(f7.getTotalTouchesReceived()));
+				txtInd7.setText(Integer.toString(f7.getIndicator()));
+				System.out.println(f7);
+				
+				Fencer f8 = new Fencer();
+				f8.setFencerNum(8);
+				f8.setName(txtF8.getText());
+				f8.setTs1(Integer.parseInt(txt81.getText()));
+				f8.setTs2(Integer.parseInt(txt82.getText()));
+				f8.setTs3(Integer.parseInt(txt83.getText()));
+				f8.setTs4(Integer.parseInt(txt84.getText()));
+				f8.setTs5(Integer.parseInt(txt85.getText()));
+				f8.setTs6(Integer.parseInt(txt86.getText()));
+				f8.setTs7(Integer.parseInt(txt87.getText()));
+				f8.setTr1(Integer.parseInt(txt18.getText()));
+				f8.setTr2(Integer.parseInt(txt28.getText()));
+				f8.setTr3(Integer.parseInt(txt38.getText()));
+				f8.setTr4(Integer.parseInt(txt48.getText()));
+				f8.setTr5(Integer.parseInt(txt58.getText()));
+				f8.setTr6(Integer.parseInt(txt68.getText()));
+				f8.setTr7(Integer.parseInt(txt78.getText()));
+				f8.setVictories(f8.calculateVictories());
+				f8.setTotalTouchesScored(f8.calculateTouchesScored());
+				f8.setTotalTouchesReceived(f8.calculateTouchesReceived());
+				f8.setIndicator(f8.calculateIndicator());
+				txtV8.setText(Integer.toString(f8.getVictories()));
+				txtTs8.setText(Integer.toString(f8.getTotalTouchesScored()));
+				txtTr8.setText(Integer.toString(f8.getTotalTouchesReceived()));
+				txtInd8.setText(Integer.toString(f8.getIndicator()));
+				System.out.println(f8);
+				
+				// Determine what place fencers are in. Research hashmap where key = fencer# value = place...probably way better if I can figure it out
+				int place = 1;
+				boolean placeFlag = false;
+				for (int i = 8; i >= 0; i--) {
+					if (f1.getVictories() == i) {
+						f1.setPlace(place);
+						txtPl1.setText(Integer.toString(f1.getPlace()));
+						placeFlag = true;
+					}   
+					if (f2.getVictories() == i) {
+						f2.setPlace(place);
+						txtPl2.setText(Integer.toString(f2.getPlace()));
+						placeFlag = true;
+					}
+					if (f3.getVictories() == i) {
+						f3.setPlace(place);
+						txtPl3.setText(Integer.toString(f3.getPlace()));
+						placeFlag = true;
+					}
+					if (f4.getVictories() == i) {
+						f4.setPlace(place);
+						txtPl4.setText(Integer.toString(f4.getPlace()));
+						placeFlag = true;
+					}
+					if (f5.getVictories() == i) {
+						f5.setPlace(place);
+						txtPl5.setText(Integer.toString(f5.getPlace()));
+						placeFlag = true;
+					}
+					if (f6.getVictories() == i) {
+						f6.setPlace(place);
+						txtPl6.setText(Integer.toString(f6.getPlace()));
+						placeFlag = true;
+					}
+					if (f7.getVictories() == i) {
+						f7.setPlace(place);
+						txtPl7.setText(Integer.toString(f7.getPlace()));
+						placeFlag = true;
+					}
+					if (f8.getVictories() == i) {
+						f8.setPlace(place);
+						txtPl8.setText(Integer.toString(f8.getPlace()));
+						placeFlag = true;
+					}
+					if (placeFlag) {
+						place = place + 1;
+						placeFlag=false;
+					}
+				}
+
+				
+			}
+		});
+
+		
 		
 		
 	}

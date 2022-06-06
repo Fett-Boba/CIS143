@@ -233,8 +233,7 @@ public class Fencer {
 	}
 
 	public int getVictories() {
-		//return victories;
-		return calculateVictories();
+		return victories;
 	}
 
 	public void setVictories(int victories) {
@@ -242,8 +241,7 @@ public class Fencer {
 	}
 
 	public int getTotalTouchesScored() {
-		//return totalTouchesScored;
-		return calculateTouchesScored();
+		return totalTouchesScored;
 	}
 
 	public void setTotalTouchesScored(int totalTouchesScored) {
@@ -251,8 +249,7 @@ public class Fencer {
 	}
 
 	public int getTotalTouchesReceived() {
-		//return totalTouchesReceived;
-		return calculateTouchesReceived();
+		return totalTouchesReceived;
 	}
 
 	public void setTotalTouchesReceived(int totalTouchesReceived) {
@@ -260,8 +257,7 @@ public class Fencer {
 	}
 
 	public int getIndicator() {
-		//return indicator;
-		return calculateTouchesScored() - calculateTouchesReceived();
+		return indicator;
 	}
 
 	public void setIndicator(int indicator) {
