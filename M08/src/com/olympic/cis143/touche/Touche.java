@@ -1465,9 +1465,6 @@ public class Touche {
 				
 			}
 		});
-
-		
-		
 		
 	}
 }
