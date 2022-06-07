@@ -48,7 +48,7 @@ public class Tester {
 //		System.out.println(fencerList.get(0).toString());
 		System.out.println(fencerList.get(3).getFencerNum());
 		
-		
+				
 		
 		
 		//System.out.println(fencerList);

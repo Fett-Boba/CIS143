@@ -58,7 +58,7 @@ public class Touche {
 		// FRAME SETUP
 		
 		frame = new JFrame();
-		frame.setBounds(100, 100, 679, 450);
+		frame.setBounds(100, 100, 832, 450);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new CardLayout(0, 0));
 		
@@ -135,7 +135,6 @@ public class Touche {
 		pnlGridNums.setBounds(226, 78, 233, 26);
 		pnlScores.add(pnlGridNums);
 		pnlGridNums.setLayout(new GridLayout(0, 8, 0, 0));
-		
 		JTextField [] txtGridColNums = new JTextField[8];
 		for (int i = 0; i < 8; i++) {
 			txtGridColNums[i] = new JTextField(3);
@@ -144,7 +143,7 @@ public class Touche {
 			txtGridColNums[i].setEditable(false);
 			txtGridColNums[i].setHorizontalAlignment(JTextField.CENTER);
 			txtGridColNums[i].setBorder(new EmptyBorder(0, 0, 0, 0));
-			txtGridColNums[i].setVisible(true);
+			txtGridColNums[i].setVisible(false);	// dont display it until we know how many fencers we have
 			pnlGridNums.add(txtGridColNums[i]);
 		}
 		
@@ -154,7 +153,6 @@ public class Touche {
 		pnlScoreCalcs.setBounds(467, 78, 165, 26);
 		pnlScores.add(pnlScoreCalcs);
 		pnlScoreCalcs.setLayout(new GridLayout(0, 5, 0, 0));
-		
 		JTextField[] txtCalcColNames = new JTextField[5];
 		for (int i = 0; i < 5; i++) {
 			txtCalcColNames[i] = new JTextField(3);
@@ -162,7 +160,7 @@ public class Touche {
 			txtCalcColNames[i].setEditable(false);
 			txtCalcColNames[i].setHorizontalAlignment(JTextField.CENTER);
 			txtCalcColNames[i].setBorder(new EmptyBorder(0, 0, 0, 0));
-			txtCalcColNames[i].setVisible(true);
+			txtCalcColNames[i].setVisible(false);	// dont display it until we know how many fencers we have
 			if (i == 0) txtCalcColNames[i].setText("V");
 			if (i == 1) txtCalcColNames[i].setText("TS");
 			if (i == 2) txtCalcColNames[i].setText("TR");
@@ -176,14 +174,14 @@ public class Touche {
 		JPanel pnlLeft = new JPanel();
 		pnlLeft.setBounds(20, 108, 196, 206);
 		pnlScores.add(pnlLeft);
-
 		JTextField [] txtFencers  = new JTextField[8] ;
 		JLabel [] lblFencerNums = new JLabel[8];
 		for (int i = 0; i < 8; i++) {			
 			txtFencers[i] = new JTextField(15);
-			txtFencers[i].setVisible(true);
+			txtFencers[i].setVisible(false);		// dont display it until we know how many fencers we have
 			txtFencers[i].setText("Fencer" + (i+1));
 			lblFencerNums[i] = new JLabel(""+ (i+1));
+			lblFencerNums[i].setVisible(false); 	// dont display it until we know how many fencers we have
 			pnlLeft.add(txtFencers[i]);
 			pnlLeft.add(lblFencerNums[i]);
 		}
@@ -193,12 +191,11 @@ public class Touche {
 		pnlCenter.setBounds(226, 108, 233, 206);
 		pnlScores.add(pnlCenter);
 		pnlCenter.setLayout(new GridLayout(8, 8, 0, 0));
-
 		JTextField [][] txtGrid = new JTextField[8][8];
 		for (int i = 0; i < 8; i++) {
 			for (int j = 0; j < 8; j++) {
 				txtGrid[i][j] = new JTextField(3);
-				txtGrid[i][j].setVisible(true);
+				txtGrid[i][j].setVisible(false);	// dont display it until we know how many fencers we have
 				txtGrid[i][j].setHorizontalAlignment(JTextField.CENTER);
 				if (i == j) {
 					txtGrid[i][j].setBackground(Color.BLACK);
@@ -214,23 +211,59 @@ public class Touche {
 		pnlRight.setBounds(469, 108, 163, 206);
 		pnlScores.add(pnlRight);
 		pnlRight.setLayout(new GridLayout(8, 5, 0, 0));
-
 		JTextField [][] txtCalcs = new JTextField[8][5];
 		for (int i = 0; i < 8; i++) {
 			for (int j = 0; j < 5; j++) {
 				txtCalcs[i][j] = new JTextField(3);
-				txtCalcs[i][j].setVisible(true);
+				txtCalcs[i][j].setVisible(false);	// dont display it until we know how many fencers we have
+				//txtCalcs[i][j].setEditable(false);
 				pnlRight.add(txtCalcs[i][j]);
 			}
 		}
 
+		
+		// Calculate Indicator Button Panel
+		JPanel pnlButtons = new JPanel();
+		pnlButtons.setBounds(642, 108, 153, 206);
+		pnlScores.add(pnlButtons);
+		pnlButtons.setLayout(new GridLayout(8, 1, 0, 0));
+		
+		JButton btnF1 = new JButton("Calculate Indicator");
+		pnlButtons.add(btnF1);
+		
+		JButton btnF2 = new JButton("Calculate Indicator");
+		pnlButtons.add(btnF2);
+		
+		JButton btnF3 = new JButton("Calculate Indicator");
+		pnlButtons.add(btnF3);
+		
+		JButton btnF4 = new JButton("Calculate Indicator");
+		pnlButtons.add(btnF4);
+		
+		JButton btnF5 = new JButton("Calculate Indicator");
+		btnF5.setVisible(false); 	// dont display it until we know how many fencers we have
+		pnlButtons.add(btnF5);
+		
+		JButton btnF6 = new JButton("Calculate Indicator");
+		btnF6.setVisible(false); 	// dont display it until we know how many fencers we have
+		pnlButtons.add(btnF6);
+		
+		JButton btnF7 = new JButton("Calculate Indicator");
+		btnF7.setVisible(false); 	// dont display it until we know how many fencers we have
+		pnlButtons.add(btnF7);
+		
+		JButton btnF8 = new JButton("Calculate Indicator");
+		btnF8.setVisible(false); 	// dont display it until we know how many fencers we have
+		pnlButtons.add(btnF8);
+		
+		
 		
 		// LISTENER: Tournament panel OK button. 
 		
 		btnTournamentOK.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
-				// Generate Tournament obj
+				// Generate Tournament object
 				
 				Tournament tournament = new Tournament();
 				tournament.setTournamentName(txtTournamentName.getText());
@@ -253,8 +286,50 @@ public class Touche {
 				lblTournamentName.setText(tournament.getTournamentName());
 				
 				
+				// Generate the tableau based on the number of fencers by setting fields visible
+				for (int i = 0; i < tournament.getNumFencers(); i++) {
+					txtGridColNums[i].setVisible(true);
+					txtFencers[i].setVisible(true);
+					lblFencerNums[i].setVisible(true);
+					if (i < 5) txtCalcColNames[i].setVisible(true);
+					for (int j = 0; j < tournament.getNumFencers(); j++) {
+						txtGrid[i][j].setVisible(true);
+						if (j < 5) txtCalcs[i][j].setVisible(true);
+					}
+				}
+				// Set buttons visible if more than 4 fencers
+				
+				switch (tournament.getNumFencers()) {
+				case 5: 
+					btnF5.setVisible(true);	
+					break;
+				case 6: 
+					btnF5.setVisible(true);	
+					btnF6.setVisible(true);
+					break;
+				case 7: 
+					btnF5.setVisible(true);	
+					btnF6.setVisible(true);
+					btnF7.setVisible(true);
+					break;
+				case 8: 
+					btnF5.setVisible(true);
+					btnF6.setVisible(true);
+					btnF7.setVisible(true);
+					btnF8.setVisible(true);
+					break;
+				default: 
+					break;
+				}
+
+				
+				
+				
+				
 			}
 		});
+
+		
 		
 	}
 }
