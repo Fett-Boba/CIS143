@@ -40,13 +40,14 @@ public class Tester {
 			f.setIndicator(f.calculateIndicator());
 			
 			fencerList.add(f);
-			//System.out.println(f.toString());
+			System.out.println(f.toString());
 		}
 
 		// How do I get at the objects in the array now???
 		
 //		System.out.println(fencerList.get(0).toString());
-		System.out.println(fencerList.get(3).getFencerNum());
+//		System.out.println(fencerList.get(3).getFencerNum());
+		
 		
 				
 		

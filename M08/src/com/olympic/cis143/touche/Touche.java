@@ -58,6 +58,8 @@ public class Touche {
 	private JTextField [] txtFencers = new JTextField[8];
 	private JTextField [][] txtGrid = new JTextField[8][8];
 	private JTextField [][] txtCalcs = new JTextField[8][5];
+	private List <Fencer> fencerList = new ArrayList<>();
+	 
 	
 	/**
 	 * Launch the application.
@@ -299,7 +301,17 @@ public class Touche {
 		JButton btnF8 = new JButton("Calculate Indicator");
 		btnF8.setVisible(false); 	// dont display it until we know how many fencers we have
 		pnlButtons.add(btnF8);
+		
+		// Trailer Sub Panel
+		
+		JPanel pnlTrailer = new JPanel();
+		pnlTrailer.setBounds(20, 323, 775, 81);
+		pnlScores.add(pnlTrailer);
+		
+		JButton btnCompletePool = new JButton("Complete Pool");
+		pnlTrailer.add(btnCompletePool);
 
+		
 		
 		// LISTENER: Tournament panel OK button. 
 		
@@ -373,6 +385,19 @@ public class Touche {
 			}
 		});
 
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		// LISTENER: Calculate indicator buttons.  
 		// Nice to have: make sure touches scored/received are completed, otherwise pop an error message. 
 		// Right now there is no validity checks :(
@@ -412,7 +437,9 @@ public class Touche {
 				f.setTouchesScored(f.calculateTouchesScored());
 				f.setTouchesReceived(f.calculateTouchesReceived());
 				f.setIndicator(f.calculateIndicator());
-
+				fencerList.add(f);		// add fencer object to an array list of fencers for later
+				
+				
 				// populate the calculations for indicators
 				for (int col = 0; col < 5; col++) {
 					int row = 0;
@@ -424,6 +451,7 @@ public class Touche {
 					default: txtCalcs[row][col].setText(""); break;
 					}
 				}
+				
 			}
 		});
 
@@ -462,7 +490,8 @@ public class Touche {
 				f.setTouchesScored(f.calculateTouchesScored());
 				f.setTouchesReceived(f.calculateTouchesReceived());
 				f.setIndicator(f.calculateIndicator());
-
+				fencerList.add(f);		// add fencer object to an array list of fencers for later
+				
 				// population the calculations for indicators
 				for (int col = 0; col < 5; col++) {
 					int row = 1;
@@ -513,7 +542,8 @@ public class Touche {
 				f.setTouchesScored(f.calculateTouchesScored());
 				f.setTouchesReceived(f.calculateTouchesReceived());
 				f.setIndicator(f.calculateIndicator());
-
+				fencerList.add(f);		// add fencer object to an array list of fencers for later
+				
 				// population the calculations for indicators
 				for (int col = 0; col < 5; col++) {
 					int row = 2;
@@ -565,7 +595,8 @@ public class Touche {
 				f.setTouchesScored(f.calculateTouchesScored());
 				f.setTouchesReceived(f.calculateTouchesReceived());
 				f.setIndicator(f.calculateIndicator());
-
+				fencerList.add(f);		// add fencer object to an array list of fencers for later
+				
 				// population the calculations for indicators
 				for (int col = 0; col < 5; col++) {
 					int row = 3;
@@ -617,7 +648,8 @@ public class Touche {
 				f.setTouchesScored(f.calculateTouchesScored());
 				f.setTouchesReceived(f.calculateTouchesReceived());
 				f.setIndicator(f.calculateIndicator());
-
+				fencerList.add(f);		// add fencer object to an array list of fencers for later
+				
 				// population the calculations for indicators
 				for (int col = 0; col < 5; col++) {
 					int row = 4;
@@ -669,7 +701,8 @@ public class Touche {
 				f.setTouchesScored(f.calculateTouchesScored());
 				f.setTouchesReceived(f.calculateTouchesReceived());
 				f.setIndicator(f.calculateIndicator());
-
+				fencerList.add(f);		// add fencer object to an array list of fencers for later
+				
 				// population the calculations for indicators
 				for (int col = 0; col < 5; col++) {
 					int row = 5;
@@ -719,7 +752,8 @@ public class Touche {
 				f.setTouchesScored(f.calculateTouchesScored());
 				f.setTouchesReceived(f.calculateTouchesReceived());
 				f.setIndicator(f.calculateIndicator());
-
+				fencerList.add(f);		// add fencer object to an array list of fencers for later
+				
 				// population the calculations for indicators
 				for (int col = 0; col < 5; col++) {
 					int row = 6;
@@ -769,7 +803,8 @@ public class Touche {
 				f.setTouchesScored(f.calculateTouchesScored());
 				f.setTouchesReceived(f.calculateTouchesReceived());
 				f.setIndicator(f.calculateIndicator());
-
+				fencerList.add(f);		// add fencer object to an array list of fencers for later
+				
 				// populate the calculations for indicators
 				for (int col = 0; col < 5; col++) {
 					int row = 7;
@@ -784,7 +819,13 @@ public class Touche {
 
 			}
 		});
-
 		
+		
+		btnCompletePool.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.out.println("Complete Pools clicked ");
+			}
+		});
+
 	}
 }

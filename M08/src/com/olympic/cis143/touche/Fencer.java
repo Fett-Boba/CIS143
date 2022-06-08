@@ -136,7 +136,7 @@ public class Fencer {
 
 	@Override
 	public String toString() {
-		return "FencerBetter [fencerNum=" + fencerNum + ", name=" + name + ", alTs=" + alTs + ", alTr=" + alTr
+		return "Fencer [fencerNum=" + fencerNum + ", name=" + name + ", alTs=" + alTs + ", alTr=" + alTr
 				+ ", victories=" + victories + ", touchesScored=" + touchesScored + ", touchesReceived="
 				+ touchesReceived + ", indicator=" + indicator + ", place=" + place + "]";
 	}
