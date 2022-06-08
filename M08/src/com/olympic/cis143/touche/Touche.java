@@ -1,5 +1,32 @@
 package com.olympic.cis143.touche;
 
+
+/*
+ *  Still brutishly brute forced and fugly, but now it is a little less
+ *  hard coded.  
+ *  
+ *  Priorities: 
+ *  
+ *  1. Need to calculate the places.  Ridiculous that I don't have an immediate
+ *  idea of how to approach.  Need to ponder a key/value hashmap or something 
+ *  get out of array brain maybe. 
+ *  
+ *  2. Need to do something totally different with the button 
+ *  listeners since they are identical except for two lines. There absolutely   
+ *  is a better way.  I just need to research implementing listeners.
+ *   
+ *  3. Validity checks would be good too (i.e. isValid method)
+ *  	- 0 <= score <= 5
+ *  	- no empties
+ *  	- no non numeric.
+ *  
+ *  4. Super nice to have would be to get rid of the individual calculate
+ *  buttons, and automatically detect when a user has completed a row or column.
+ *  Maybe I could use the action where it knows when a field has been entered 
+ *  or exited and then check the whole row for valid scores.
+ */
+
+
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
@@ -15,6 +42,7 @@ import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
@@ -26,7 +54,11 @@ public class Touche {
 	private JTextField txtTournamentName;
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 	private JTextField txtName;
-
+	private int numFencers;
+	private JTextField [] txtFencers = new JTextField[8];
+	private JTextField [][] txtGrid = new JTextField[8][8];
+	private JTextField [][] txtCalcs = new JTextField[8][5];
+	
 	/**
 	 * Launch the application.
 	 */
@@ -50,6 +82,17 @@ public class Touche {
 		initialize();
 	}
 
+	// Check if valid numerics entered for bouts.  Nice to have (time constraint).
+	private boolean isValid(String s) {
+		try {
+			 Integer.parseInt(s);
+			 return true;
+		} catch (NumberFormatException e) {
+			return false;
+		}
+	}
+	
+	
 	/**
 	 * Initialize the contents of the frame.
 	 */
@@ -70,7 +113,6 @@ public class Touche {
 		pnlTournament.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
 		txtTournamentName = new JTextField();
-		//txtTournamentName.setBorder(new EmptyBorder(0, 0, 0, 0));
 		txtTournamentName.setText("My Tournament");
 		pnlTournament.add(txtTournamentName);
 		txtTournamentName.setColumns(20);
@@ -108,8 +150,9 @@ public class Touche {
 		
 		
 		// Header subpanel
+		
 		JPanel pnlHeader = new JPanel();
-		pnlHeader.setBounds(20, 11, 612, 56);
+		pnlHeader.setBounds(20, 11, 775, 56);
 		pnlScores.add(pnlHeader);
 		pnlHeader.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 		
@@ -117,6 +160,7 @@ public class Touche {
 		lblTournamentName.setFont(new Font("Tahoma", Font.BOLD, 15));
 		pnlHeader.add(lblTournamentName);
 
+		
 		// Subpanel for "Names" text field
 		JPanel pnlName = new JPanel();
 		pnlName.setBounds(20, 78, 196, 26);
@@ -130,11 +174,14 @@ public class Touche {
 		txtName.setBorder(new EmptyBorder(0, 0, 0, 0));
 		pnlName.add(txtName);
 
+		
 		// Subpanel for Grid column numbers
+		
 		JPanel pnlGridNums = new JPanel();
 		pnlGridNums.setBounds(226, 78, 233, 26);
 		pnlScores.add(pnlGridNums);
 		pnlGridNums.setLayout(new GridLayout(0, 8, 0, 0));
+		
 		JTextField [] txtGridColNums = new JTextField[8];
 		for (int i = 0; i < 8; i++) {
 			txtGridColNums[i] = new JTextField(3);
@@ -149,10 +196,12 @@ public class Touche {
 		
 		
 		// Subpanel for calculations column names
+		
 		JPanel pnlScoreCalcs = new JPanel();
 		pnlScoreCalcs.setBounds(467, 78, 165, 26);
 		pnlScores.add(pnlScoreCalcs);
 		pnlScoreCalcs.setLayout(new GridLayout(0, 5, 0, 0));
+		
 		JTextField[] txtCalcColNames = new JTextField[5];
 		for (int i = 0; i < 5; i++) {
 			txtCalcColNames[i] = new JTextField(3);
@@ -171,10 +220,10 @@ public class Touche {
 		
 		
 		// Left subpanel (Fencer names and numbers)
+		
 		JPanel pnlLeft = new JPanel();
 		pnlLeft.setBounds(20, 108, 196, 206);
 		pnlScores.add(pnlLeft);
-		JTextField [] txtFencers  = new JTextField[8] ;
 		JLabel [] lblFencerNums = new JLabel[8];
 		for (int i = 0; i < 8; i++) {			
 			txtFencers[i] = new JTextField(15);
@@ -191,7 +240,6 @@ public class Touche {
 		pnlCenter.setBounds(226, 108, 233, 206);
 		pnlScores.add(pnlCenter);
 		pnlCenter.setLayout(new GridLayout(8, 8, 0, 0));
-		JTextField [][] txtGrid = new JTextField[8][8];
 		for (int i = 0; i < 8; i++) {
 			for (int j = 0; j < 8; j++) {
 				txtGrid[i][j] = new JTextField(3);
@@ -204,23 +252,19 @@ public class Touche {
 				pnlCenter.add(txtGrid[i][j]);
 			}
 		}
-
 		
 		// Right Subpanel (Calculations)
 		JPanel pnlRight = new JPanel();
 		pnlRight.setBounds(469, 108, 163, 206);
 		pnlScores.add(pnlRight);
 		pnlRight.setLayout(new GridLayout(8, 5, 0, 0));
-		JTextField [][] txtCalcs = new JTextField[8][5];
 		for (int i = 0; i < 8; i++) {
 			for (int j = 0; j < 5; j++) {
 				txtCalcs[i][j] = new JTextField(3);
 				txtCalcs[i][j].setVisible(false);	// dont display it until we know how many fencers we have
-				//txtCalcs[i][j].setEditable(false);
 				pnlRight.add(txtCalcs[i][j]);
 			}
 		}
-
 		
 		// Calculate Indicator Button Panel
 		JPanel pnlButtons = new JPanel();
@@ -255,8 +299,7 @@ public class Touche {
 		JButton btnF8 = new JButton("Calculate Indicator");
 		btnF8.setVisible(false); 	// dont display it until we know how many fencers we have
 		pnlButtons.add(btnF8);
-		
-		
+
 		
 		// LISTENER: Tournament panel OK button. 
 		
@@ -279,26 +322,32 @@ public class Touche {
 				} else {
 					tournament.setNumFencers(8);
 				}
-				
+				numFencers = tournament.getNumFencers();  
 				System.out.println(tournament.toString());
 				pnlTournament.setVisible(false);
 				pnlScores.setVisible(true);
 				lblTournamentName.setText(tournament.getTournamentName());
-				
+		
 				
 				// Generate the tableau based on the number of fencers by setting fields visible
+				
 				for (int i = 0; i < tournament.getNumFencers(); i++) {
 					txtGridColNums[i].setVisible(true);
 					txtFencers[i].setVisible(true);
 					lblFencerNums[i].setVisible(true);
-					if (i < 5) txtCalcColNames[i].setVisible(true);
 					for (int j = 0; j < tournament.getNumFencers(); j++) {
 						txtGrid[i][j].setVisible(true);
-						if (j < 5) txtCalcs[i][j].setVisible(true);
 					}
 				}
-				// Set buttons visible if more than 4 fencers
-				
+				// Probably could incorporate into above loop but I have a funky bug 
+				// when # of fencers = 4 with the places column not displaying. Research later
+				for (int i = 0; i < tournament.getNumFencers(); i++) {
+					for (int j = 0; j <5; j++) {
+						txtCalcs[i][j].setVisible(true);
+						txtCalcColNames[j].setVisible(true);
+					}
+				}
+				// Set buttons visible as needed when more than 4 fencers
 				switch (tournament.getNumFencers()) {
 				case 5: 
 					btnF5.setVisible(true);	
@@ -321,15 +370,421 @@ public class Touche {
 				default: 
 					break;
 				}
+			}
+		});
 
+		// LISTENER: Calculate indicator buttons.  
+		// Nice to have: make sure touches scored/received are completed, otherwise pop an error message. 
+		// Right now there is no validity checks :(
+		// And there MUST be a better way to do listeners than this.  Way too repetitive.  But later, if time permits
+
+		btnF1.addActionListener(new ActionListener()  {
+			public void actionPerformed(ActionEvent e) {
+				List <Integer> scoresRow = new ArrayList<>();
+				List <Integer> scoresCol = new ArrayList<>();
+				Fencer f = new Fencer();
+				f.setFencerNum(1);
+				f.setName(txtName.getText());
 				
+				// probably a crafter way to get touches scored and touches rec'd 
+				// in one for loop but need time to ponder flipping the row/col... Doing it with 2 loops for now
+				for (int col = 0; col < numFencers; col++) {
+					int row = f.getFencerNum()-1;
+					int score = 0;
+					if (! (row == col)) {
+						score = Integer.parseInt(txtGrid[row][col].getText());
+						scoresRow.add(score);
+					}
+				}
+				for (int row = 0; row < numFencers; row++) {
+					int col = f.getFencerNum()-1;
+					int score = 0;
+					if (! (row == col)) {
+						score = Integer.parseInt(txtGrid[row][col].getText());
+						scoresCol.add(score);
+					}
+				}
 				
+				// populate the Fencer obj
+				f.setAlTs(scoresRow);
+				f.setAlTr(scoresCol);
+				f.setVictories(f.calculateVictories());
+				f.setTouchesScored(f.calculateTouchesScored());
+				f.setTouchesReceived(f.calculateTouchesReceived());
+				f.setIndicator(f.calculateIndicator());
+
+				// populate the calculations for indicators
+				for (int col = 0; col < 5; col++) {
+					int row = 0;
+					switch (col) {
+					case 0:	txtCalcs[row][col].setText(String.valueOf(f.getVictories())); break; 
+					case 1:	txtCalcs[row][col].setText(String.valueOf(f.getTouchesScored())); break;
+					case 2:	txtCalcs[row][col].setText(String.valueOf(f.getTouchesReceived())); break;
+					case 3:	txtCalcs[row][col].setText(String.valueOf(f.getIndicator())); break;
+					default: txtCalcs[row][col].setText(""); break;
+					}
+				}
+			}
+		});
+
+		btnF2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+				List <Integer> scoresRow = new ArrayList<>();
+				List <Integer> scoresCol = new ArrayList<>();
+				Fencer f = new Fencer();
+				f.setFencerNum(2);
+				f.setName(txtName.getText());
 				
+				// probably a craftier way to get touches scored and touches rec'd 
+				// in one for loop but need time to ponder flipping the row/col... Doing it with 2 loops for now
+				for (int col = 0; col < numFencers; col++) {
+					int row = f.getFencerNum()-1;
+					int score = 0;
+					if (! (row == col)) {
+						score = Integer.parseInt(txtGrid[row][col].getText());
+						scoresRow.add(score);
+					}
+				}
+				for (int row = 0; row < numFencers; row++) {
+					int col = f.getFencerNum()-1;
+					int score = 0;
+					if (! (row == col)) {
+						score = Integer.parseInt(txtGrid[row][col].getText());
+						scoresCol.add(score);
+					}
+				}
+				
+				// populate the Fencer obj
+				f.setAlTs(scoresRow);
+				f.setAlTr(scoresCol);
+				f.setVictories(f.calculateVictories());
+				f.setTouchesScored(f.calculateTouchesScored());
+				f.setTouchesReceived(f.calculateTouchesReceived());
+				f.setIndicator(f.calculateIndicator());
+
+				// population the calculations for indicators
+				for (int col = 0; col < 5; col++) {
+					int row = 1;
+					switch (col) {
+					case 0:	txtCalcs[row][col].setText(String.valueOf(f.getVictories())); break; 
+					case 1:	txtCalcs[row][col].setText(String.valueOf(f.getTouchesScored())); break;
+					case 2:	txtCalcs[row][col].setText(String.valueOf(f.getTouchesReceived())); break;
+					case 3:	txtCalcs[row][col].setText(String.valueOf(f.getIndicator())); break;
+					default: txtCalcs[row][col].setText(""); break;
+					}
+				}
+			
+			}
+		});
+
+		btnF3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				List <Integer> scoresRow = new ArrayList<>();
+				List <Integer> scoresCol = new ArrayList<>();
+				Fencer f = new Fencer();
+				f.setFencerNum(3);
+				f.setName(txtName.getText());
+				
+				// probably a craftier way to get touches scored and touches rec'd 
+				// in one for loop but need time to ponder flipping the row/col... Doing it with 2 loops for now
+				for (int col = 0; col < numFencers; col++) {
+					int row = f.getFencerNum()-1;
+					int score = 0;
+					if (! (row == col)) {
+						score = Integer.parseInt(txtGrid[row][col].getText());
+						scoresRow.add(score);
+					}
+				}
+				for (int row = 0; row < numFencers; row++) {
+					int col = f.getFencerNum()-1;
+					int score = 0;
+					if (! (row == col)) {
+						score = Integer.parseInt(txtGrid[row][col].getText());
+						scoresCol.add(score);
+					}
+				}
+				
+				// populate the Fencer obj
+				f.setAlTs(scoresRow);
+				f.setAlTr(scoresCol);
+				f.setVictories(f.calculateVictories());
+				f.setTouchesScored(f.calculateTouchesScored());
+				f.setTouchesReceived(f.calculateTouchesReceived());
+				f.setIndicator(f.calculateIndicator());
+
+				// population the calculations for indicators
+				for (int col = 0; col < 5; col++) {
+					int row = 2;
+					switch (col) {
+					case 0:	txtCalcs[row][col].setText(String.valueOf(f.getVictories())); break; 
+					case 1:	txtCalcs[row][col].setText(String.valueOf(f.getTouchesScored())); break;
+					case 2:	txtCalcs[row][col].setText(String.valueOf(f.getTouchesReceived())); break;
+					case 3:	txtCalcs[row][col].setText(String.valueOf(f.getIndicator())); break;
+					default: txtCalcs[row][col].setText(""); break;
+					}
+				}
+
 				
 			}
 		});
 
-		
+		btnF4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+
+				List <Integer> scoresRow = new ArrayList<>();
+				List <Integer> scoresCol = new ArrayList<>();
+				Fencer f = new Fencer();
+				f.setFencerNum(4);
+				f.setName(txtName.getText());
+				
+				// probably a craftier way to get touches scored and touches rec'd 
+				// in one for loop but need time to ponder flipping the row/col... Doing it with 2 loops for now
+				for (int col = 0; col < numFencers; col++) {
+					int row = f.getFencerNum()-1;
+					int score = 0;
+					if (! (row == col)) {
+						score = Integer.parseInt(txtGrid[row][col].getText());
+						scoresRow.add(score);
+					}
+				}
+				for (int row = 0; row < numFencers; row++) {
+					int col = f.getFencerNum()-1;
+					int score = 0;
+					if (! (row == col)) {
+						score = Integer.parseInt(txtGrid[row][col].getText());
+						scoresCol.add(score);
+					}
+				}
+				
+				// populate the Fencer obj
+				f.setAlTs(scoresRow);
+				f.setAlTr(scoresCol);
+				f.setVictories(f.calculateVictories());
+				f.setTouchesScored(f.calculateTouchesScored());
+				f.setTouchesReceived(f.calculateTouchesReceived());
+				f.setIndicator(f.calculateIndicator());
+
+				// population the calculations for indicators
+				for (int col = 0; col < 5; col++) {
+					int row = 3;
+					switch (col) {
+					case 0:	txtCalcs[row][col].setText(String.valueOf(f.getVictories())); break; 
+					case 1:	txtCalcs[row][col].setText(String.valueOf(f.getTouchesScored())); break;
+					case 2:	txtCalcs[row][col].setText(String.valueOf(f.getTouchesReceived())); break;
+					case 3:	txtCalcs[row][col].setText(String.valueOf(f.getIndicator())); break;
+					default: txtCalcs[row][col].setText(""); break;
+					}
+				}
+
+				
+			}
+		});
+
+		btnF5.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				List <Integer> scoresRow = new ArrayList<>();
+				List <Integer> scoresCol = new ArrayList<>();
+				Fencer f = new Fencer();
+				f.setFencerNum(5);
+				f.setName(txtName.getText());
+				
+				// probably a craftier way to get touches scored and touches rec'd 
+				// in one for loop but need time to ponder flipping the row/col... Doing it with 2 loops for now
+				for (int col = 0; col < numFencers; col++) {
+					int row = f.getFencerNum()-1;
+					int score = 0;
+					if (! (row == col)) {
+						score = Integer.parseInt(txtGrid[row][col].getText());
+						scoresRow.add(score);
+					}
+				}
+				for (int row = 0; row < numFencers; row++) {
+					int col = f.getFencerNum()-1;
+					int score = 0;
+					if (! (row == col)) {
+						score = Integer.parseInt(txtGrid[row][col].getText());
+						scoresCol.add(score);
+					}
+				}
+				
+				// populate the Fencer obj
+				f.setAlTs(scoresRow);
+				f.setAlTr(scoresCol);
+				f.setVictories(f.calculateVictories());
+				f.setTouchesScored(f.calculateTouchesScored());
+				f.setTouchesReceived(f.calculateTouchesReceived());
+				f.setIndicator(f.calculateIndicator());
+
+				// population the calculations for indicators
+				for (int col = 0; col < 5; col++) {
+					int row = 4;
+					switch (col) {
+					case 0:	txtCalcs[row][col].setText(String.valueOf(f.getVictories())); break; 
+					case 1:	txtCalcs[row][col].setText(String.valueOf(f.getTouchesScored())); break;
+					case 2:	txtCalcs[row][col].setText(String.valueOf(f.getTouchesReceived())); break;
+					case 3:	txtCalcs[row][col].setText(String.valueOf(f.getIndicator())); break;
+					default: txtCalcs[row][col].setText(""); break;
+					}
+				}
+
+				
+			}
+		});
+
+		btnF6.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				
+				List <Integer> scoresRow = new ArrayList<>();
+				List <Integer> scoresCol = new ArrayList<>();
+				Fencer f = new Fencer();
+				f.setFencerNum(6);
+				f.setName(txtName.getText());
+				
+				// probably a craftier way to get touches scored and touches rec'd 
+				// in one for loop but need time to ponder flipping the row/col... Doing it with 2 loops for now
+				for (int col = 0; col < numFencers; col++) {
+					int row = f.getFencerNum()-1;
+					int score = 0;
+					if (! (row == col)) {
+						score = Integer.parseInt(txtGrid[row][col].getText());
+						scoresRow.add(score);
+					}
+				}
+				for (int row = 0; row < numFencers; row++) {
+					int col = f.getFencerNum()-1;
+					int score = 0;
+					if (! (row == col)) {
+						score = Integer.parseInt(txtGrid[row][col].getText());
+						scoresCol.add(score);
+					}
+				}
+				
+				// populate the Fencer obj
+				f.setAlTs(scoresRow);
+				f.setAlTr(scoresCol);
+				f.setVictories(f.calculateVictories());
+				f.setTouchesScored(f.calculateTouchesScored());
+				f.setTouchesReceived(f.calculateTouchesReceived());
+				f.setIndicator(f.calculateIndicator());
+
+				// population the calculations for indicators
+				for (int col = 0; col < 5; col++) {
+					int row = 5;
+					switch (col) {
+					case 0:	txtCalcs[row][col].setText(String.valueOf(f.getVictories())); break; 
+					case 1:	txtCalcs[row][col].setText(String.valueOf(f.getTouchesScored())); break;
+					case 2:	txtCalcs[row][col].setText(String.valueOf(f.getTouchesReceived())); break;
+					case 3:	txtCalcs[row][col].setText(String.valueOf(f.getIndicator())); break;
+					default: txtCalcs[row][col].setText(""); break;
+					}
+				}
+
+			}
+		});
+
+		btnF7.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				List <Integer> scoresRow = new ArrayList<>();
+				List <Integer> scoresCol = new ArrayList<>();
+				Fencer f = new Fencer();
+				f.setFencerNum(7);
+				f.setName(txtName.getText());
+				
+				// probably a craftier way to get touches scored and touches rec'd 
+				// in one for loop but need time to ponder flipping the row/col... Doing it with 2 loops for now
+				for (int col = 0; col < numFencers; col++) {
+					int row = f.getFencerNum()-1;
+					int score = 0;
+					if (! (row == col)) {
+						score = Integer.parseInt(txtGrid[row][col].getText());
+						scoresRow.add(score);
+					}
+				}
+				for (int row = 0; row < numFencers; row++) {
+					int col = f.getFencerNum()-1;
+					int score = 0;
+					if (! (row == col)) {
+						score = Integer.parseInt(txtGrid[row][col].getText());
+						scoresCol.add(score);
+					}
+				}
+				
+				// populate the Fencer obj
+				f.setAlTs(scoresRow);
+				f.setAlTr(scoresCol);
+				f.setVictories(f.calculateVictories());
+				f.setTouchesScored(f.calculateTouchesScored());
+				f.setTouchesReceived(f.calculateTouchesReceived());
+				f.setIndicator(f.calculateIndicator());
+
+				// population the calculations for indicators
+				for (int col = 0; col < 5; col++) {
+					int row = 6;
+					switch (col) {
+					case 0:	txtCalcs[row][col].setText(String.valueOf(f.getVictories())); break; 
+					case 1:	txtCalcs[row][col].setText(String.valueOf(f.getTouchesScored())); break;
+					case 2:	txtCalcs[row][col].setText(String.valueOf(f.getTouchesReceived())); break;
+					case 3:	txtCalcs[row][col].setText(String.valueOf(f.getIndicator())); break;
+					default: txtCalcs[row][col].setText(""); break;
+					}
+				}
+
+			}
+		});
+
+		btnF8.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				List <Integer> scoresRow = new ArrayList<>();
+				List <Integer> scoresCol = new ArrayList<>();
+				Fencer f = new Fencer();
+				f.setFencerNum(8);
+				f.setName(txtName.getText());
+				
+				// probably a craftier way to get touches scored and touches rec'd 
+				// in one for loop but need time to ponder flipping the row/col... Doing it with 2 loops for now
+				for (int col = 0; col < numFencers; col++) {
+					int row = f.getFencerNum()-1;
+					int score = 0;
+					if (! (row == col)) {
+						score = Integer.parseInt(txtGrid[row][col].getText());
+						scoresRow.add(score);
+					}
+				}
+				for (int row = 0; row < numFencers; row++) {
+					int col = f.getFencerNum()-1;
+					int score = 0;
+					if (! (row == col)) {
+						score = Integer.parseInt(txtGrid[row][col].getText());
+						scoresCol.add(score);
+					}
+				}
+				
+				// populate the Fencer obj
+				f.setAlTs(scoresRow);
+				f.setAlTr(scoresCol);
+				f.setVictories(f.calculateVictories());
+				f.setTouchesScored(f.calculateTouchesScored());
+				f.setTouchesReceived(f.calculateTouchesReceived());
+				f.setIndicator(f.calculateIndicator());
+
+				// populate the calculations for indicators
+				for (int col = 0; col < 5; col++) {
+					int row = 7;
+					switch (col) {
+					case 0:	txtCalcs[row][col].setText(String.valueOf(f.getVictories())); break; 
+					case 1:	txtCalcs[row][col].setText(String.valueOf(f.getTouchesScored())); break;
+					case 2:	txtCalcs[row][col].setText(String.valueOf(f.getTouchesReceived())); break;
+					case 3:	txtCalcs[row][col].setText(String.valueOf(f.getIndicator())); break;
+					default: txtCalcs[row][col].setText(""); break;
+					}
+				}
+
+			}
+		});
+
 		
 	}
 }
