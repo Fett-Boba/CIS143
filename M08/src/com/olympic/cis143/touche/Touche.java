@@ -76,55 +76,23 @@ public class Touche implements ActionListener {
 	private List <Fencer> fencerList = new ArrayList<>();
 
 
-	/**
-	 * Launch the application.
-	 */
-	public static void main(String[] args) {
-		EventQueue.invokeLater(new Runnable() {
-			public void run() {
-				try {
-					Touche window = new Touche();
-					window.frame.setVisible(true);
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-			}
-		});
-	}
-
-	/**
-	 * Create the application.
-	 */
-	public Touche() {
-		initialize();
-	}
-
-	// Check if valid numerics entered for bouts.  Nice to have (time constraint).
-//	private boolean isValid(String s) {
-//		try {
-//			Integer.parseInt(s);
-//			return true;
-//		} catch (NumberFormatException e) {
-//			return false;
-//		}
-//	}
 
 
 	/**
-	 * Initialize the contents of the frame.
+	 * Setup the contents of the frame.
 	 */
 	private void initialize() {
 
-		// FRAME SETUP
-
+		// CONTENT: FRAME
+		
 		frame = new JFrame();
 		frame.setBounds(100, 100, 832, 450);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new CardLayout(0, 0));
 
-
-		// TOURNAMENT PANEL 
-
+		
+		// CONTENT: TOURNAMENT PANEL
+		
 		frame.getContentPane().add(pnlTournament, "tournament");
 		pnlTournament.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
 
@@ -150,12 +118,14 @@ public class Touche implements ActionListener {
 		pnlTournament.add(btnTournamentOK);
 
 
-		// SCORES PANEL 
+		// CONTENT: SCORES PANEL (split out into multiple subpanels to manage the tableau)
+		
 		frame.getContentPane().add(pnlScores, "scores");
 		pnlScores.setLayout(null);
 
-
-		// Header subpanel
+		
+		// SCORES PANEL: Header subpanel
+		
 		JPanel pnlHeader = new JPanel();
 		pnlHeader.setBounds(20, 11, 775, 56);
 		pnlScores.add(pnlHeader);
@@ -163,11 +133,13 @@ public class Touche implements ActionListener {
 		lblTournamentName.setFont(new Font("Tahoma", Font.BOLD, 15));
 		pnlHeader.add(lblTournamentName);
 
-
-		// Subpanel for "Names" text field
+		
+		// SCORES PANEL: Subpanel for "Names" text field
+		
 		JPanel pnlName = new JPanel();
 		pnlName.setBounds(20, 78, 196, 26);
 		pnlScores.add(pnlName);
+		
 		txtName = new JTextField();
 		txtName.setEditable(false);
 		txtName.setText("Name");
@@ -176,12 +148,14 @@ public class Touche implements ActionListener {
 		txtName.setBorder(new EmptyBorder(0, 0, 0, 0));
 		pnlName.add(txtName);
 
-
-		// Subpanel for Grid column numbers
+		
+		// SCORES PANEL: Subpanel for Grid column numbers
+		
 		JPanel pnlGridNums = new JPanel();
 		pnlGridNums.setBounds(226, 78, 233, 26);
 		pnlScores.add(pnlGridNums);
 		pnlGridNums.setLayout(new GridLayout(0, 8, 0, 0));
+
 		for (int i = 0; i < 8; i++) {
 			txtGridColNums[i] = new JTextField(3);
 			txtGridColNums[i].setText("" + (i+1));
@@ -193,14 +167,14 @@ public class Touche implements ActionListener {
 			pnlGridNums.add(txtGridColNums[i]);
 		}
 
-
-		// Subpanel for calculations column names
+		
+		// SCORES PANEL: Subpanel for calculations column names
+		
 		JPanel pnlScoreCalcs = new JPanel();
 		pnlScoreCalcs.setBounds(467, 78, 165, 26);
 		pnlScores.add(pnlScoreCalcs);
 		pnlScoreCalcs.setLayout(new GridLayout(0, 5, 0, 0));
 
-		//JTextField[] txtCalcColNames = new JTextField[5];
 		for (int i = 0; i < 5; i++) {
 			txtCalcColNames[i] = new JTextField(3);
 			txtCalcColNames[i].setFont(new Font("Tahoma", Font.BOLD, 11));
@@ -217,10 +191,12 @@ public class Touche implements ActionListener {
 		}
 
 
-		// Left subpanel (Fencer names and numbers)
+		// SCORES PANEL: Left subpanel (Fencer names and numbers)
+		
 		JPanel pnlLeft = new JPanel();
 		pnlLeft.setBounds(20, 108, 196, 206);
 		pnlScores.add(pnlLeft);
+		
 		for (int i = 0; i < 8; i++) {			
 			txtFencers[i] = new JTextField(15);
 			txtFencers[i].setVisible(false);		// dont display it until we know how many fencers we have
@@ -232,11 +208,13 @@ public class Touche implements ActionListener {
 		}
 
 		
-		// Center subpanel (Grid)
+		// SCORES PANEL: Center subpanel (Grid)
+		
 		JPanel pnlCenter = new JPanel();
 		pnlCenter.setBounds(226, 108, 233, 206);
 		pnlScores.add(pnlCenter);
 		pnlCenter.setLayout(new GridLayout(8, 8, 0, 0));
+		
 		for (int i = 0; i < 8; i++) {
 			for (int j = 0; j < 8; j++) {
 				txtGrid[i][j] = new JTextField(3);
@@ -250,11 +228,14 @@ public class Touche implements ActionListener {
 			}
 		}
 
-		// Right Subpanel (Calculations)
+		
+		// SCORES PANEL: Right Subpanel (Calculations)
+		
 		JPanel pnlRight = new JPanel();
 		pnlRight.setBounds(469, 108, 163, 206);
 		pnlScores.add(pnlRight);
 		pnlRight.setLayout(new GridLayout(8, 5, 0, 0));
+		
 		for (int i = 0; i < 8; i++) {
 			for (int j = 0; j < 5; j++) {
 				txtCalcs[i][j] = new JTextField(3);
@@ -264,7 +245,9 @@ public class Touche implements ActionListener {
 			}
 		}
 
-		// Calculate Indicator Button Panel
+		
+		// SCORES PANEL: Indicator Button Panel
+		
 		JPanel pnlButtons = new JPanel();
 		pnlButtons.setBounds(642, 108, 153, 206);
 		pnlScores.add(pnlButtons);
@@ -298,19 +281,27 @@ public class Touche implements ActionListener {
 		btnF8.setVisible(false); 	// dont display it until we know how many fencers we have
 		pnlButtons.add(btnF8);
 
-		// Trailer Sub Panel
+		
+		// SCORES PANEL: Trailer Sub Panel
+		
 		JPanel pnlTrailer = new JPanel();
 		pnlTrailer.setBounds(20, 323, 775, 81);
 		pnlScores.add(pnlTrailer);
+		
 		JButton btnCompletePool = new JButton("Complete Pool");
 		btnCompletePool.addActionListener(this);
 		pnlTrailer.add(btnCompletePool);
 
 	}
 
+	
+	// ACTIONS: Button Listener 
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
+
 		String buttonString = e.getActionCommand();
+		
 		if (buttonString.equals("Fencer1 Indicator")) {
 			calculateIndicator(1);
 		} else if (buttonString.equals("Fencer2 Indicator")) {
@@ -333,6 +324,9 @@ public class Touche implements ActionListener {
 			buildTableau();
 		}
 	}
+	
+	
+	// ACTIONS: create tableau based on the number of fencers
 	
 	public void buildTableau() {
 		
@@ -357,7 +351,7 @@ public class Touche implements ActionListener {
 		pnlScores.setVisible(true);
 		lblTournamentName.setText(tournament.getTournamentName());
 
-		// Generate the tableau based on the number of fencers by setting fields visible
+		// Generate the tableau setting fields visible based on number of fencers
 		for (int i = 0; i < tournament.getNumFencers(); i++) {
 			txtGridColNums[i].setVisible(true);
 			txtFencers[i].setVisible(true);
@@ -366,9 +360,10 @@ public class Touche implements ActionListener {
 				txtGrid[i][j].setVisible(true);
 			}
 		}
-		// Build out the calculation side of the tableau
+		// Build out the calculation side of the tableau.
 		// Probably could incorporate into above loop but I have a funky bug 
-		// when # of fencers = 4 with the places column not displaying. Research later
+		// when # of fencers = 4 with the places column not displaying. 
+		// Research/resolve if time permitting
 		for (int i = 0; i < tournament.getNumFencers(); i++) {
 			for (int j = 0; j <5; j++) {
 				txtCalcs[i][j].setVisible(true);
@@ -403,17 +398,22 @@ public class Touche implements ActionListener {
 	}
 	
 	
+	// ACTION: Caluclate indicator
+	
 	public void calculateIndicator(int fNum) {
 
 		List <Integer> scoresRow = new ArrayList<>();
 		List <Integer> scoresCol = new ArrayList<>();
+		
 		Fencer f = new Fencer();
 		f.setFencerNum(fNum);
 		f.setName(txtFencers[f.getFencerNum() - 1].getText());
 
-		// probably a craftier way to get touches scored and touches rec'd 
-		// in one for loop but need time to ponder flipping the row/col... Doing it with 2 loops for now
-		// since I am pressed for time
+		// Theres probably a craftier way to get touches scored and touches rec'd 
+		// into one for loop but need time to ponder how to flip the row/col... 
+		// Doing it with 2 loops for now since I am pressed for time.
+
+		// Touches Scored into the array list
 		for (int col = 0; col < numFencers; col++) {
 			int row = f.getFencerNum()-1;
 			int score = 0;
@@ -422,6 +422,7 @@ public class Touche implements ActionListener {
 				scoresRow.add(score);
 			}
 		}
+		// Touches received into the array list
 		for (int row = 0; row < numFencers; row++) {
 			int col = f.getFencerNum()-1;
 			int score = 0;
@@ -452,6 +453,13 @@ public class Touche implements ActionListener {
 		}
 	}
 	
+	// ACTION: Calculate what place the fencer is in.
+	// If the entire tableau is filled out and all indicators calculated, determine what 
+	// place the fencers came in. There is a minor bug that I have not resolved yet.  If 
+	// two (or more) fencers have the same number of victories and indicators, they are 
+	// supposed to tie for that place, and the next place is skipped. 
+	// Will try to fix, time permitting.
+	
 	public void calculatePlace() {
 		Collections.sort(fencerList, 
 			Comparator.comparingInt(Fencer::getVictories)
@@ -463,6 +471,29 @@ public class Touche implements ActionListener {
 			int fencerNum = fencerList.get(i).getFencerNum();
 			txtCalcs[fencerNum - 1][4].setText(String.valueOf(fencerList.get(i).getPlace()));
 		}
+	}
+	
+	/**
+	 * 	Main Driver
+	 */
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					Touche window = new Touche();
+					window.frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+
+	/**
+	 * Create the GUI.
+	 */
+	public Touche() {
+		initialize();
 	}
 	
 }
