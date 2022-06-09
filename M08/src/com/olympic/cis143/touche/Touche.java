@@ -107,7 +107,9 @@ public class Touche implements ActionListener {
 		pnlImage.setBackground(Color.WHITE);
 		
 		pnlTournament.add(pnlImage);
-		lblFencerImage.setIcon(new ImageIcon(Touche.class.getResource("/com/olympic/cis143/img/fencer400x245.png")));
+		pnlImage.setLayout(null);
+		lblFencerImage.setBounds(39, 5, 400, 245);
+		lblFencerImage.setIcon(new ImageIcon(Touche.class.getResource("/com/olympic/cis143/touche/img/fencer400x245.png")));
 		
 		pnlImage.add(lblFencerImage);
 		pnlTournamentInfo.setBounds(541, 29, 197, 224);
@@ -147,7 +149,7 @@ public class Touche implements ActionListener {
 		pnlImageLogo.setBounds(53, 281, 685, 100);
 		
 		pnlTournament.add(pnlImageLogo);
-		lblLogo.setIcon(new ImageIcon(Touche.class.getResource("/com/olympic/cis143/img/Touche.png")));
+		lblLogo.setIcon(new ImageIcon(Touche.class.getResource("/com/olympic/cis143/touche/img/Touche.png")));
 		
 		pnlImageLogo.add(lblLogo);
 		btnTournamentOK.addActionListener(this);
