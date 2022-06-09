@@ -36,6 +36,8 @@ import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import javax.swing.ButtonGroup;
@@ -59,8 +61,8 @@ public class Touche {
 	private JTextField [][] txtGrid = new JTextField[8][8];
 	private JTextField [][] txtCalcs = new JTextField[8][5];
 	private List <Fencer> fencerList = new ArrayList<>();
-	 
-	
+
+
 	/**
 	 * Launch the application.
 	 */
@@ -87,87 +89,87 @@ public class Touche {
 	// Check if valid numerics entered for bouts.  Nice to have (time constraint).
 	private boolean isValid(String s) {
 		try {
-			 Integer.parseInt(s);
-			 return true;
+			Integer.parseInt(s);
+			return true;
 		} catch (NumberFormatException e) {
 			return false;
 		}
 	}
-	
-	
+
+
 	/**
 	 * Initialize the contents of the frame.
 	 */
 	private void initialize() {
-		
+
 		// FRAME SETUP
-		
+
 		frame = new JFrame();
 		frame.setBounds(100, 100, 832, 450);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new CardLayout(0, 0));
-		
-		
+
+
 		// TOURNAMENT PANEL 
-		
+
 		JPanel pnlTournament = new JPanel();
 		frame.getContentPane().add(pnlTournament, "tournament");
 		pnlTournament.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-		
+
 		txtTournamentName = new JTextField();
 		txtTournamentName.setText("My Tournament");
 		pnlTournament.add(txtTournamentName);
 		txtTournamentName.setColumns(20);
-		
+
 		JRadioButton rb4 = new JRadioButton("4");
 		buttonGroup.add(rb4);
 		rb4.setSelected(true);
 		pnlTournament.add(rb4);
-		
+
 		JRadioButton rb5 = new JRadioButton("5");
 		buttonGroup.add(rb5);
 		pnlTournament.add(rb5);
-		
+
 		JRadioButton rb6 = new JRadioButton("6");
 		buttonGroup.add(rb6);
 		pnlTournament.add(rb6);
-		
+
 		JRadioButton rb7 = new JRadioButton("7");
 		buttonGroup.add(rb7);
 		pnlTournament.add(rb7);
-		
+
 		JRadioButton rb8 = new JRadioButton("8");
 		buttonGroup.add(rb8);
 		pnlTournament.add(rb8);
-		
+
 		JButton btnTournamentOK = new JButton("OK");
 		pnlTournament.add(btnTournamentOK);
-		
-		
+
+
 		// SCORES PANEL 
-		
+
 		JPanel pnlScores = new JPanel();
 		frame.getContentPane().add(pnlScores, "scores");
 		pnlScores.setLayout(null);
-		
-		
+
+
 		// Header subpanel
-		
+
 		JPanel pnlHeader = new JPanel();
 		pnlHeader.setBounds(20, 11, 775, 56);
 		pnlScores.add(pnlHeader);
 		pnlHeader.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-		
+
 		JLabel lblTournamentName = new JLabel("");
 		lblTournamentName.setFont(new Font("Tahoma", Font.BOLD, 15));
 		pnlHeader.add(lblTournamentName);
 
-		
+
 		// Subpanel for "Names" text field
 		JPanel pnlName = new JPanel();
 		pnlName.setBounds(20, 78, 196, 26);
 		pnlScores.add(pnlName);
-		
+
 		txtName = new JTextField();
 		txtName.setEditable(false);
 		txtName.setText("Name");
@@ -176,14 +178,14 @@ public class Touche {
 		txtName.setBorder(new EmptyBorder(0, 0, 0, 0));
 		pnlName.add(txtName);
 
-		
+
 		// Subpanel for Grid column numbers
-		
+
 		JPanel pnlGridNums = new JPanel();
 		pnlGridNums.setBounds(226, 78, 233, 26);
 		pnlScores.add(pnlGridNums);
 		pnlGridNums.setLayout(new GridLayout(0, 8, 0, 0));
-		
+
 		JTextField [] txtGridColNums = new JTextField[8];
 		for (int i = 0; i < 8; i++) {
 			txtGridColNums[i] = new JTextField(3);
@@ -195,15 +197,15 @@ public class Touche {
 			txtGridColNums[i].setVisible(false);	// dont display it until we know how many fencers we have
 			pnlGridNums.add(txtGridColNums[i]);
 		}
-		
-		
+
+
 		// Subpanel for calculations column names
-		
+
 		JPanel pnlScoreCalcs = new JPanel();
 		pnlScoreCalcs.setBounds(467, 78, 165, 26);
 		pnlScores.add(pnlScoreCalcs);
 		pnlScoreCalcs.setLayout(new GridLayout(0, 5, 0, 0));
-		
+
 		JTextField[] txtCalcColNames = new JTextField[5];
 		for (int i = 0; i < 5; i++) {
 			txtCalcColNames[i] = new JTextField(3);
@@ -219,10 +221,10 @@ public class Touche {
 			if (i == 4) txtCalcColNames[i].setText("Pl");
 			pnlScoreCalcs.add(txtCalcColNames[i]);
 		}
-		
-		
+
+
 		// Left subpanel (Fencer names and numbers)
-		
+
 		JPanel pnlLeft = new JPanel();
 		pnlLeft.setBounds(20, 108, 196, 206);
 		pnlScores.add(pnlLeft);
@@ -236,7 +238,7 @@ public class Touche {
 			pnlLeft.add(txtFencers[i]);
 			pnlLeft.add(lblFencerNums[i]);
 		}
-		
+
 		// Center subpanel (Grid)
 		JPanel pnlCenter = new JPanel();
 		pnlCenter.setBounds(226, 108, 233, 206);
@@ -254,7 +256,7 @@ public class Touche {
 				pnlCenter.add(txtGrid[i][j]);
 			}
 		}
-		
+
 		// Right Subpanel (Calculations)
 		JPanel pnlRight = new JPanel();
 		pnlRight.setBounds(469, 108, 163, 206);
@@ -267,59 +269,59 @@ public class Touche {
 				pnlRight.add(txtCalcs[i][j]);
 			}
 		}
-		
+
 		// Calculate Indicator Button Panel
 		JPanel pnlButtons = new JPanel();
 		pnlButtons.setBounds(642, 108, 153, 206);
 		pnlScores.add(pnlButtons);
 		pnlButtons.setLayout(new GridLayout(8, 1, 0, 0));
-		
+
 		JButton btnF1 = new JButton("Calculate Indicator");
 		pnlButtons.add(btnF1);
-		
+
 		JButton btnF2 = new JButton("Calculate Indicator");
 		pnlButtons.add(btnF2);
-		
+
 		JButton btnF3 = new JButton("Calculate Indicator");
 		pnlButtons.add(btnF3);
-		
+
 		JButton btnF4 = new JButton("Calculate Indicator");
 		pnlButtons.add(btnF4);
-		
+
 		JButton btnF5 = new JButton("Calculate Indicator");
 		btnF5.setVisible(false); 	// dont display it until we know how many fencers we have
 		pnlButtons.add(btnF5);
-		
+
 		JButton btnF6 = new JButton("Calculate Indicator");
 		btnF6.setVisible(false); 	// dont display it until we know how many fencers we have
 		pnlButtons.add(btnF6);
-		
+
 		JButton btnF7 = new JButton("Calculate Indicator");
 		btnF7.setVisible(false); 	// dont display it until we know how many fencers we have
 		pnlButtons.add(btnF7);
-		
+
 		JButton btnF8 = new JButton("Calculate Indicator");
 		btnF8.setVisible(false); 	// dont display it until we know how many fencers we have
 		pnlButtons.add(btnF8);
-		
+
 		// Trailer Sub Panel
-		
+
 		JPanel pnlTrailer = new JPanel();
 		pnlTrailer.setBounds(20, 323, 775, 81);
 		pnlScores.add(pnlTrailer);
-		
+
 		JButton btnCompletePool = new JButton("Complete Pool");
 		pnlTrailer.add(btnCompletePool);
 
-		
-		
+
+
 		// LISTENER: Tournament panel OK button. 
-		
+
 		btnTournamentOK.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
 				// Generate Tournament object
-				
+
 				Tournament tournament = new Tournament();
 				tournament.setTournamentName(txtTournamentName.getText());
 
@@ -335,14 +337,13 @@ public class Touche {
 					tournament.setNumFencers(8);
 				}
 				numFencers = tournament.getNumFencers();  
-				System.out.println(tournament.toString());
 				pnlTournament.setVisible(false);
 				pnlScores.setVisible(true);
 				lblTournamentName.setText(tournament.getTournamentName());
-		
-				
+
+
 				// Generate the tableau based on the number of fencers by setting fields visible
-				
+
 				for (int i = 0; i < tournament.getNumFencers(); i++) {
 					txtGridColNums[i].setVisible(true);
 					txtFencers[i].setVisible(true);
@@ -385,19 +386,19 @@ public class Touche {
 			}
 		});
 
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+
+
+
+
+
+
+
+
+
+
+
+
+
 		// LISTENER: Calculate indicator buttons.  
 		// Nice to have: make sure touches scored/received are completed, otherwise pop an error message. 
 		// Right now there is no validity checks :(
@@ -409,8 +410,8 @@ public class Touche {
 				List <Integer> scoresCol = new ArrayList<>();
 				Fencer f = new Fencer();
 				f.setFencerNum(1);
-				f.setName(txtName.getText());
-				
+				f.setName(txtFencers[f.getFencerNum() - 1].getText());
+
 				// probably a crafter way to get touches scored and touches rec'd 
 				// in one for loop but need time to ponder flipping the row/col... Doing it with 2 loops for now
 				for (int col = 0; col < numFencers; col++) {
@@ -429,7 +430,7 @@ public class Touche {
 						scoresCol.add(score);
 					}
 				}
-				
+
 				// populate the Fencer obj
 				f.setAlTs(scoresRow);
 				f.setAlTr(scoresCol);
@@ -438,8 +439,8 @@ public class Touche {
 				f.setTouchesReceived(f.calculateTouchesReceived());
 				f.setIndicator(f.calculateIndicator());
 				fencerList.add(f);		// add fencer object to an array list of fencers for later
-				
-				
+
+
 				// populate the calculations for indicators
 				for (int col = 0; col < 5; col++) {
 					int row = 0;
@@ -451,7 +452,7 @@ public class Touche {
 					default: txtCalcs[row][col].setText(""); break;
 					}
 				}
-				
+
 			}
 		});
 
@@ -462,8 +463,8 @@ public class Touche {
 				List <Integer> scoresCol = new ArrayList<>();
 				Fencer f = new Fencer();
 				f.setFencerNum(2);
-				f.setName(txtName.getText());
-				
+				f.setName(txtFencers[f.getFencerNum() - 1].getText());
+
 				// probably a craftier way to get touches scored and touches rec'd 
 				// in one for loop but need time to ponder flipping the row/col... Doing it with 2 loops for now
 				for (int col = 0; col < numFencers; col++) {
@@ -482,7 +483,7 @@ public class Touche {
 						scoresCol.add(score);
 					}
 				}
-				
+
 				// populate the Fencer obj
 				f.setAlTs(scoresRow);
 				f.setAlTr(scoresCol);
@@ -491,7 +492,7 @@ public class Touche {
 				f.setTouchesReceived(f.calculateTouchesReceived());
 				f.setIndicator(f.calculateIndicator());
 				fencerList.add(f);		// add fencer object to an array list of fencers for later
-				
+
 				// population the calculations for indicators
 				for (int col = 0; col < 5; col++) {
 					int row = 1;
@@ -503,19 +504,19 @@ public class Touche {
 					default: txtCalcs[row][col].setText(""); break;
 					}
 				}
-			
+
 			}
 		});
 
 		btnF3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+
 				List <Integer> scoresRow = new ArrayList<>();
 				List <Integer> scoresCol = new ArrayList<>();
 				Fencer f = new Fencer();
 				f.setFencerNum(3);
-				f.setName(txtName.getText());
-				
+				f.setName(txtFencers[f.getFencerNum() - 1].getText());
+
 				// probably a craftier way to get touches scored and touches rec'd 
 				// in one for loop but need time to ponder flipping the row/col... Doing it with 2 loops for now
 				for (int col = 0; col < numFencers; col++) {
@@ -534,7 +535,7 @@ public class Touche {
 						scoresCol.add(score);
 					}
 				}
-				
+
 				// populate the Fencer obj
 				f.setAlTs(scoresRow);
 				f.setAlTr(scoresCol);
@@ -543,7 +544,7 @@ public class Touche {
 				f.setTouchesReceived(f.calculateTouchesReceived());
 				f.setIndicator(f.calculateIndicator());
 				fencerList.add(f);		// add fencer object to an array list of fencers for later
-				
+
 				// population the calculations for indicators
 				for (int col = 0; col < 5; col++) {
 					int row = 2;
@@ -556,7 +557,7 @@ public class Touche {
 					}
 				}
 
-				
+
 			}
 		});
 
@@ -567,8 +568,8 @@ public class Touche {
 				List <Integer> scoresCol = new ArrayList<>();
 				Fencer f = new Fencer();
 				f.setFencerNum(4);
-				f.setName(txtName.getText());
-				
+				f.setName(txtFencers[f.getFencerNum() - 1].getText());
+
 				// probably a craftier way to get touches scored and touches rec'd 
 				// in one for loop but need time to ponder flipping the row/col... Doing it with 2 loops for now
 				for (int col = 0; col < numFencers; col++) {
@@ -587,7 +588,7 @@ public class Touche {
 						scoresCol.add(score);
 					}
 				}
-				
+
 				// populate the Fencer obj
 				f.setAlTs(scoresRow);
 				f.setAlTr(scoresCol);
@@ -596,7 +597,7 @@ public class Touche {
 				f.setTouchesReceived(f.calculateTouchesReceived());
 				f.setIndicator(f.calculateIndicator());
 				fencerList.add(f);		// add fencer object to an array list of fencers for later
-				
+
 				// population the calculations for indicators
 				for (int col = 0; col < 5; col++) {
 					int row = 3;
@@ -609,19 +610,19 @@ public class Touche {
 					}
 				}
 
-				
+
 			}
 		});
 
 		btnF5.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+
 				List <Integer> scoresRow = new ArrayList<>();
 				List <Integer> scoresCol = new ArrayList<>();
 				Fencer f = new Fencer();
 				f.setFencerNum(5);
-				f.setName(txtName.getText());
-				
+				f.setName(txtFencers[f.getFencerNum() - 1].getText());
+
 				// probably a craftier way to get touches scored and touches rec'd 
 				// in one for loop but need time to ponder flipping the row/col... Doing it with 2 loops for now
 				for (int col = 0; col < numFencers; col++) {
@@ -640,7 +641,7 @@ public class Touche {
 						scoresCol.add(score);
 					}
 				}
-				
+
 				// populate the Fencer obj
 				f.setAlTs(scoresRow);
 				f.setAlTr(scoresCol);
@@ -649,7 +650,7 @@ public class Touche {
 				f.setTouchesReceived(f.calculateTouchesReceived());
 				f.setIndicator(f.calculateIndicator());
 				fencerList.add(f);		// add fencer object to an array list of fencers for later
-				
+
 				// population the calculations for indicators
 				for (int col = 0; col < 5; col++) {
 					int row = 4;
@@ -662,19 +663,19 @@ public class Touche {
 					}
 				}
 
-				
+
 			}
 		});
 
 		btnF6.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
+
 				List <Integer> scoresRow = new ArrayList<>();
 				List <Integer> scoresCol = new ArrayList<>();
 				Fencer f = new Fencer();
 				f.setFencerNum(6);
-				f.setName(txtName.getText());
-				
+				f.setName(txtFencers[f.getFencerNum() - 1].getText());
+
 				// probably a craftier way to get touches scored and touches rec'd 
 				// in one for loop but need time to ponder flipping the row/col... Doing it with 2 loops for now
 				for (int col = 0; col < numFencers; col++) {
@@ -693,7 +694,7 @@ public class Touche {
 						scoresCol.add(score);
 					}
 				}
-				
+
 				// populate the Fencer obj
 				f.setAlTs(scoresRow);
 				f.setAlTr(scoresCol);
@@ -702,7 +703,7 @@ public class Touche {
 				f.setTouchesReceived(f.calculateTouchesReceived());
 				f.setIndicator(f.calculateIndicator());
 				fencerList.add(f);		// add fencer object to an array list of fencers for later
-				
+
 				// population the calculations for indicators
 				for (int col = 0; col < 5; col++) {
 					int row = 5;
@@ -724,8 +725,8 @@ public class Touche {
 				List <Integer> scoresCol = new ArrayList<>();
 				Fencer f = new Fencer();
 				f.setFencerNum(7);
-				f.setName(txtName.getText());
-				
+				f.setName(txtFencers[f.getFencerNum() - 1].getText());
+
 				// probably a craftier way to get touches scored and touches rec'd 
 				// in one for loop but need time to ponder flipping the row/col... Doing it with 2 loops for now
 				for (int col = 0; col < numFencers; col++) {
@@ -744,7 +745,7 @@ public class Touche {
 						scoresCol.add(score);
 					}
 				}
-				
+
 				// populate the Fencer obj
 				f.setAlTs(scoresRow);
 				f.setAlTr(scoresCol);
@@ -753,7 +754,7 @@ public class Touche {
 				f.setTouchesReceived(f.calculateTouchesReceived());
 				f.setIndicator(f.calculateIndicator());
 				fencerList.add(f);		// add fencer object to an array list of fencers for later
-				
+
 				// population the calculations for indicators
 				for (int col = 0; col < 5; col++) {
 					int row = 6;
@@ -775,8 +776,9 @@ public class Touche {
 				List <Integer> scoresCol = new ArrayList<>();
 				Fencer f = new Fencer();
 				f.setFencerNum(8);
-				f.setName(txtName.getText());
-				
+				f.setName(txtFencers[f.getFencerNum() - 1].getText());
+
+
 				// probably a craftier way to get touches scored and touches rec'd 
 				// in one for loop but need time to ponder flipping the row/col... Doing it with 2 loops for now
 				for (int col = 0; col < numFencers; col++) {
@@ -795,7 +797,7 @@ public class Touche {
 						scoresCol.add(score);
 					}
 				}
-				
+
 				// populate the Fencer obj
 				f.setAlTs(scoresRow);
 				f.setAlTr(scoresCol);
@@ -804,7 +806,7 @@ public class Touche {
 				f.setTouchesReceived(f.calculateTouchesReceived());
 				f.setIndicator(f.calculateIndicator());
 				fencerList.add(f);		// add fencer object to an array list of fencers for later
-				
+
 				// populate the calculations for indicators
 				for (int col = 0; col < 5; col++) {
 					int row = 7;
@@ -819,11 +821,23 @@ public class Touche {
 
 			}
 		});
-		
-		
+
+
 		btnCompletePool.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				System.out.println("Complete Pools clicked ");
+				
+				Collections.sort(fencerList, 
+					Comparator.comparingInt(Fencer::getVictories)
+					.thenComparingInt(Fencer::getIndicator).reversed());
+
+				for (int i = 0; i < numFencers; i++) {
+					fencerList.get(i).setPlace(i + 1);  // update the objects with place
+				}
+				
+				for (int i = 0; i < numFencers; i++) {
+					int fencerNum = fencerList.get(i).getFencerNum();
+					txtCalcs[fencerNum - 1][4].setText(String.valueOf(fencerList.get(i).getPlace()));
+				}
 			}
 		});
 
