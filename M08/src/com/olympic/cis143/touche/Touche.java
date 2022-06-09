@@ -38,6 +38,7 @@ import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
+import javax.swing.ImageIcon;
 
 public class Touche implements ActionListener {
 
@@ -74,8 +75,13 @@ public class Touche implements ActionListener {
 	private JTextField [][] txtGrid = new JTextField[8][8];
 	private JTextField [][] txtCalcs = new JTextField[8][5];
 	private List <Fencer> fencerList = new ArrayList<>();
-
-
+	private final JPanel pnlImage = new JPanel();
+	private final JPanel pnlTournamentInfo = new JPanel();
+	private final JLabel lblTname = new JLabel("Tournament Name:");
+	private final JLabel lblNFencers = new JLabel("Number of fencers in pool:");
+	private final JLabel lblFencerImage = new JLabel("");
+	private final JPanel pnlImageLogo = new JPanel();
+	private final JLabel lblLogo = new JLabel("");
 
 
 	/**
@@ -85,7 +91,8 @@ public class Touche implements ActionListener {
 
 		// CONTENT: FRAME
 		
-		frame = new JFrame();
+		frame = new JFrame("Touche");
+		frame.setResizable(false);
 		frame.setBounds(100, 100, 832, 450);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(new CardLayout(0, 0));
@@ -94,28 +101,57 @@ public class Touche implements ActionListener {
 		// CONTENT: TOURNAMENT PANEL
 		
 		frame.getContentPane().add(pnlTournament, "tournament");
-		pnlTournament.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
-
+		pnlTournament.setLayout(null);
+		pnlTournament.setBackground(Color.WHITE);
+		pnlImage.setBounds(53, 29, 478, 248);
+		pnlImage.setBackground(Color.WHITE);
+		
+		pnlTournament.add(pnlImage);
+		lblFencerImage.setIcon(new ImageIcon(Touche.class.getResource("/com/olympic/cis143/img/fencer400x245.png")));
+		
+		pnlImage.add(lblFencerImage);
+		pnlTournamentInfo.setBounds(541, 29, 197, 224);
+		
+		pnlTournament.add(pnlTournamentInfo);
+		pnlTournamentInfo.setLayout(new GridLayout(9, 1, 0, 0));
+		pnlTournamentInfo.setBackground(Color.WHITE);
+		
+		pnlTournamentInfo.add(lblTname);
+		
 		txtTournamentName = new JTextField();
+		pnlTournamentInfo.add(txtTournamentName);
 		txtTournamentName.setText("My Tournament");
-		pnlTournament.add(txtTournamentName);
 		txtTournamentName.setColumns(20);
-
+				
+		pnlTournamentInfo.add(lblNFencers);
 		buttonGroup.add(rb4);
+		rb4.setBackground(Color.WHITE);
+		pnlTournamentInfo.add(rb4);
 		rb4.setSelected(true);
-		pnlTournament.add(rb4);
+		rb5.setBackground(Color.WHITE);
+		pnlTournamentInfo.add(rb5);
 		buttonGroup.add(rb5);
-		pnlTournament.add(rb5);
+		rb6.setBackground(Color.WHITE);
+		pnlTournamentInfo.add(rb6);
 		buttonGroup.add(rb6);
-		pnlTournament.add(rb6);
+		rb7.setBackground(Color.WHITE);
+		pnlTournamentInfo.add(rb7);
 		buttonGroup.add(rb7);
-		pnlTournament.add(rb7);
+		rb8.setBackground(Color.WHITE);
+		pnlTournamentInfo.add(rb8);
 		buttonGroup.add(rb8);
-		pnlTournament.add(rb8);
-
+						
 		JButton btnTournamentOK = new JButton("OK");
-		btnTournamentOK.addActionListener(this);			
-		pnlTournament.add(btnTournamentOK);
+		pnlTournamentInfo.add(btnTournamentOK);
+		pnlImageLogo.setBackground(Color.WHITE);
+		pnlImageLogo.setBounds(53, 281, 685, 100);
+		
+		pnlTournament.add(pnlImageLogo);
+		lblLogo.setIcon(new ImageIcon(Touche.class.getResource("/com/olympic/cis143/img/Touche.png")));
+		
+		pnlImageLogo.add(lblLogo);
+		btnTournamentOK.addActionListener(this);
+		pnlScores.setBackground(Color.WHITE);
 
 
 		// CONTENT: SCORES PANEL (split out into multiple subpanels to manage the tableau)
@@ -127,6 +163,7 @@ public class Touche implements ActionListener {
 		// SCORES PANEL: Header subpanel
 		
 		JPanel pnlHeader = new JPanel();
+		pnlHeader.setBackground(Color.WHITE);
 		pnlHeader.setBounds(20, 11, 775, 56);
 		pnlScores.add(pnlHeader);
 		pnlHeader.setLayout(new FlowLayout(FlowLayout.CENTER, 5, 5));
@@ -137,10 +174,12 @@ public class Touche implements ActionListener {
 		// SCORES PANEL: Subpanel for "Names" text field
 		
 		JPanel pnlName = new JPanel();
+		pnlName.setBackground(Color.WHITE);
 		pnlName.setBounds(20, 78, 196, 26);
 		pnlScores.add(pnlName);
 		
 		txtName = new JTextField();
+		txtName.setBackground(Color.WHITE);
 		txtName.setEditable(false);
 		txtName.setText("Name");
 		txtName.setFont(new Font("Tahoma", Font.BOLD, 11));
@@ -152,6 +191,7 @@ public class Touche implements ActionListener {
 		// SCORES PANEL: Subpanel for Grid column numbers
 		
 		JPanel pnlGridNums = new JPanel();
+		pnlGridNums.setBackground(Color.WHITE);
 		pnlGridNums.setBounds(226, 78, 233, 26);
 		pnlScores.add(pnlGridNums);
 		pnlGridNums.setLayout(new GridLayout(0, 8, 0, 0));
@@ -160,6 +200,7 @@ public class Touche implements ActionListener {
 			txtGridColNums[i] = new JTextField(3);
 			txtGridColNums[i].setText("" + (i+1));
 			txtGridColNums[i].setFont(new Font("Tahoma", Font.BOLD, 11));
+			txtGridColNums[i].setBackground(Color.WHITE);
 			txtGridColNums[i].setEditable(false);
 			txtGridColNums[i].setHorizontalAlignment(JTextField.CENTER);
 			txtGridColNums[i].setBorder(new EmptyBorder(0, 0, 0, 0));
@@ -171,6 +212,7 @@ public class Touche implements ActionListener {
 		// SCORES PANEL: Subpanel for calculations column names
 		
 		JPanel pnlScoreCalcs = new JPanel();
+		pnlScoreCalcs.setBackground(Color.WHITE);
 		pnlScoreCalcs.setBounds(467, 78, 165, 26);
 		pnlScores.add(pnlScoreCalcs);
 		pnlScoreCalcs.setLayout(new GridLayout(0, 5, 0, 0));
@@ -178,11 +220,12 @@ public class Touche implements ActionListener {
 		for (int i = 0; i < 5; i++) {
 			txtCalcColNames[i] = new JTextField(3);
 			txtCalcColNames[i].setFont(new Font("Tahoma", Font.BOLD, 11));
+			txtCalcColNames[i].setBackground(Color.WHITE);
 			txtCalcColNames[i].setEditable(false);
 			txtCalcColNames[i].setHorizontalAlignment(JTextField.CENTER);
 			txtCalcColNames[i].setBorder(new EmptyBorder(0, 0, 0, 0));
 			txtCalcColNames[i].setVisible(false);	// dont display it until we know how many fencers we have
-			if (i == 0) txtCalcColNames[i].setText("V");
+			if (i == 0) txtCalcColNames[i].setText(" V");
 			if (i == 1) txtCalcColNames[i].setText("TS");
 			if (i == 2) txtCalcColNames[i].setText("TR");
 			if (i == 3) txtCalcColNames[i].setText("Ind");
@@ -194,6 +237,7 @@ public class Touche implements ActionListener {
 		// SCORES PANEL: Left subpanel (Fencer names and numbers)
 		
 		JPanel pnlLeft = new JPanel();
+		pnlLeft.setBackground(Color.WHITE);
 		pnlLeft.setBounds(20, 108, 196, 206);
 		pnlScores.add(pnlLeft);
 		
@@ -211,6 +255,7 @@ public class Touche implements ActionListener {
 		// SCORES PANEL: Center subpanel (Grid)
 		
 		JPanel pnlCenter = new JPanel();
+		pnlCenter.setBackground(Color.WHITE);
 		pnlCenter.setBounds(226, 108, 233, 206);
 		pnlScores.add(pnlCenter);
 		pnlCenter.setLayout(new GridLayout(8, 8, 0, 0));
@@ -232,6 +277,7 @@ public class Touche implements ActionListener {
 		// SCORES PANEL: Right Subpanel (Calculations)
 		
 		JPanel pnlRight = new JPanel();
+		pnlRight.setBackground(Color.WHITE);
 		pnlRight.setBounds(469, 108, 163, 206);
 		pnlScores.add(pnlRight);
 		pnlRight.setLayout(new GridLayout(8, 5, 0, 0));
@@ -249,6 +295,7 @@ public class Touche implements ActionListener {
 		// SCORES PANEL: Indicator Button Panel
 		
 		JPanel pnlButtons = new JPanel();
+		pnlButtons.setBackground(Color.WHITE);
 		pnlButtons.setBounds(642, 108, 153, 206);
 		pnlScores.add(pnlButtons);
 		pnlButtons.setLayout(new GridLayout(8, 1, 0, 0));
@@ -285,6 +332,7 @@ public class Touche implements ActionListener {
 		// SCORES PANEL: Trailer Sub Panel
 		
 		JPanel pnlTrailer = new JPanel();
+		pnlTrailer.setBackground(Color.WHITE);
 		pnlTrailer.setBounds(20, 323, 775, 81);
 		pnlScores.add(pnlTrailer);
 		
@@ -495,5 +543,4 @@ public class Touche implements ActionListener {
 	public Touche() {
 		initialize();
 	}
-	
 }
