@@ -1,32 +1,5 @@
 package com.olympic.cis143.touche;
 
-
-/*
- *  Still brutishly brute forced and fugly, but now it is a little less
- *  hard coded.  
- *  
- *  Priorities: 
- *  
- *  1. Need to calculate the places.  Ridiculous that I don't have an immediate
- *  idea of how to approach.  Need to ponder a key/value hashmap or something 
- *  get out of array brain maybe. 
- *  
- *  2. Need to do something totally different with the button 
- *  listeners since they are identical except for two lines. There absolutely   
- *  is a better way.  I just need to research implementing listeners.
- *   
- *  3. Validity checks would be good too (i.e. isValid method)
- *  	- 0 <= score <= 5
- *  	- no empties
- *  	- no non numeric.
- *  
- *  4. Super nice to have would be to get rid of the individual calculate
- *  buttons, and automatically detect when a user has completed a row or column.
- *  Maybe I could use the action where it knows when a field has been entered 
- *  or exited and then check the whole row for valid scores.
- */
-
-
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.EventQueue;
@@ -44,13 +17,12 @@ import javax.swing.ButtonGroup;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-public class Touche implements ActionListener {
+public class BetterListeners implements ActionListener {
 
 	private JFrame frame;
 	private JTextField txtTournamentName;
@@ -70,7 +42,7 @@ public class Touche implements ActionListener {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Touche window = new Touche();
+					BetterListeners window = new BetterListeners();
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -82,7 +54,7 @@ public class Touche implements ActionListener {
 	/**
 	 * Create the application.
 	 */
-	public Touche() {
+	public BetterListeners() {
 		initialize();
 	}
 
@@ -321,10 +293,10 @@ public class Touche implements ActionListener {
 		JButton btnCompletePool = new JButton("Complete Pool");
 		pnlTrailer.add(btnCompletePool);
 
-
-
+		
+		
 		// LISTENER: Tournament panel OK button. 
-
+		
 		btnTournamentOK.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 
@@ -394,9 +366,10 @@ public class Touche implements ActionListener {
 			}
 		});
 
-		
-		// LISTENERS
-		
+
+
+
+
 		btnCompletePool.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
@@ -419,6 +392,7 @@ public class Touche implements ActionListener {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
+		
 		String buttonString = e.getActionCommand();
 
 		if (buttonString.equals("Fencer1 Indicator")) {
@@ -446,8 +420,8 @@ public class Touche implements ActionListener {
 			System.out.println(buttonString);
 			calculateIndicator(8);
 		}
+		
 	}
-	
 	
 	public void calculateIndicator(int fNum) {
 
@@ -497,7 +471,4 @@ public class Touche implements ActionListener {
 			}
 		}
 	}
-	
-	
-	
 }
