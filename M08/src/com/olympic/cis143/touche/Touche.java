@@ -4,10 +4,7 @@ package com.olympic.cis143.touche;
 /*
  *  TO DO (time permitting)
  *  
- *  1. Validity checks would be good too (i.e. isValid method)
- *  	- 0 <= score <= 5
- *  	- no empties
- *  	- no non numeric.
+ *  1. Validity checks to make sure there is no tie
  *  
  *  2. Super nice to have would be to get rid of the individual calculate
  *  buttons, and automatically detect when a user has completed a row or column.
@@ -459,26 +456,43 @@ public class Touche implements ActionListener {
 		f.setFencerNum(fNum);
 		f.setName(txtFencers[f.getFencerNum() - 1].getText());
 
-		// Theres probably a craftier way to get touches scored and touches rec'd 
-		// into one for loop but need time to ponder how to flip the row/col... 
-		// Doing it with 2 loops for now since I am pressed for time.
-
-		// Touches Scored into the array list
+		// Touches Scored into the array list (adding up the row for this fencer)
 		for (int col = 0; col < numFencers; col++) {
 			int row = f.getFencerNum()-1;
 			int score = 0;
 			if (! (row == col)) {
-				score = Integer.parseInt(txtGrid[row][col].getText());
-				scoresRow.add(score);
+				try {
+					score = Integer.parseInt(txtGrid[row][col].getText());
+					if (score >= 0  && score <= 5) {
+						scoresRow.add(score);
+					} else {
+						JOptionPane.showMessageDialog(frame, "Score must be from 0 to 5.", "Error", JOptionPane.ERROR_MESSAGE);
+						return;
+					}
+				} catch (NumberFormatException nfe) {
+					JOptionPane.showMessageDialog(frame, "Score must be numeric.", "Error", JOptionPane.ERROR_MESSAGE);
+					return;
+				}
 			}
 		}
-		// Touches received into the array list
+		// Touches received into the array list  (adding up the col for this fencer)
 		for (int row = 0; row < numFencers; row++) {
 			int col = f.getFencerNum()-1;
 			int score = 0;
 			if (! (row == col)) {
-				score = Integer.parseInt(txtGrid[row][col].getText());
-				scoresCol.add(score);
+				try {
+					score = Integer.parseInt(txtGrid[row][col].getText());
+					if (score >= 0  && score <= 5) {
+						scoresCol.add(score);
+					} else {
+						JOptionPane.showMessageDialog(frame, "Score must be from 0 to 5.", "Error", JOptionPane.ERROR_MESSAGE);
+						return;
+					}
+					
+				} catch (NumberFormatException nfe){
+					JOptionPane.showMessageDialog(frame, "Score must be numeric.", "Error", JOptionPane.ERROR_MESSAGE);
+					return;
+				}
 			}
 		}
 		// populate the Fencer obj
