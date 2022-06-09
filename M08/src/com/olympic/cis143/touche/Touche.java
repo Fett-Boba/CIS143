@@ -4,12 +4,10 @@ package com.olympic.cis143.touche;
 /*
  *  TO DO (time permitting)
  *  
- *  1. Validity checks to make sure there is no tie
+ *  1. Validity check to make sure there is never a tie
  *  
  *  2. Super nice to have would be to get rid of the individual calculate
  *  buttons, and automatically detect when a user has completed a row or column.
- *  Maybe I could use the action where it knows when a field has been entered 
- *  or exited and then check the whole row for valid scores.
  *  
  */
 

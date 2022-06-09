@@ -88,6 +88,12 @@ public class ValidTxtFieldTester {
 					c = Integer.parseInt(txtC.getText());
 					d = Integer.parseInt(txtD.getText());
 					System.out.println(a + " " + b + " " + c + " " + d);
+					
+					
+					
+					
+					
+					
 				} catch (NumberFormatException nfe) {
 					System.out.println("You must enter a number");
 				}
