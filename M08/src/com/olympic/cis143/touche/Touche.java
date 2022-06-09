@@ -53,12 +53,10 @@ public class Touche implements ActionListener {
 	
 	private JPanel pnlTournament  = new JPanel();
 	private JPanel pnlScores = new JPanel();
-	private JLabel lblTournamentName = new JLabel("");
 	
 	private JTextField [] txtGridColNums = new JTextField[8];
 	private JLabel [] lblFencerNums = new JLabel[8];
 	private JTextField [] txtCalcColNames = new JTextField[5];
-	
 	
 	private JButton btnF1 = new JButton("Fencer1 Indicator");
 	private JButton btnF2 = new JButton("Fencer2 Indicator");
@@ -68,7 +66,8 @@ public class Touche implements ActionListener {
 	private JButton btnF6 = new JButton("Fencer6 Indicator");
 	private JButton btnF7 = new JButton("Fencer7 Indicator");
 	private JButton btnF8 = new JButton("Fencer8 Indicator");
-	
+
+	private JLabel lblTournamentName = new JLabel("");
 	private JTextField txtName;
 	private int numFencers;
 	private JTextField [] txtFencers = new JTextField[8];
