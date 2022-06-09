@@ -443,7 +443,8 @@ public class Touche {
 
 				// populate the calculations for indicators
 				for (int col = 0; col < 5; col++) {
-					int row = 0;
+					//int row = 0;
+					int row = f.getFencerNum() - 1;
 					switch (col) {
 					case 0:	txtCalcs[row][col].setText(String.valueOf(f.getVictories())); break; 
 					case 1:	txtCalcs[row][col].setText(String.valueOf(f.getTouchesScored())); break;
@@ -495,7 +496,8 @@ public class Touche {
 
 				// population the calculations for indicators
 				for (int col = 0; col < 5; col++) {
-					int row = 1;
+					//int row = 1;
+					int row = f.getFencerNum() - 1;
 					switch (col) {
 					case 0:	txtCalcs[row][col].setText(String.valueOf(f.getVictories())); break; 
 					case 1:	txtCalcs[row][col].setText(String.valueOf(f.getTouchesScored())); break;
@@ -547,7 +549,8 @@ public class Touche {
 
 				// population the calculations for indicators
 				for (int col = 0; col < 5; col++) {
-					int row = 2;
+					//int row = 2;
+					int row = f.getFencerNum() - 1;
 					switch (col) {
 					case 0:	txtCalcs[row][col].setText(String.valueOf(f.getVictories())); break; 
 					case 1:	txtCalcs[row][col].setText(String.valueOf(f.getTouchesScored())); break;
@@ -600,7 +603,8 @@ public class Touche {
 
 				// population the calculations for indicators
 				for (int col = 0; col < 5; col++) {
-					int row = 3;
+					//int row = 3;
+					int row = f.getFencerNum() - 1;
 					switch (col) {
 					case 0:	txtCalcs[row][col].setText(String.valueOf(f.getVictories())); break; 
 					case 1:	txtCalcs[row][col].setText(String.valueOf(f.getTouchesScored())); break;
@@ -653,7 +657,8 @@ public class Touche {
 
 				// population the calculations for indicators
 				for (int col = 0; col < 5; col++) {
-					int row = 4;
+					//int row = 4;
+					int row = f.getFencerNum() - 1;
 					switch (col) {
 					case 0:	txtCalcs[row][col].setText(String.valueOf(f.getVictories())); break; 
 					case 1:	txtCalcs[row][col].setText(String.valueOf(f.getTouchesScored())); break;
@@ -706,7 +711,8 @@ public class Touche {
 
 				// population the calculations for indicators
 				for (int col = 0; col < 5; col++) {
-					int row = 5;
+					//int row = 5;
+					int row = f.getFencerNum() - 1;
 					switch (col) {
 					case 0:	txtCalcs[row][col].setText(String.valueOf(f.getVictories())); break; 
 					case 1:	txtCalcs[row][col].setText(String.valueOf(f.getTouchesScored())); break;
@@ -757,7 +763,8 @@ public class Touche {
 
 				// population the calculations for indicators
 				for (int col = 0; col < 5; col++) {
-					int row = 6;
+					//int row = 6;
+					int row = f.getFencerNum() - 1;
 					switch (col) {
 					case 0:	txtCalcs[row][col].setText(String.valueOf(f.getVictories())); break; 
 					case 1:	txtCalcs[row][col].setText(String.valueOf(f.getTouchesScored())); break;
@@ -809,7 +816,8 @@ public class Touche {
 
 				// populate the calculations for indicators
 				for (int col = 0; col < 5; col++) {
-					int row = 7;
+					//int row = 7;
+					int row = f.getFencerNum() - 1;
 					switch (col) {
 					case 0:	txtCalcs[row][col].setText(String.valueOf(f.getVictories())); break; 
 					case 1:	txtCalcs[row][col].setText(String.valueOf(f.getTouchesScored())); break;
