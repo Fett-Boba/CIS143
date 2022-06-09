@@ -291,6 +291,7 @@ public class BetterListeners implements ActionListener {
 		pnlScores.add(pnlTrailer);
 
 		JButton btnCompletePool = new JButton("Complete Pool");
+		btnCompletePool.addActionListener(this);
 		pnlTrailer.add(btnCompletePool);
 
 		
@@ -367,27 +368,28 @@ public class BetterListeners implements ActionListener {
 		});
 
 
+//		btnCompletePool.addActionListener(new ActionListener() {
+//			public void actionPerformed(ActionEvent e) {
+//				
+//				Collections.sort(fencerList, 
+//					Comparator.comparingInt(Fencer::getVictories)
+//					.thenComparingInt(Fencer::getIndicator).reversed());
+//
+//				for (int i = 0; i < numFencers; i++) {
+//					fencerList.get(i).setPlace(i + 1);  // update the objects with place
+//				}
+//				
+//				for (int i = 0; i < numFencers; i++) {
+//					int fencerNum = fencerList.get(i).getFencerNum();
+//					txtCalcs[fencerNum - 1][4].setText(String.valueOf(fencerList.get(i).getPlace()));
+//				}
+//			}
+//		});
 
-
-
-		btnCompletePool.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				
-				Collections.sort(fencerList, 
-					Comparator.comparingInt(Fencer::getVictories)
-					.thenComparingInt(Fencer::getIndicator).reversed());
-
-				for (int i = 0; i < numFencers; i++) {
-					fencerList.get(i).setPlace(i + 1);  // update the objects with place
-				}
-				
-				for (int i = 0; i < numFencers; i++) {
-					int fencerNum = fencerList.get(i).getFencerNum();
-					txtCalcs[fencerNum - 1][4].setText(String.valueOf(fencerList.get(i).getPlace()));
-				}
-			}
-		});
-
+		
+		
+		
+		
 	}
 
 	@Override
@@ -396,36 +398,29 @@ public class BetterListeners implements ActionListener {
 		String buttonString = e.getActionCommand();
 
 		if (buttonString.equals("Fencer1 Indicator")) {
-			System.out.println(buttonString);
 			calculateIndicator(1);
 		} else if (buttonString.equals("Fencer2 Indicator")) {
-			System.out.println(buttonString);
 			calculateIndicator(2);
 		}  else if (buttonString.equals("Fencer3 Indicator")) {
-			System.out.println(buttonString);
 			calculateIndicator(3);
 		} else if (buttonString.equals("Fencer4 Indicator")) {
-			System.out.println(buttonString);
 			calculateIndicator(4);
 		} else if (buttonString.equals("Fencer5 Indicator")) {
-			System.out.println(buttonString);
 			calculateIndicator(5);
 		} else if (buttonString.equals("Fencer6 Indicator")) {
-			System.out.println(buttonString);
 			calculateIndicator(6);
 		} else if (buttonString.equals("Fencer7 Indicator")) {
-			System.out.println(buttonString);
 			calculateIndicator(7);
-		} else {
-			System.out.println(buttonString);
+		} else if (buttonString.equals("Fencer8 Indicator")) {
 			calculateIndicator(8);
+		} else if (buttonString.equals("Complete Pool")) {
+			calculatePlace();
 		}
 		
 	}
 	
 	public void calculateIndicator(int fNum) {
 
-		System.out.println("IN CALCULATE INDICATOR " + fNum);
 		List <Integer> scoresRow = new ArrayList<>();
 		List <Integer> scoresCol = new ArrayList<>();
 		Fencer f = new Fencer();
@@ -469,6 +464,22 @@ public class BetterListeners implements ActionListener {
 			case 3:	txtCalcs[row][col].setText(String.valueOf(f.getIndicator())); break;
 			default: txtCalcs[row][col].setText(""); break;
 			}
+		}
+	}
+	
+	public void calculatePlace() {
+		
+		Collections.sort(fencerList, 
+			Comparator.comparingInt(Fencer::getVictories)
+			.thenComparingInt(Fencer::getIndicator).reversed());
+	
+		for (int i = 0; i < numFencers; i++) {
+			fencerList.get(i).setPlace(i + 1);  // update the objects with place
+		}
+		
+		for (int i = 0; i < numFencers; i++) {
+			int fencerNum = fencerList.get(i).getFencerNum();
+			txtCalcs[fencerNum - 1][4].setText(String.valueOf(fencerList.get(i).getPlace()));
 		}
 	}
 }
