@@ -78,17 +78,12 @@ public class Touche implements ActionListener {
 	private final JPanel pnlImageLogo = new JPanel();
 	private final JLabel lblLogo = new JLabel("");
 
-//	List <Integer> scoresRow = new ArrayList<>();
-//	List <Integer> scoresCol = new ArrayList<>();
-	Tournament tournament = new Tournament();
 
-	
-	/**
-	 * Setup the contents of the frame.
-	 */
+	//* ---------------------------  CONTENT: FRAME AND PANELS-----------------------------------
+
 	private void initialize() {
 
-		// CONTENT: FRAME
+		// FRAME
 		
 		frame = new JFrame("Touche");
 		frame.setResizable(false);
@@ -97,7 +92,7 @@ public class Touche implements ActionListener {
 		frame.getContentPane().setLayout(new CardLayout(0, 0));
 
 		
-		// CONTENT: TOURNAMENT PANEL
+		// TOURNAMENT PANEL
 		
 		frame.getContentPane().add(pnlTournament, "tournament");
 		pnlTournament.setLayout(null);
@@ -155,7 +150,7 @@ public class Touche implements ActionListener {
 		pnlScores.setBackground(Color.WHITE);
 
 
-		// CONTENT: SCORES PANEL (split out into multiple subpanels to manage the tableau)
+		// SCORES PANEL (split out into multiple subpanels to manage the tableau)
 		
 		frame.getContentPane().add(pnlScores, "scores");
 		pnlScores.setLayout(null);
@@ -344,7 +339,10 @@ public class Touche implements ActionListener {
 	}
 
 	
-	// ACTIONS: Button Listener 
+	//* -------------------------------  ACTIONS -------------------------------------------
+
+	
+	// Button Listener 
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
@@ -384,16 +382,29 @@ public class Touche implements ActionListener {
 	}
 	
 	
-	// ACTIONS: create tableau based on the number of fencers
+	// Display the tableau based on the number of fencers
 	
-	public void buildTableau() {
-		
-		// Generate Tournament object
+	private void buildTableau() {
+
 		Tournament tournament = new Tournament();
+		setTournamentInfos(tournament);		
+		
+		pnlTournament.setVisible(false);
+		pnlScores.setVisible(true);
+		lblTournamentName.setText(tournament.getTournamentName());
+
+		displayScoreArea(tournament);
+		displayCalculationArea(tournament);
+		setIndicatorBtnsVisible();
+	}
+	
+		
+	// Set values in the tournament object  
+	
+	public void setTournamentInfos(Tournament tournament) {
+		
 		tournament.setTournamentName(txtTournamentName.getText());
 		
-
-		// Collect number of fencers so we can adjust the size of the Tableau
 		if (rb4.isSelected()) {
 			tournament.setNumFencers(4);
 		} else if (rb5.isSelected()) {
@@ -405,25 +416,30 @@ public class Touche implements ActionListener {
 		} else {
 			tournament.setNumFencers(8);
 		}
-		
 		numFencers = tournament.getNumFencers();  
-		pnlTournament.setVisible(false);
-		pnlScores.setVisible(true);
-		lblTournamentName.setText(tournament.getTournamentName());
+	}
 
-		// Generate the tableau setting fields visible based on number of fencers
+	
+	// Display the score area of the tableau
+	
+	public void displayScoreArea(Tournament tournament) {
+	
 		for (int i = 0; i < tournament.getNumFencers(); i++) {
 			txtGridColNums[i].setVisible(true);
 			txtFencers[i].setVisible(true);
 			lblFencerNums[i].setVisible(true);
+			
 			for (int j = 0; j < tournament.getNumFencers(); j++) {
 				txtGrid[i][j].setVisible(true);
 			}
 		}
-		// Build out the calculation side of the tableau.
-		// Probably could incorporate into above loop but I have a funky bug 
-		// when # of fencers = 4 with the places column not displaying. 
-		// Research/resolve if time permitting
+	}
+	
+	
+	// Display the calculation area of the tableau
+	
+	public void displayCalculationArea(Tournament tournament) {
+		
 		for (int i = 0; i < tournament.getNumFencers(); i++) {
 			for (int j = 0; j <5; j++) {
 				txtCalcs[i][j].setVisible(true);
@@ -432,7 +448,13 @@ public class Touche implements ActionListener {
 				txtCalcColNames[j].setVisible(true);
 			}
 		}
-		// Set buttons visible as needed when more than 4 fencers
+	}
+	
+
+	// Set indicator buttons visible in the tableau
+
+	public void setIndicatorBtnsVisible() {
+		
 		switch (numFencers) {
 		case 5: 
 			btnF5.setVisible(true);	
@@ -458,10 +480,9 @@ public class Touche implements ActionListener {
 	}
 	
 	
-	// ACTION: Calculate indicator
-	public void calculateIndicator(int fNum) {
-
-		System.out.println("In calculateIndicator ");
+	// Calculate indicator for fencer
+	
+	private void calculateIndicator(int fNum) {
 		
 		List <Integer> scoresRow = new ArrayList<>();
 		List <Integer> scoresCol = new ArrayList<>();
@@ -503,7 +524,12 @@ public class Touche implements ActionListener {
 		f.setIndicator(f.calculateIndicator());
 		fencerList.add(f);		// save fencer object off in a list for calculating "place" at end of pools
 
-		// populate the calculations for indicators
+		// populate the indicator calculations
+		populateIndicators(f);
+
+	}
+	
+	private void populateIndicators(Fencer f) {
 		for (int col = 0; col < 5; col++) {
 			int row = f.getFencerNum() - 1;
 			switch (col) {
