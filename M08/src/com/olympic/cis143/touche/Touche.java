@@ -78,7 +78,11 @@ public class Touche implements ActionListener {
 	private final JPanel pnlImageLogo = new JPanel();
 	private final JLabel lblLogo = new JLabel("");
 
+//	List <Integer> scoresRow = new ArrayList<>();
+//	List <Integer> scoresCol = new ArrayList<>();
+	Tournament tournament = new Tournament();
 
+	
 	/**
 	 * Setup the contents of the frame.
 	 */
@@ -365,12 +369,13 @@ public class Touche implements ActionListener {
 			calculateIndicator(8);
 		} else if (buttonString.equals("Complete Pool")) {
 			if (isValidTableau()) {
-				fencerList.clear(); //clear out any previous indicator calculations
+				fencerList.clear(); //create fresh objs in case a score changed
 				for (int i = 0; i < numFencers; i++) {
 					calculateIndicator(i +1);
 				}
 				calculatePlace();
 			} else {
+				JOptionPane.showMessageDialog(frame, "Score must be 0 to 5.", "Error", JOptionPane.ERROR_MESSAGE);
 				return;
 			}
 		} else if (buttonString.equals("OK")) {
@@ -387,6 +392,7 @@ public class Touche implements ActionListener {
 		Tournament tournament = new Tournament();
 		tournament.setTournamentName(txtTournamentName.getText());
 		
+
 		// Collect number of fencers so we can adjust the size of the Tableau
 		if (rb4.isSelected()) {
 			tournament.setNumFencers(4);
@@ -399,6 +405,7 @@ public class Touche implements ActionListener {
 		} else {
 			tournament.setNumFencers(8);
 		}
+		
 		numFencers = tournament.getNumFencers();  
 		pnlTournament.setVisible(false);
 		pnlScores.setVisible(true);
@@ -426,7 +433,7 @@ public class Touche implements ActionListener {
 			}
 		}
 		// Set buttons visible as needed when more than 4 fencers
-		switch (tournament.getNumFencers()) {
+		switch (numFencers) {
 		case 5: 
 			btnF5.setVisible(true);	
 			break;
@@ -452,9 +459,10 @@ public class Touche implements ActionListener {
 	
 	
 	// ACTION: Calculate indicator
-	
 	public void calculateIndicator(int fNum) {
 
+		System.out.println("In calculateIndicator ");
+		
 		List <Integer> scoresRow = new ArrayList<>();
 		List <Integer> scoresCol = new ArrayList<>();
 		
@@ -462,45 +470,30 @@ public class Touche implements ActionListener {
 		f.setFencerNum(fNum);
 		f.setName(txtFencers[f.getFencerNum() - 1].getText());
 
-		// Touches Scored into the array list (adding up the row for this fencer)
-		for (int col = 0; col < numFencers; col++) {
-			int row = f.getFencerNum()-1;
-			int score = 0;
-			if (! (row == col)) {
-				try {
-					score = Integer.parseInt(txtGrid[row][col].getText());
-					if (score >= 0  && score <= 5) {
-						scoresRow.add(score);
-					} else {
-						JOptionPane.showMessageDialog(frame, "Score must be from 0 to 5.", "Error", JOptionPane.ERROR_MESSAGE);
-						return;
-					}
-				} catch (NumberFormatException nfe) {
-					JOptionPane.showMessageDialog(frame, "Score must be numeric.", "Error", JOptionPane.ERROR_MESSAGE);
+		// Validate touches scored for this fencer
+		for (int j = 0; j < numFencers; j++) {
+			if (fNum-1 != j) {
+				if (isValidScore(txtGrid[(fNum-1)][j].getText())) {
+					scoresRow.add(Integer.parseInt(txtGrid[(fNum-1)][j].getText()));
+				} else {
+					JOptionPane.showMessageDialog(frame, "Score must be 0 to 5.", "Error", JOptionPane.ERROR_MESSAGE);
 					return;
 				}
 			}
 		}
-		// Touches received into the array list  (adding up the col for this fencer)
-		for (int row = 0; row < numFencers; row++) {
-			int col = f.getFencerNum()-1;
-			int score = 0;
-			if (! (row == col)) {
-				try {
-					score = Integer.parseInt(txtGrid[row][col].getText());
-					if (score >= 0  && score <= 5) {
-						scoresCol.add(score);
-					} else {
-						JOptionPane.showMessageDialog(frame, "Score must be from 0 to 5.", "Error", JOptionPane.ERROR_MESSAGE);
-						return;
-					}
-					
-				} catch (NumberFormatException nfe){
-					JOptionPane.showMessageDialog(frame, "Score must be numeric.", "Error", JOptionPane.ERROR_MESSAGE);
+		
+		// Validate touches received for this fencer
+		for (int i = 0; i < numFencers; i++) {
+			if (i != fNum-1) {
+				if (isValidScore(txtGrid[i][(fNum-1)].getText())) {
+					scoresCol.add(Integer.parseInt(txtGrid[i][(fNum-1)].getText()));
+				} else {
+					JOptionPane.showMessageDialog(frame, "Score must be 0 to 5.", "Error", JOptionPane.ERROR_MESSAGE);
 					return;
 				}
 			}
 		}
+		
 		// populate the Fencer obj
 		f.setAlTs(scoresRow);
 		f.setAlTr(scoresCol);
@@ -523,6 +516,7 @@ public class Touche implements ActionListener {
 		}
 	}
 	
+	
 	// ACTION: Calculate what place the fencer is in.
 	// If the entire tableau is filled out and all indicators calculated, determine what 
 	// place the fencers came in. There is a minor bug that I have not resolved yet.  If 
@@ -531,25 +525,17 @@ public class Touche implements ActionListener {
 	// Will try to fix, time permitting.
 	
 	public void calculatePlace() {
-		
-		System.out.println("In calculatePlace()");
-		
-			Collections.sort(fencerList, 
-					Comparator.comparingInt(Fencer::getVictories)
-					.thenComparingInt(Fencer::getIndicator).reversed());
+		Collections.sort(fencerList, 
+				Comparator.comparingInt(Fencer::getVictories)
+				.thenComparingInt(Fencer::getIndicator).reversed());
 
-			System.out.println(fencerList);
-			
-			for (int i = 0; i < numFencers; i++) {
-				fencerList.get(i).setPlace(i + 1);  // update the objects with place
-			}
-			for (int i = 0; i < numFencers; i++) {
-				int fencerNum = fencerList.get(i).getFencerNum();
-				txtCalcs[fencerNum - 1][4].setText(String.valueOf(fencerList.get(i).getPlace()));
-			}
-
-			
-			
+		for (int i = 0; i < numFencers; i++) {
+			fencerList.get(i).setPlace(i + 1);  // update the objects with place
+		}
+		for (int i = 0; i < numFencers; i++) {
+			int fencerNum = fencerList.get(i).getFencerNum();
+			txtCalcs[fencerNum - 1][4].setText(String.valueOf(fencerList.get(i).getPlace()));
+		}
 	}
 
 	public boolean isValidTableau() {
@@ -571,10 +557,9 @@ public class Touche implements ActionListener {
 	public boolean isValidScore(String s) {
 		try {
 			int score = Integer.parseInt(s);
-			//System.out.println("SCORE : " + s);
 			return  score >= 0  && score <= 5 ? true : false;
 		} catch (NumberFormatException nfe) {
-			JOptionPane.showMessageDialog(frame, "Score must be 0 through 5.", "Error", JOptionPane.ERROR_MESSAGE);
+			//JOptionPane.showMessageDialog(frame, "Score must be 0 to 5.", "Error", JOptionPane.ERROR_MESSAGE);
 			return false;
 		}
 	}
