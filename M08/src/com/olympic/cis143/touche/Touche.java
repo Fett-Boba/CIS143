@@ -490,7 +490,7 @@ public class Touche implements ActionListener {
 		Fencer f = new Fencer();
 		f.setFencerNum(fNum);
 		f.setName(txtFencers[f.getFencerNum() - 1].getText());
-
+		
 		// Validate touches scored for this fencer
 		for (int j = 0; j < numFencers; j++) {
 			if (fNum-1 != j) {
@@ -524,10 +524,13 @@ public class Touche implements ActionListener {
 		f.setIndicator(f.calculateIndicator());
 		fencerList.add(f);		// save fencer object off in a list for calculating "place" at end of pools
 
-		// populate the indicator calculations
+		// populate indicators onto tableau screen for fencer
 		populateIndicators(f);
-
 	}
+	
+	
+	
+	// Populate calculated indicators onto the Tableau screen
 	
 	private void populateIndicators(Fencer f) {
 		for (int col = 0; col < 5; col++) {
@@ -543,35 +546,27 @@ public class Touche implements ActionListener {
 	}
 	
 	
-	// ACTION: Calculate what place the fencer is in.
-	// If the entire tableau is filled out and all indicators calculated, determine what 
-	// place the fencers came in. There is a minor bug that I have not resolved yet.  If 
-	// two (or more) fencers have the same number of victories and indicators, they are 
-	// supposed to tie for that place, and the next place is skipped. 
-	// Will try to fix, time permitting.
+	// Calculate what place the fencer is in.
 	
 	public void calculatePlace() {
 		Collections.sort(fencerList, 
 				Comparator.comparingInt(Fencer::getVictories)
 				.thenComparingInt(Fencer::getIndicator).reversed());
-
 		for (int i = 0; i < numFencers; i++) {
-			fencerList.get(i).setPlace(i + 1);  // update the objects with place
-		}
-		for (int i = 0; i < numFencers; i++) {
-			int fencerNum = fencerList.get(i).getFencerNum();
-			txtCalcs[fencerNum - 1][4].setText(String.valueOf(fencerList.get(i).getPlace()));
+			fencerList.get(i).setPlace(i + 1);  // update the fencer objects with place
+			txtCalcs[fencerList.get(i).getFencerNum() - 1][4].setText(String.valueOf(fencerList.get(i).getPlace()));  // update tableau
 		}
 	}
 
+	
+	// Check if user entered values in tableau are valid 
+	
 	public boolean isValidTableau() {
-		System.out.println("In isValidTableau()");
 		int tallyGoodScores = 0;
 		for (int i = 0; i < numFencers; i++) {
 			for (int j = 0; j < numFencers; j++) {
 				if (i != j && isValidScore(txtGrid[i][j].getText())) {
 					tallyGoodScores++;
-					System.out.println("[" + i+ "]" + "[" + j + "] = " + txtGrid[i][j].getText());
 				}
 			}
 		} 
@@ -579,20 +574,20 @@ public class Touche implements ActionListener {
 	}
 
 	
+	// Check if an individual score in the tableau is valid
 	
 	public boolean isValidScore(String s) {
 		try {
 			int score = Integer.parseInt(s);
 			return  score >= 0  && score <= 5 ? true : false;
 		} catch (NumberFormatException nfe) {
-			//JOptionPane.showMessageDialog(frame, "Score must be 0 to 5.", "Error", JOptionPane.ERROR_MESSAGE);
 			return false;
 		}
 	}
 	
-	/**
-	 * 	Main Driver
-	 */
+
+	//* -------------------------------  MAIN -------------------------------------------
+ 	
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
@@ -606,9 +601,9 @@ public class Touche implements ActionListener {
 		});
 	}
 
-	/**
-	 * Create the GUI.
-	 */
+	
+	// Create the GUI
+	
 	public Touche() {
 		initialize();
 	}
