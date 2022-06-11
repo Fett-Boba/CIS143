@@ -42,10 +42,10 @@ public class Touche implements ActionListener {
 	
 	private final ButtonGroup buttonGroup = new ButtonGroup();
 	private JRadioButton rb4 = new JRadioButton("4");
-	private JRadioButton rb5= new JRadioButton("5");
-	private JRadioButton rb6= new JRadioButton("6");
-	private JRadioButton rb7= new JRadioButton("7");
-	private JRadioButton rb8= new JRadioButton("8");
+	private JRadioButton rb5 = new JRadioButton("5");
+	private JRadioButton rb6 = new JRadioButton("6");
+	private JRadioButton rb7 = new JRadioButton("7");
+	private JRadioButton rb8 = new JRadioButton("8");
 	
 	private JPanel pnlTournament  = new JPanel();
 	private JPanel pnlScores = new JPanel();
@@ -364,7 +364,15 @@ public class Touche implements ActionListener {
 		} else if (buttonString.equals("Fencer8 Indicator")){
 			calculateIndicator(8);
 		} else if (buttonString.equals("Complete Pool")) {
-			calculatePlace();
+			if (isValidTableau()) {
+				fencerList.clear(); //clear out any previous indicator calculations
+				for (int i = 0; i < numFencers; i++) {
+					calculateIndicator(i +1);
+				}
+				calculatePlace();
+			} else {
+				return;
+			}
 		} else if (buttonString.equals("OK")) {
 			buildTableau();
 		}
@@ -443,7 +451,7 @@ public class Touche implements ActionListener {
 	}
 	
 	
-	// ACTION: Caluclate indicator
+	// ACTION: Calculate indicator
 	
 	public void calculateIndicator(int fNum) {
 
@@ -523,15 +531,51 @@ public class Touche implements ActionListener {
 	// Will try to fix, time permitting.
 	
 	public void calculatePlace() {
-		Collections.sort(fencerList, 
-			Comparator.comparingInt(Fencer::getVictories)
-			.thenComparingInt(Fencer::getIndicator).reversed());
+		
+		System.out.println("In calculatePlace()");
+		
+			Collections.sort(fencerList, 
+					Comparator.comparingInt(Fencer::getVictories)
+					.thenComparingInt(Fencer::getIndicator).reversed());
+
+			System.out.println(fencerList);
+			
+			for (int i = 0; i < numFencers; i++) {
+				fencerList.get(i).setPlace(i + 1);  // update the objects with place
+			}
+			for (int i = 0; i < numFencers; i++) {
+				int fencerNum = fencerList.get(i).getFencerNum();
+				txtCalcs[fencerNum - 1][4].setText(String.valueOf(fencerList.get(i).getPlace()));
+			}
+
+			
+			
+	}
+
+	public boolean isValidTableau() {
+		System.out.println("In isValidTableau()");
+		int tallyGoodScores = 0;
 		for (int i = 0; i < numFencers; i++) {
-			fencerList.get(i).setPlace(i + 1);  // update the objects with place
-		}
-		for (int i = 0; i < numFencers; i++) {
-			int fencerNum = fencerList.get(i).getFencerNum();
-			txtCalcs[fencerNum - 1][4].setText(String.valueOf(fencerList.get(i).getPlace()));
+			for (int j = 0; j < numFencers; j++) {
+				if (i != j && isValidScore(txtGrid[i][j].getText())) {
+					tallyGoodScores++;
+					System.out.println("[" + i+ "]" + "[" + j + "] = " + txtGrid[i][j].getText());
+				}
+			}
+		} 
+		return (tallyGoodScores == (numFencers * numFencers - numFencers)) ? true : false;
+	}
+
+	
+	
+	public boolean isValidScore(String s) {
+		try {
+			int score = Integer.parseInt(s);
+			//System.out.println("SCORE : " + s);
+			return  score >= 0  && score <= 5 ? true : false;
+		} catch (NumberFormatException nfe) {
+			JOptionPane.showMessageDialog(frame, "Score must be 0 through 5.", "Error", JOptionPane.ERROR_MESSAGE);
+			return false;
 		}
 	}
 	
