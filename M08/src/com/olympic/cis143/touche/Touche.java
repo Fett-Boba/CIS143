@@ -443,7 +443,7 @@ public class Touche implements ActionListener {
 		for (int i = 0; i < tournament.getNumFencers(); i++) {
 			for (int j = 0; j <5; j++) {
 				txtCalcs[i][j].setVisible(true);
-				txtCalcs[i][j].setEditable(false);		// Dont let user update the calculations :)
+				txtCalcs[i][j].setEditable(false);		// Dont let user update the calculations!
 				txtCalcs[i][j].setBackground(Color.WHITE);
 				txtCalcColNames[j].setVisible(true);
 			}
