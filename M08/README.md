@@ -6,3 +6,6 @@
 
 *	If the fencer desires, they can also fill out the entire scoresheet.  In this case the victories, total touches scored, total touches received, indicator, and place will be calculated.
 
+[Main Screen](com/olympic/cis143/touche/img/screen1.PNG)
+
+![Login Page](public/images/opening-page.gif)
