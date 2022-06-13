@@ -6,13 +6,17 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-class FencerTest {
+class ToucheTest {
+
+	@Test
+	void testToStringTournament() {
+		Tournament t = new Tournament();
+		t.setTournamentName("Orion Invitational");
+		t.setNumFencers(7);
+		assertEquals("NAME: Orion Invitational NUM FENCERS: 7", t.toString());
+	}
 	
 	@Test
 	void testCalculateVictories() {
@@ -51,7 +55,7 @@ class FencerTest {
 	}
 
 	@Test
-	void testToString() {
+	void testToStringFencer() {
 		Fencer f5 = new Fencer();
 		List <Integer> ts = new ArrayList<>(Arrays.asList(5,2,5));
 		List <Integer> tr = new ArrayList<>(Arrays.asList(1,5,0));
@@ -66,4 +70,18 @@ class FencerTest {
 		f5.setPlace(2);
 		assertEquals("Fencer [fencerNum=3, name=Dread Pirate Roberts, alTs=[5, 2, 5], alTr=[1, 5, 0], victories=2, touchesScored=12, touchesReceived=6, indicator=6, place=2]", f5.toString());
 	}
+
+	@Test
+	void testIsValidScore() {
+		Touche touche = new Touche();
+		String s1 = "0";
+		assertEquals(true, touche.isValidScore(s1));
+		String s2 = "5";
+		assertEquals(true, touche.isValidScore(s2));
+		String s3 = "7";
+		assertEquals(false, touche.isValidScore(s3));
+		String s4 = "-2";
+		assertEquals(false, touche.isValidScore(s4));
+	}
+
 }
